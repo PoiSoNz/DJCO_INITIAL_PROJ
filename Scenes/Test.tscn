@@ -1,46 +1,37 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Sprites/placeholder_player.png" type="Texture" id=2]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 32 )
+[ext_resource path="res://Assets/Backgrounds/middle.jpg" type="Texture" id=1]
+[ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
 
 [node name="Test" type="Node2D"]
 
+[node name="middle" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
 [node name="Platforms" type="Node2D" parent="."]
 
-[node name="Platform" parent="Platforms" instance=ExtResource( 1 )]
-position = Vector2( 197.715, 247.872 )
-scale = Vector2( 2, 1 )
+[node name="Platform" parent="Platforms" instance=ExtResource( 2 )]
+position = Vector2( 189.765, 239.922 )
+scale = Vector2( 4, 1 )
 
-[node name="Platform2" parent="Platforms" instance=ExtResource( 1 )]
-position = Vector2( 871.398, 481.667 )
-scale = Vector2( 7, 1 )
+[node name="Platform2" parent="Platforms" instance=ExtResource( 2 )]
+position = Vector2( 1515.36, 778.47 )
+scale = Vector2( 12, 1 )
 
-[node name="Platform3" parent="Platforms" instance=ExtResource( 1 )]
-position = Vector2( 814.889, 225.711 )
-scale = Vector2( 6, 1 )
+[node name="Platform3" parent="Platforms" instance=ExtResource( 2 )]
+position = Vector2( 1623.15, 238.961 )
+scale = Vector2( 9, 1 )
 
-[node name="Platform4" parent="Platforms" instance=ExtResource( 1 )]
-position = Vector2( 509.072, 370.864 )
-scale = Vector2( 5, 1 )
+[node name="Platform4" parent="Platforms" instance=ExtResource( 2 )]
+position = Vector2( 797.925, 508.666 )
+scale = Vector2( 8, 1 )
 
-[node name="Platform5" parent="Platforms" instance=ExtResource( 1 )]
-position = Vector2( 143.421, 481.667 )
-scale = Vector2( 3, 1 )
+[node name="Platform5" parent="Platforms" instance=ExtResource( 2 )]
+position = Vector2( 313.023, 778.471 )
+scale = Vector2( 9, 1 )
 
-[node name="physics_tester" type="Node2D" parent="."]
-position = Vector2( 200, 10 )
-
-[node name="RigidBody2D" type="RigidBody2D" parent="physics_tester"]
-continuous_cd = 1
-can_sleep = false
-linear_velocity = Vector2( 300, 0 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="physics_tester/RigidBody2D"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="physics_tester/RigidBody2D"]
-texture = ExtResource( 2 )
+[node name="Node2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 99.6589, 627.361 )
 
