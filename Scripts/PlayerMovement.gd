@@ -7,7 +7,7 @@ var frameDelta;
 const floorNormal = Vector2(0, -1)
 const gravity = Vector2(0, 1550)
 const runAcceleration = Vector2(750, 0)
-const runDeacceleration = Vector2(800, 0)
+const runDeacceleration = Vector2(1500, 0)
 const jumpAcceleration = Vector2(0, -700)
 const maxVelocity = 500
 
