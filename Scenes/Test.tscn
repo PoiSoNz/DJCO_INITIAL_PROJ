@@ -32,6 +32,10 @@ scale = Vector2( 8, 1 )
 position = Vector2( 313.023, 778.471 )
 scale = Vector2( 9, 1 )
 
+[node name="Platform6" parent="Platforms" instance=ExtResource( 2 )]
+position = Vector2( 954.089, 1039.65 )
+scale = Vector2( 50, 1 )
+
 [node name="Node2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 99.6589, 627.361 )
 

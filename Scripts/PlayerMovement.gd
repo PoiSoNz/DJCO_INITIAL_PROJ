@@ -46,7 +46,7 @@ func player_movement():
 		if velocity.x > -maxVelocity:
 			velocity -= runAcceleration
 	# Run deacceleration (no movement key is being pressed or both are being pressed)
-	else:
+	elif is_on_floor():
 		if velocity.x - runDeacceleration.x >= 0:
 			velocity -= runDeacceleration
 		elif velocity.x + runDeacceleration.x <= 0:
