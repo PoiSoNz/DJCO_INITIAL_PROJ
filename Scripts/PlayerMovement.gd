@@ -2,11 +2,12 @@ extends KinematicBody2D
 
 var velocity = Vector2()
 var jumpCount = 2
+var frameDelta;
 
 const floorNormal = Vector2(0, -1)
-const gravity = Vector2(0, 9.8)
-const runAcceleration = Vector2(30, 0)
-const runDeacceleration = Vector2(10, 0)
+const gravity = Vector2(0, 1550)
+const runAcceleration = Vector2(750, 0)
+const runDeacceleration = Vector2(750, 0)
 const jumpAcceleration = Vector2(0, -700)
 const maxVelocity = 500
 
@@ -16,41 +17,48 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	frameDelta = delta;
+	
 	apply_gravity()
 	
 	if is_on_wall():
 		velocity.x = 0
 	
-	player_movement()
+	player_movement(delta)
 	
 	move_and_slide(velocity, floorNormal)
 	
+
+func apply_delta(value):
+	return value * frameDelta
 
 func apply_gravity():
 	if is_on_floor():
 		reset_gravity()
 		jumpCount = 2
 	else:
-		velocity += gravity
+		velocity += apply_delta(gravity)
 	
 func reset_gravity():
 	velocity.y = 0
 
-func player_movement():
+func player_movement(delta):
 	# Run right
 	if Input.is_key_pressed(KEY_RIGHT) && !Input.is_key_pressed(KEY_LEFT) && velocity.x >= 0:
 		if velocity.x < maxVelocity:
-			velocity += runAcceleration
+			velocity += apply_delta(runAcceleration)
 	# Run left
 	elif Input.is_key_pressed(KEY_LEFT) && !Input.is_key_pressed(KEY_RIGHT) && velocity.x <= 0:
 		if velocity.x > -maxVelocity:
-			velocity -= runAcceleration
+			velocity -= apply_delta(runAcceleration)
 	# Run deacceleration (no movement key is being pressed or both are being pressed)
 	elif is_on_floor():
-		if velocity.x - runDeacceleration.x >= 0:
-			velocity -= runDeacceleration
-		elif velocity.x + runDeacceleration.x <= 0:
-			velocity += runDeacceleration
+		var frameDeacceleration = apply_delta(runDeacceleration)
+		
+		if velocity.x - frameDeacceleration.x >= 0:
+			velocity -= frameDeacceleration
+		elif velocity.x + frameDeacceleration.x <= 0:
+			velocity += frameDeacceleration
 		else:
 			velocity.x = 0
 			
