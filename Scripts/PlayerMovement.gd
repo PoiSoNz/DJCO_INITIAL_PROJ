@@ -52,7 +52,7 @@ func player_movement(delta):
 		if velocity.x > -maxVelocity:
 			velocity -= apply_delta(runAcceleration)
 	# Run deacceleration (no movement key is being pressed or both are being pressed)
-	elif is_on_floor():
+	else:
 		var frameDeacceleration = apply_delta(runDeacceleration)
 		
 		if velocity.x - frameDeacceleration.x >= 0:
