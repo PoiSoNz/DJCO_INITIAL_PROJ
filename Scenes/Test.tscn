@@ -44,5 +44,8 @@ scale = Vector2( 50, 1 )
 [node name="HUD" parent="CanvasLayer" instance=ExtResource( 4 )]
 
 [connection signal="health_changed" from="Player/Health" to="CanvasLayer/HUD" method="_on_Health_health_changed"]
+[connection signal="health_changed" from="CanvasLayer/HUD" to="CanvasLayer/HUD" method="_on_HUD_health_changed"]
 
 [editable path="Player"]
+
+[editable path="CanvasLayer/HUD"]

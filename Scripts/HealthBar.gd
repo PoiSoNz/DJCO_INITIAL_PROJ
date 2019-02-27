@@ -9,5 +9,4 @@ func _ready():
 #	pass
 
 func _on_HUD_health_changed(health):
-	$Number.text = str(int(health))
-	#mudar value da barra aqui
+	$ProgressBar.value = health
