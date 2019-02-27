@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/PlayerMovement.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/Player/player0.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Assets/Sprites/Player/player6.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Sprites/Player/player7.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Sprites/Player/player8.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/PlayerHealth.gd" type="Script" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 210, 252 )
@@ -46,11 +47,14 @@ script = ExtResource( 1 )
 position = Vector2( 210, 252 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="KinematicBody2D"]
+[node name="run" type="Sprite" parent="KinematicBody2D"]
 position = Vector2( 0, 0.463287 )
 texture = SubResource( 2 )
 centered = false
 
 [node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
 current = true
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource( 11 )
 
