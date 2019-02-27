@@ -11,6 +11,8 @@ const runDeacceleration = Vector2(1500, 0)
 const jumpAcceleration = Vector2(0, -700)
 const maxVelocity = 500
 
+var is_slowed = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -26,9 +28,13 @@ func _process(delta):
 	
 	player_movement(delta)
 	
-	move_and_slide(velocity, floorNormal)
+	if is_slowed:
+		var slowed_velocity = Vector2(0.5*velocity.x,velocity.y)
+		move_and_slide(slowed_velocity, floorNormal)
+	else:
+		move_and_slide(velocity, floorNormal)
 	
-
+	
 func apply_delta(value):
 	return value * frameDelta
 
@@ -67,3 +73,10 @@ func player_movement(delta):
 		reset_gravity()
 		velocity += jumpAcceleration
 		
+		
+func _on_Health_slowed():
+	is_slowed = true;
+
+
+func _on_Health_normal_speed():
+	is_slowed = false;
