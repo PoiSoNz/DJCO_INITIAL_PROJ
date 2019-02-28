@@ -23,9 +23,13 @@ func buy_attempt(item):
 	match item:
 		"croissant":
 			if ECTS >= croissant_price:
+				print("croissant placeholder")
 		"water":
 			if ECTS >= water_price:
+				print("water placeholder")
 		"coffee":
 			if ECTS >= coffee_price:
+				print("coffee placeholder")
 		"special_merend":
 			if ECTS >= special_merend_price:
+				print("special merend placeholder")
