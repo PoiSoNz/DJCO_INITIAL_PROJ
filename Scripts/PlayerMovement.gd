@@ -33,8 +33,7 @@ func _process(delta):
 		move_and_slide(slowed_velocity, floorNormal)
 	else:
 		move_and_slide(velocity, floorNormal)
-	
-	
+
 func apply_delta(value):
 	return value * frameDelta
 
@@ -44,7 +43,7 @@ func apply_gravity():
 		jumpCount = 2
 	else:
 		velocity += apply_delta(gravity)
-	
+
 func reset_gravity():
 	velocity.y = 0
 
@@ -72,8 +71,7 @@ func player_movement(delta):
 		jumpCount -= 1
 		reset_gravity()
 		velocity += jumpAcceleration
-		
-		
+
 func _on_Health_slowed():
 	is_slowed = true;
 

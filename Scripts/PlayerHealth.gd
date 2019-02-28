@@ -21,7 +21,7 @@ func _process(delta):
 		emit_signal("slowed")
 	else:
 		emit_signal("normal_speed")
-	
+
 func reduce_health(value):
 	health -= apply_delta(value)
 
