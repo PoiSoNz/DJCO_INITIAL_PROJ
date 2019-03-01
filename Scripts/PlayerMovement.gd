@@ -28,9 +28,9 @@ func _process(delta):
 	frameDelta = delta;
 	
 	apply_gravity()
+	check_ceiling()
+	check_wall()
 	
-	if is_on_wall():
-		velocity.x = 0
 	
 	player_movement(delta)
 	
@@ -42,6 +42,14 @@ func _process(delta):
 
 func apply_delta(value):
 	return value * frameDelta
+
+func check_ceiling():
+	if is_on_ceiling():
+		velocity.y = 0 
+
+func check_wall():
+	if is_on_wall():
+		velocity.x = 0
 
 func apply_gravity():
 	if is_on_floor():
