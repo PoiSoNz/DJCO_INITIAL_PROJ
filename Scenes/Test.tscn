@@ -57,6 +57,10 @@ position = Vector2( 2243.32, 97.1634 )
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource( 7 )]
 
+[node name="VendingMachine2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1316.1, 18.2457 )
+scale = Vector2( 0.25, 0.25 )
+
 [connection signal="health_changed" from="Player/KinematicBody2D/Health" to="CanvasLayer/HUD" method="_on_Health_health_changed"]
 [connection signal="health_changed" from="CanvasLayer/HUD" to="CanvasLayer/HUD" method="_on_HUD_health_changed"]
 

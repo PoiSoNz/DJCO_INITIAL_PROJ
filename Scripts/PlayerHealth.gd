@@ -22,6 +22,10 @@ func _process(delta):
 	else:
 		emit_signal("normal_speed")
 
+func health_increment(hp_increment):
+	var newHP = health + hp_increment
+	health = newHP if(newHP <= 100) else 100
+
 func reduce_health(value):
 	health -= apply_delta(value)
 

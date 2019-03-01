@@ -2,8 +2,7 @@ extends Node2D
 
 var playerInRange = false
 var playerNode
-var game
-var tier = 3
+var tier = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,10 +20,7 @@ func _process(delta):
 		if tier == 3 && Input.is_action_just_pressed("buy_special_merend"):
 			playerNode.buy_attempt("special_merend")
 
-func setGame(gameManager):
-	game = gameManager
-
-func setTier(machineFloor):
+func set_tier(machineFloor):
 	tier = machineFloor
 
 func _on_Area2D_body_entered(body):
