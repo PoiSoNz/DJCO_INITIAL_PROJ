@@ -1,7 +1,9 @@
 extends Node2D
 
+const speed = 350
+const damage = 20
+
 var lifetime = 2
-var speed = 350
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,3 +15,8 @@ func _process(delta):
 	lifetime -= delta
 	if lifetime <= 0:
 		queue_free()
+
+
+func _on_Area2D_body_entered(body):
+	if body.get_parent().name == "Player":
+		body.get_node("Health").reduce_health(damage)
