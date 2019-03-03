@@ -19,7 +19,6 @@ var movement_speed_bonus_timer = null
 func _ready():
 	movement_speed_bonus_timer = Timer.new()
 	movement_speed_bonus_timer.set_one_shot(true)
-	movement_speed_bonus_timer.set_wait_time(10)
 	movement_speed_bonus_timer.connect("timeout", self, "on_movement_speed_bonus_end")
 	add_child(movement_speed_bonus_timer)
 
@@ -30,7 +29,6 @@ func _process(delta):
 	apply_gravity()
 	check_ceiling()
 	check_wall()
-	
 	
 	player_movement(delta)
 	
