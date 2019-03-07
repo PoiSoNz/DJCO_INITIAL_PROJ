@@ -100,11 +100,8 @@ func set_movement_speed_bonus(duration, bonus):
 	movement_speed_bonus_timer.set_wait_time(duration)
 	movement_speed_bonus_timer.start()
 
+func set_slowed(value):
+	is_slowed = value
+
 func on_movement_speed_bonus_end():
 	currMaxVelocity = standardMaxVelocity
-
-func _on_Health_slowed():
-	is_slowed = true;
-
-func _on_Health_normal_speed():
-	is_slowed = false;

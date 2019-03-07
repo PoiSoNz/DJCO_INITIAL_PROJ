@@ -6,7 +6,6 @@ var bleed = true
 
 signal health_changed(oldHealth, newHealth)
 signal bled(oldHealth, newHealth)
-signal slowed()
 
 # Called when the node enters the scene tree for the first time.
 #func _ready():
@@ -16,13 +15,13 @@ signal slowed()
 func _process(delta):
 	frameDelta = delta;
 	
+	var previousHealth = health
 	if bleed:
 		health_bleed(2)
+	var newHealth = health
 	
-	if health <= 30:
-		emit_signal("slowed")
-	else:
-		emit_signal("normal_speed")
+	#print("previous: ", 
+	verify_hp_threshold(previousHealth, newHealth)
 
 func health_increment(gain):
 	var oldHP = health
@@ -31,6 +30,8 @@ func health_increment(gain):
 	if newHP > 100:
 		newHP = 100
 	health = newHP
+	
+	verify_hp_threshold(oldHP, newHP)
 	
 	bleed = false
 	emit_signal("health_changed", oldHP, health)
@@ -42,6 +43,8 @@ func reduce_health(damage):
 	if newHP < 0 :
 		newHP = 0
 	health = newHP
+	
+	verify_hp_threshold(oldHP, newHP)
 	
 	bleed = false
 	emit_signal("health_changed", oldHP, health)
@@ -55,6 +58,12 @@ func health_bleed(value):
 	health = newHP
 	
 	emit_signal("bled", oldHP, health)
+
+func verify_hp_threshold(previousHealth, newHealth):
+	if previousHealth > 30 && newHealth <= 30:
+		get_parent().set_slowed(true)
+	elif previousHealth <= 30 && newHealth > 30:
+		get_parent().set_slowed(false)
 
 func apply_delta(value):
 	return value * frameDelta

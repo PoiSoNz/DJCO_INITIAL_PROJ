@@ -1,6 +1,6 @@
 extends Node
 
-var ECTS = 100
+var ECTS = 10000
 
 # Vending machine item prices
 const croissant_price = 40
@@ -71,6 +71,7 @@ func inflict_damage(damage):
 	if immunity_type == one_time_immunity:
 		immunity_type = no_immunity
 		immunity_timer.stop()
+		emit_signal("immunity", immunity_type)
 	elif immunity_type == no_immunity:
 		$KinematicBody2D/Health.reduce_health(damage)
 

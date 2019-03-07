@@ -63,4 +63,3 @@ script = ExtResource( 12 )
 script = ExtResource( 13 )
 
 [connection signal="reenable_bleeding" from="." to="KinematicBody2D/Health" method="_on_Player_reenable_bleeding"]
-[connection signal="slowed" from="KinematicBody2D/Health" to="KinematicBody2D" method="_on_Health_slowed"]
