@@ -86,9 +86,12 @@ func player_movement(delta):
 			velocity.x = 0
 			
 	if Input.is_action_just_pressed("player_jump") && jumpCount > 0:
-		jumpCount -= 1
 		reset_gravity()
-		velocity += jumpAcceleration
+		var multiplier = 1.15
+		if jumpCount == 2:
+			multiplier = 0.70
+		velocity += jumpAcceleration * multiplier
+		jumpCount -= 1
 
 func set_movement_speed_bonus(duration, bonus):
 	currMaxVelocity = standardMaxVelocity + bonus
