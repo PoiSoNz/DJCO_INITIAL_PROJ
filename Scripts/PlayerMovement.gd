@@ -26,8 +26,9 @@ func _ready():
 func _process(delta):
 	frameDelta = delta;
 	
-	apply_gravity()
 	check_ceiling()
+	apply_gravity()
+	
 	check_wall()
 	
 	player_movement(delta)
@@ -63,12 +64,14 @@ func player_movement(delta):
 	var frameAcceleration = apply_delta(runAcceleration)
 	# Run right
 	if Input.is_key_pressed(KEY_RIGHT) && !Input.is_key_pressed(KEY_LEFT) && velocity.x >= 0:
+		$run.flip_h = false
 		if velocity.x + frameAcceleration.x < currMaxVelocity:
 			velocity += frameAcceleration
 		else:
 			velocity.x = currMaxVelocity
 	# Run left
 	elif Input.is_key_pressed(KEY_LEFT) && !Input.is_key_pressed(KEY_RIGHT) && velocity.x <= 0:
+		$run.flip_h = true
 		if velocity.x - frameAcceleration.x > -currMaxVelocity:
 			velocity -= frameAcceleration
 		else:
@@ -85,9 +88,12 @@ func player_movement(delta):
 			velocity.x = 0
 			
 	if Input.is_action_just_pressed("player_jump") && jumpCount > 0:
-		jumpCount -= 1
 		reset_gravity()
-		velocity += jumpAcceleration
+		var multiplier = 1.15
+		if jumpCount == 2:
+			multiplier = 0.70
+		velocity += jumpAcceleration * multiplier
+		jumpCount -= 1
 
 func set_movement_speed_bonus(duration, bonus):
 	currMaxVelocity = standardMaxVelocity + bonus

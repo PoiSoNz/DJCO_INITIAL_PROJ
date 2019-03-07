@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Fonts/code_bold_big.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Fonts/code_bold.tres" type="DynamicFont" id=2]
+
+[node name="PlayAgain" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+color = Color( 0.654902, 0.196078, 0.109804, 0.180392 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 1920.0
+margin_bottom = 780.0
+custom_fonts/font = ExtResource( 1 )
+text = "Failed"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="."]
+margin_left = 740.0
+margin_top = 540.0
+margin_right = 1180.0
+margin_bottom = 660.0
+custom_fonts/font = ExtResource( 2 )
+text = "Play Again"
+
