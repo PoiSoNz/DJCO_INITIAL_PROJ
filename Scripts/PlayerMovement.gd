@@ -26,8 +26,9 @@ func _ready():
 func _process(delta):
 	frameDelta = delta;
 	
-	apply_gravity()
 	check_ceiling()
+	apply_gravity()
+	
 	check_wall()
 	
 	player_movement(delta)
