@@ -48,13 +48,13 @@ position = Vector2( 727.386, 287.815 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="GoldCoin" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1710.62, 156.47 )
+position = Vector2( 1783.98, 135.336 )
 
 [node name="SilverCoin" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1191.98, 383.263 )
+position = Vector2( 1109.35, 381.402 )
 
 [node name="BronzeCoin" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1453.94, 696.203 )
+position = Vector2( 1361.86, 696.684 )
 
 [node name="Obstacles" type="Node2D" parent="."]
 

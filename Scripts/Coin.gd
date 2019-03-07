@@ -3,7 +3,7 @@ extends Node2D
 var type = 0 # Gold = 0, Silve = 1, Bronze = 2
 const types_num = 3
 const texture_width = 1000;
-const texture_height = 278;
+const texture_height = 296;
 
 
 # Called when the node enters the scene tree for the first time.
