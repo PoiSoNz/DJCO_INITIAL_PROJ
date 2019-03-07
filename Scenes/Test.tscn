@@ -17,44 +17,40 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="Platforms" type="Node2D" parent="."]
+position = Vector2( -26.0283, 270.044 )
 
 [node name="Platform" parent="Platforms" instance=ExtResource( 3 )]
-position = Vector2( 189.765, 239.922 )
-scale = Vector2( 4, 1 )
-
-[node name="Platform2" parent="Platforms" instance=ExtResource( 3 )]
-position = Vector2( 1515.36, 778.47 )
-scale = Vector2( 12, 1 )
+position = Vector2( 192.037, 226.29 )
+scale = Vector2( 4, 0.5 )
 
 [node name="Platform3" parent="Platforms" instance=ExtResource( 3 )]
-position = Vector2( 1823.15, 238.961 )
-scale = Vector2( 20, 1 )
+position = Vector2( 1818.63, 225.395 )
+scale = Vector2( 20, 0.5 )
 
 [node name="Platform4" parent="Platforms" instance=ExtResource( 3 )]
-position = Vector2( 797.925, 508.666 )
-scale = Vector2( 8, 1 )
+position = Vector2( 806.969, 496.607 )
+scale = Vector2( 8, 0.5 )
 
-[node name="Platform5" parent="Platforms" instance=ExtResource( 3 )]
-position = Vector2( 313.023, 778.471 )
-scale = Vector2( 9, 1 )
+[node name="Platform7" parent="Platforms" instance=ExtResource( 3 )]
+position = Vector2( 1712.04, -45.6959 )
+scale = Vector2( 50, 0.5 )
 
-[node name="Platform6" parent="Platforms" instance=ExtResource( 3 )]
-position = Vector2( 957.222, 1014.96 )
+[node name="Platform8" parent="Platforms" instance=ExtResource( 3 )]
+position = Vector2( 911.672, 761.184 )
 scale = Vector2( 50, 1 )
 
 [node name="VendingMachine" parent="." instance=ExtResource( 4 )]
-position = Vector2( 727.386, 287.815 )
+position = Vector2( 629.78, 557.859 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="VendingMachine2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1316.1, 18.2457 )
+position = Vector2( 1267.3, 288.29 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="Obstacles" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Yorn" parent="Obstacles" instance=ExtResource( 5 )]
-position = Vector2( 2243.32, 97.1634 )
+position = Vector2( 2337.88, 392.201 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 
