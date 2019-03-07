@@ -23,6 +23,7 @@ var immunity_type = no_immunity
 var immunity_timer = null
 
 signal reenable_bleeding()
+signal immunity(immunity_type)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -73,10 +74,12 @@ func inflict_damage(damage):
 func set_immunity(duration, immunity):
 	immunity_type = immunity
 	immunity_timer.set_wait_time(duration)
+	emit_signal("immunity", immunity_type)
 	immunity_timer.start()
 
 func on_immunity_end():
 	immunity_type = no_immunity
+	emit_signal("immunity", immunity_type)
 
 func _on_HealthBar_reenable_bleeding():
 	emit_signal("reenable_bleeding")

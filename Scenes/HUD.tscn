@@ -12,3 +12,4 @@ script = ExtResource( 1 )
 
 [connection signal="bled" from="." to="HealthBar" method="_on_HUD_bled"]
 [connection signal="health_changed" from="." to="HealthBar" method="_on_HUD_health_changed"]
+[connection signal="immunity" from="." to="HealthBar" method="_on_HUD_immunity"]

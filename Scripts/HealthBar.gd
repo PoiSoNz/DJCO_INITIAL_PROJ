@@ -2,6 +2,12 @@ extends Node
 
 var green_hp = Color("87da37")
 var red_hp = Color("cd0404")
+var one_time_immunity_border = Color("00abdc")
+var persistent_immunity_border = Color("f6ff00")
+
+const no_immunity = 0
+const one_time_immunity = 1
+const persistent_immunity = 2
 
 signal reenable_bleeding()
 
@@ -38,3 +44,15 @@ func animate_bar(oldHealth, newHealth):
 	
 	$Tween.interpolate_property($ProgressBar, "value", oldHealth, newHealth, 0.3, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	$Tween.start()
+
+func _on_HUD_immunity(immunity_type):
+	if immunity_type == persistent_immunity:
+		$ProgressBar.get("custom_styles/fg/").border_color = persistent_immunity_border
+		$ProgressBar.get("custom_styles/fg/").set_border_width_all(3)
+	elif immunity_type == one_time_immunity: 
+		$ProgressBar.get("custom_styles/fg/").border_color = one_time_immunity_border
+		$ProgressBar.get("custom_styles/fg/").set_border_width_all(3)
+	else:
+		$ProgressBar.get("custom_styles/fg/").set_border_width_all(0)
+		#$Tween.interpolate_property($ProgressBar.get("custom_styles/fg/bg_color"), "border_width_left", 0, 3, 0.3, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+		#$Tween.start()

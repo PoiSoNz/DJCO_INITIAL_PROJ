@@ -56,6 +56,10 @@ shape = SubResource( 1 )
 position = Vector2( 600, 560.762 )
 scale = Vector2( 0.25, 0.25 )
 
+[node name="VendingMachine2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1249.86, 288.733 )
+scale = Vector2( 0.25, 0.25 )
+
 [node name="GoldCoin" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1747.63, 382.244 )
 
@@ -77,10 +81,7 @@ position = Vector2( 0, 900 )
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource( 8 )]
 
-[node name="VendingMachine2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1249.86, 288.733 )
-scale = Vector2( 0.25, 0.25 )
-
+[connection signal="immunity" from="Player" to="CanvasLayer/HUD" method="_on_Player_immunity"]
 [connection signal="bled" from="Player/KinematicBody2D/Health" to="CanvasLayer/HUD" method="_on_Health_bled"]
 [connection signal="health_changed" from="Player/KinematicBody2D/Health" to="CanvasLayer/HUD" method="_on_Health_health_changed"]
 [connection signal="health_changed" from="CanvasLayer/HUD" to="CanvasLayer/HUD" method="_on_HUD_health_changed"]
