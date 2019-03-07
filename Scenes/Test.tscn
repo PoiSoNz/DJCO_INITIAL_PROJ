@@ -12,7 +12,7 @@
 script = ExtResource( 1 )
 
 [node name="middle" type="Sprite" parent="."]
-position = Vector2( 0, -0.568787 )
+position = Vector2( 3.09088, 2.52203 )
 texture = ExtResource( 2 )
 centered = false
 
@@ -39,14 +39,19 @@ position = Vector2( 313.023, 778.471 )
 scale = Vector2( 9, 1 )
 
 [node name="Platform6" parent="Platforms" instance=ExtResource( 3 )]
-position = Vector2( 954.089, 1039.65 )
+position = Vector2( 957.222, 1014.96 )
 scale = Vector2( 50, 1 )
 
 [node name="VendingMachine" parent="." instance=ExtResource( 4 )]
 position = Vector2( 727.386, 287.815 )
 scale = Vector2( 0.25, 0.25 )
 
+[node name="VendingMachine2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1316.1, 18.2457 )
+scale = Vector2( 0.25, 0.25 )
+
 [node name="Obstacles" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Yorn" parent="Obstacles" instance=ExtResource( 5 )]
 position = Vector2( 2243.32, 97.1634 )
@@ -57,12 +62,9 @@ position = Vector2( 2243.32, 97.1634 )
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource( 7 )]
 
-[node name="VendingMachine2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1316.1, 18.2457 )
-scale = Vector2( 0.25, 0.25 )
-
+[connection signal="bled" from="Player/KinematicBody2D/Health" to="CanvasLayer/HUD" method="_on_Health_bled"]
 [connection signal="health_changed" from="Player/KinematicBody2D/Health" to="CanvasLayer/HUD" method="_on_Health_health_changed"]
-[connection signal="health_changed" from="CanvasLayer/HUD" to="CanvasLayer/HUD" method="_on_HUD_health_changed"]
+[connection signal="reenable_bleeding" from="CanvasLayer/HUD/HealthBar" to="Player" method="_on_HealthBar_reenable_bleeding"]
 
 [editable path="Player"]
 

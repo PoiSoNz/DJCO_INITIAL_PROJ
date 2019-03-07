@@ -1,6 +1,10 @@
 extends Node
 
-signal health_changed(health)
+signal health_changed(oldHealth, newHealth)
+signal bled(oldHealth, newHealth)
 
-func _on_Health_health_changed(health):
-	emit_signal("health_changed", health)
+func _on_Health_health_changed(oldHealth, newHealth):
+	emit_signal("health_changed", oldHealth, newHealth)
+
+func _on_Health_bled(oldHealth, newHealth):
+	emit_signal("bled", oldHealth, newHealth)

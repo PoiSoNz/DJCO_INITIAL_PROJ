@@ -60,5 +60,5 @@ current = true
 [node name="Health" type="Node" parent="KinematicBody2D"]
 script = ExtResource( 12 )
 
-[connection signal="normal_speed" from="KinematicBody2D/Health" to="KinematicBody2D" method="_on_Health_normal_speed"]
+[connection signal="reenable_bleeding" from="." to="KinematicBody2D/Health" method="_on_Player_reenable_bleeding"]
 [connection signal="slowed" from="KinematicBody2D/Health" to="KinematicBody2D" method="_on_Health_slowed"]

@@ -22,6 +22,8 @@ const persistent_immunity = 2
 var immunity_type = no_immunity
 var immunity_timer = null
 
+signal reenable_bleeding()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	immunity_timer = Timer.new()
@@ -75,3 +77,6 @@ func set_immunity(duration, immunity):
 
 func on_immunity_end():
 	immunity_type = no_immunity
+
+func _on_HealthBar_reenable_bleeding():
+	emit_signal("reenable_bleeding")
