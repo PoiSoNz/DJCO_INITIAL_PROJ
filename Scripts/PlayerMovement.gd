@@ -64,12 +64,14 @@ func player_movement(delta):
 	var frameAcceleration = apply_delta(runAcceleration)
 	# Run right
 	if Input.is_key_pressed(KEY_RIGHT) && !Input.is_key_pressed(KEY_LEFT) && velocity.x >= 0:
+		$run.flip_h = false
 		if velocity.x + frameAcceleration.x < currMaxVelocity:
 			velocity += frameAcceleration
 		else:
 			velocity.x = currMaxVelocity
 	# Run left
 	elif Input.is_key_pressed(KEY_LEFT) && !Input.is_key_pressed(KEY_RIGHT) && velocity.x <= 0:
+		$run.flip_h = true
 		if velocity.x - frameAcceleration.x > -currMaxVelocity:
 			velocity -= frameAcceleration
 		else:
