@@ -43,3 +43,4 @@ anims/Spin = SubResource( 1 )
 position = Vector2( -2.94037, -0.345627 )
 shape = SubResource( 2 )
 
+[connection signal="body_entered" from="Area2D" to="." method="_on_Coin_body_entered"]

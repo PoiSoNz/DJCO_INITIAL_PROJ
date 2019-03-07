@@ -34,7 +34,7 @@ func health_increment(gain):
 	
 	bleed = false
 	emit_signal("health_changed", oldHP, health)
-	
+
 func reduce_health(damage):
 	var oldHP = health
 	

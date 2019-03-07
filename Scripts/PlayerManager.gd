@@ -1,6 +1,6 @@
 extends Node
 
-var ECTS = 100000
+var ECTS = 100
 
 # Vending machine item prices
 const croissant_price = 40
@@ -33,8 +33,8 @@ func _ready():
 	add_child(immunity_timer)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	pass
 
 func buy_attempt(item):
 	match item:
@@ -63,6 +63,9 @@ func buy_attempt(item):
 				# Movement speed bonus
 				$KinematicBody2D.set_movement_speed_bonus(special_merend_duration, coffee_speed_bonus * 0.7)
 				print("special merend placeholder")
+
+func add_currency(value):
+	ECTS += value
 
 func inflict_damage(damage):
 	if immunity_type == one_time_immunity:
