@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Backgrounds/middle.jpg" type="Texture" id=2]
 [ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/VendingMachine.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Yorn.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Yorn.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=8]
 
 [node name="Test" type="Node2D"]
 script = ExtResource( 1 )
@@ -46,16 +47,25 @@ scale = Vector2( 50, 1 )
 position = Vector2( 727.386, 287.815 )
 scale = Vector2( 0.25, 0.25 )
 
+[node name="GoldCoin" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1710.62, 156.47 )
+
+[node name="SilverCoin" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1191.98, 383.263 )
+
+[node name="BronzeCoin" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1453.94, 696.203 )
+
 [node name="Obstacles" type="Node2D" parent="."]
 
-[node name="Yorn" parent="Obstacles" instance=ExtResource( 5 )]
+[node name="Yorn" parent="Obstacles" instance=ExtResource( 6 )]
 position = Vector2( 2243.32, 97.1634 )
 
-[node name="Player" parent="." instance=ExtResource( 6 )]
+[node name="Player" parent="." instance=ExtResource( 7 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HUD" parent="CanvasLayer" instance=ExtResource( 7 )]
+[node name="HUD" parent="CanvasLayer" instance=ExtResource( 8 )]
 
 [node name="VendingMachine2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1316.1, 18.2457 )
