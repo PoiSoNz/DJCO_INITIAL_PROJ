@@ -17,6 +17,7 @@ margin_bottom = 110.0
 color = Color( 0.670588, 0.0117647, 0.972549, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2( 40, 55 )
 shape = SubResource( 1 )
 

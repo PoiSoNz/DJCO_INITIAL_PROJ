@@ -4,6 +4,7 @@ var velocity = Vector2()
 var jumpCount = 2
 var frameDelta;
 var currMaxVelocity = 500
+var knock_back_timer = knockBackCooldown
 
 const floorNormal = Vector2(0, -1)
 const gravity = Vector2(0, 1550)
@@ -11,8 +12,10 @@ const runAcceleration = Vector2(750, 0)
 const runDeacceleration = Vector2(1500, 0)
 const jumpAcceleration = Vector2(0, -700)
 const standardMaxVelocity = 500
+const knockBackCooldown = 0.1
 
 var is_slowed = false
+var is_knocked = false
 var movement_speed_bonus_timer = null
 
 # Called when the node enters the scene tree for the first time.
@@ -31,13 +34,40 @@ func _process(delta):
 	
 	check_wall()
 	
+	check_knock_back(delta)
+	
 	player_movement(delta)
 	
-	if is_slowed:
-		var slowed_velocity = Vector2(0.5*velocity.x,velocity.y)
+	if is_slowed && !is_knocked:
+		var slowed_velocity = Vector2(0.6*velocity.x,velocity.y)
 		move_and_slide(slowed_velocity, floorNormal)
 	else:
 		move_and_slide(velocity, floorNormal)
+		
+func check_knock_back(delta):
+	var collision_info = move_and_collide(Vector2(0,0))
+	if collision_info:
+		if collision_info.collider.get_parent().name == "Bench" && !is_knocked:
+			benched(collision_info)
+	if(is_knocked):
+		knock_back_timer -= delta
+		if knock_back_timer <= 0:
+			knock_back_timer = knockBackCooldown
+			is_knocked = false
+			
+func benched(collision_info):
+	is_knocked = true
+	$Health.reduce_health(10)
+	apply_knock_back(collision_info)
+			
+func apply_knock_back(collision_info):
+	print("normal (", collision_info.normal.x, ", ", collision_info.normal.y, ")")
+	if collision_info.normal == Vector2(-1,0):
+		velocity = Vector2(-500,-250)
+	elif collision_info.normal == Vector2(1,0):
+		velocity = Vector2(500,-250)
+	elif collision_info.normal == Vector2(0,-1):
+		velocity = Vector2(0,-500)
 
 func apply_delta(value):
 	return value * frameDelta
