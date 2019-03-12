@@ -1,19 +1,20 @@
 extends Node2D
 
-const bonus_bleed_per_sec = 300
+const bonus_drop_per_sec = 300
 var current_bonus = 3000
-var bonus_bleed_enabled = false
+var bonus_drop_enabled = true
+var is_active = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
-	if bonus_bleed_enabled:
+	if is_active && bonus_drop_enabled:
 		bleed_bonus(delta)
 
 func bleed_bonus(delta):
-	current_bonus -= bonus_bleed_per_sec * delta
+	current_bonus -= bonus_drop_per_sec * delta
 	if current_bonus <= 0:
 		current_bonus = 0
 		toggle_enable()
@@ -24,4 +25,7 @@ func _on_Area2D_body_entered(body):
 		queue_free()
 
 func toggle_enable():
-	bonus_bleed_enabled = !bonus_bleed_enabled
+	bonus_drop_enabled = !bonus_drop_enabled
+
+func get_bonus_drop_enabled():
+	return bonus_drop_enabled
