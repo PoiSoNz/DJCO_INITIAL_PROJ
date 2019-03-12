@@ -24,6 +24,7 @@ position = Vector2( 0, 900 )
 [connection signal="immunity" from="Player" to="CanvasLayer/HUD" method="_on_Player_immunity"]
 [connection signal="bled" from="Player/KinematicBody2D/Health" to="CanvasLayer/HUD" method="_on_Health_bled"]
 [connection signal="health_changed" from="Player/KinematicBody2D/Health" to="CanvasLayer/HUD" method="_on_Health_health_changed"]
+[connection signal="reenable_bleeding" from="CanvasLayer/HUD/HealthBar" to="Player" method="_on_HealthBar_reenable_bleeding"]
 
 [editable path="Player"]
 
