@@ -2,6 +2,8 @@ extends Node
 
 var ECTS = 10000
 
+var score = 0
+
 # Vending machine item prices
 const croissant_price = 40
 const water_price = 50
@@ -34,7 +36,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	print(score)
 
 func buy_attempt(item):
 	match item:
@@ -66,6 +68,9 @@ func buy_attempt(item):
 
 func add_currency(value):
 	ECTS += value
+
+func add_score(value):
+	score += value
 
 func inflict_damage(damage):
 	if immunity_type == one_time_immunity:
