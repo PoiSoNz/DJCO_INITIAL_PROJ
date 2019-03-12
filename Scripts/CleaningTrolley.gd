@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends KinematicBody2D
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -11,3 +11,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func push(force):
+	#aplicar forca
+	pass

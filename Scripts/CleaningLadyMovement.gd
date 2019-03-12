@@ -8,6 +8,7 @@ const gravity = Vector2(0, 1550)
 const runAcceleration = Vector2(750, 0)
 const runDeacceleration = Vector2(1500, 0)
 const maxVelocity = 200
+const trolleyPushingForce = Vector2(1000, 0)
 const idle_duration = 2
 
 var is_idle = false
@@ -42,13 +43,21 @@ func apply_delta(value):
 func check_collision():
 	# Cleaning lady stops for a while after it collides with any object, being it a player or a cleaning trolley.
 	# That's why it moves with "move_and_collide"
+	self
 	var collision_info = move_and_collide(Vector2(0, 0))
 	if collision_info:
-		var colliderParentName = collision_info.collider.get_parent().name
-		var colliderName = collision_info.collider.name
-		if colliderParentName == "Player" || colliderName == "CleaningTrolley":
-			print("COLIDIU", colliderName, colliderParentName)
-			start_idle_period()
+		var colliderParent = collision_info.collider.get_parent().name
+		var collider = collision_info.collider
+		if collider.name == "CleaningTrolley":
+			print("COLIDIU", collider.name)
+			var trolleyPosition = Vector2(collider.position.x, collider.position.y)
+			#collider.apply_impulse(trolleyPosition, trolleyPushingForce)
+			#collider.apply_impulse(Vector2(0, 0), trolleyPushingForce)
+		#if(colliderParentName != "Platform"):
+		#print("COLIDIU", colliderName, colliderParentName)
+		#if colliderParentName == "Player" || colliderName == "CleaningTrolley":
+			#print("COLIDIU", colliderName, colliderParentName)
+			#start_idle_period()
 		#Colisoes efeitos:
 		# - jogador: nada,
 		# - carrinho: flag que indica o lado do carrinho que deve ser atingido

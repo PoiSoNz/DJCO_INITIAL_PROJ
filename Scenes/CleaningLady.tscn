@@ -1,20 +1,19 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://Scripts/PlayerManager.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/CleaningLadyMovement.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Sprites/Player/player0.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/Player/player1.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sprites/Player/player2.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Sprites/Player/player3.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Sprites/Player/player4.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Sprites/Player/player5.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Sprites/Player/player6.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Sprites/Player/player7.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Sprites/Player/player8.png" type="Texture" id=11]
-[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=12]
-[ext_resource path="res://Scripts/CleaningTrolley.gd" type="Script" id=13]
-[ext_resource path="res://Assets/Sprites/CleaningLady/cleaning_trolley.png" type="Texture" id=14]
-[ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scripts/CleaningLadyMovement.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/Player/player0.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Player/player1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Player/player2.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Player/player3.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Player/player4.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/Player/player5.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/Player/player6.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/Player/player7.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/Player/player8.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/CleaningTrolley.gd" type="Script" id=12]
+[ext_resource path="res://Assets/Sprites/CleaningLady/cleaning_trolley.png" type="Texture" id=13]
+[ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 210, 252 )
@@ -23,32 +22,31 @@ extents = Vector2( 210, 252 )
 flags = 4
 frames = 9
 fps = 32.0
-frame_0/texture = ExtResource( 3 )
-frame_1/texture = ExtResource( 4 )
+frame_0/texture = ExtResource( 2 )
+frame_1/texture = ExtResource( 3 )
 frame_1/delay_sec = 0.0
-frame_2/texture = ExtResource( 5 )
+frame_2/texture = ExtResource( 4 )
 frame_2/delay_sec = 0.0
-frame_3/texture = ExtResource( 6 )
+frame_3/texture = ExtResource( 5 )
 frame_3/delay_sec = 0.0
-frame_4/texture = ExtResource( 7 )
+frame_4/texture = ExtResource( 6 )
 frame_4/delay_sec = 0.0
-frame_5/texture = ExtResource( 8 )
+frame_5/texture = ExtResource( 7 )
 frame_5/delay_sec = 0.0
-frame_6/texture = ExtResource( 9 )
+frame_6/texture = ExtResource( 8 )
 frame_6/delay_sec = 0.0
-frame_7/texture = ExtResource( 10 )
+frame_7/texture = ExtResource( 9 )
 frame_7/delay_sec = 0.0
-frame_8/texture = ExtResource( 11 )
+frame_8/texture = ExtResource( 10 )
 frame_8/delay_sec = 0.0
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 35.886, 30.6937 )
 
 [node name="CleaningLady" type="Node2D"]
-script = ExtResource( 1 )
 
 [node name="Lady" type="KinematicBody2D" parent="."]
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lady"]
 scale = Vector2( 0.15, 0.15 )
@@ -62,28 +60,25 @@ texture = SubResource( 2 )
 current = true
 drag_margin_top = 0.0
 drag_margin_bottom = 0.0
-script = ExtResource( 12 )
+script = ExtResource( 11 )
 
-[node name="CleaningTrolley" type="RigidBody2D" parent="."]
-mode = 2
-mass = 6687.24
-contacts_reported = 1
-can_sleep = false
-script = ExtResource( 13 )
+[node name="CleaningTrolley" type="KinematicBody2D" parent="."]
+script = ExtResource( 12 )
 
 [node name="Sprite" type="Sprite" parent="CleaningTrolley"]
 position = Vector2( 81.7536, -14.4249 )
 scale = Vector2( 0.223686, 0.223686 )
-texture = ExtResource( 14 )
+texture = ExtResource( 13 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CleaningTrolley"]
 position = Vector2( 80.1493, 8.3392 )
 shape = SubResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CleaningTrolley"]
+position = Vector2( 0.540359, -5.40359 )
 polygon = PoolVector2Array( 68.7797, -68.2203, 65.9999, -38.1064, 70.1695, -34.8633, 75.2658, -20.9646, 87.7746, -20.9646, 88.7012, -35.7899, 95.6506, -38.5697, 91.9442, -59.8811, 81.2885, -59.8811, 80.362, -69.6102 )
 
-[node name="Platform" parent="." instance=ExtResource( 15 )]
+[node name="Platform" parent="." instance=ExtResource( 14 )]
 position = Vector2( 0.14473, 72.9588 )
 scale = Vector2( 50, 1 )
 
