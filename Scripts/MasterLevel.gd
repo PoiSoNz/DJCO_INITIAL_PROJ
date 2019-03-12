@@ -13,10 +13,8 @@ func _ready():
 	instanceLevelAt()
 	instanceLevelAt()
 	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	check_cps()
 
 func instanceLevelAt():
 	var l = level.instance()
@@ -27,3 +25,8 @@ func instanceLevelAt():
 	var cp = checkpoint.instance()
 	cp.position.x = levelSize * currentLevel
 	$CheckPoints.add_child(cp)
+	
+func check_cps():
+	if $CheckPoints.get_child_count() != 0:
+		if !$CheckPoints.get_child(0).bonus_bleed_enabled:
+			$CheckPoints.get_child(0).toggle_enable()
