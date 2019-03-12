@@ -8,7 +8,6 @@ var bonus_bleed_enabled = true
 func _ready():
 	pass # Replace with function body.
 
-
 func _process(delta):
 	if bonus_bleed_enabled:
 		bleed_bonus(delta)

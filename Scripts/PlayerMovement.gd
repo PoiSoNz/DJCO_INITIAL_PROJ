@@ -120,12 +120,14 @@ func player_movement(delta):
 			get_node("idle").visible = false
 			get_node("break").visible = true
 			if velocity.x < 0:
-				$break.flip_h
+				$break.flip_h = true
+			else:
+				$break.flip_h = false
 		else:
 			get_node("run").visible = false
 			get_node("idle").visible = true
 			get_node("break").visible = false
-			$idle.flip_h
+			##$idle.flip_h = true
 		var frameDeacceleration = apply_delta(runDeacceleration)
 		
 		if velocity.x - frameDeacceleration.x >= 0:
