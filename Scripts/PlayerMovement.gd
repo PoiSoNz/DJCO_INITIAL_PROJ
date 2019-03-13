@@ -18,12 +18,19 @@ var is_slowed = false
 var is_knocked = false
 var movement_speed_bonus_timer = null
 
+onready var anim_state = "Idle"
+var previolus_anim_state = "Idle"
+
+onready var playback = $Sprite/AnimationTree.get("parameters/playback")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	movement_speed_bonus_timer = Timer.new()
 	movement_speed_bonus_timer.set_one_shot(true)
 	movement_speed_bonus_timer.connect("timeout", self, "on_movement_speed_bonus_end")
 	add_child(movement_speed_bonus_timer)
+	$Sprite/AnimationTree.active = true
+	playback.start("Idle")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -36,7 +43,11 @@ func _process(delta):
 	
 	check_knock_back(delta)
 	
+	previolus_anim_state = anim_state
 	player_movement(delta)
+	
+	if previolus_anim_state != anim_state:
+		playback.start(anim_state)
 	
 	if is_slowed && !is_knocked:
 		var slowed_velocity = Vector2(0.6*velocity.x,velocity.y)
@@ -94,31 +105,34 @@ func player_movement(delta):
 	var frameAcceleration = apply_delta(runAcceleration)
 	# Run right
 	if Input.is_key_pressed(KEY_RIGHT) && !Input.is_key_pressed(KEY_LEFT) && velocity.x >= 0:
-		get_node("run").visible = true
-		get_node("idle").visible = false
-		$run.flip_h = false
+		if velocity.y == 0:
+			anim_state = "Run"
+		$Sprite.flip_h = false
 		if velocity.x + frameAcceleration.x < currMaxVelocity:
 			velocity += frameAcceleration
 		else:
 			velocity.x = currMaxVelocity
 	# Run left
 	elif Input.is_key_pressed(KEY_LEFT) && !Input.is_key_pressed(KEY_RIGHT) && velocity.x <= 0:
-		get_node("run").visible = true
-		get_node("idle").visible = false
-		$run.flip_h = true
+		if velocity.y == 0:
+			anim_state = "Run"
+		$Sprite.flip_h = true
 		if velocity.x - frameAcceleration.x > -currMaxVelocity:
 			velocity -= frameAcceleration
 		else:
 			velocity.x = -currMaxVelocity
 	# Run deacceleration (no movement key is being pressed or both are being pressed)
 	else:
-		if velocity.x != 0:
-			get_node("run").visible = true
-			get_node("idle").visible = false
-		else:
-			get_node("run").visible = false
-			get_node("idle").visible = true
-			##$idle.flip_h = true
+		if velocity.y == 0:
+			if velocity.x > 0:
+				anim_state = "Run"
+				$Sprite.flip_h = false
+			elif velocity.x < 0:
+				anim_state = "Run"
+				$Sprite.flip_h = true
+			else:
+				anim_state = "Idle"
+			
 		var frameDeacceleration = apply_delta(runDeacceleration)
 		
 		if velocity.x - frameDeacceleration.x >= 0:
@@ -132,7 +146,10 @@ func player_movement(delta):
 		reset_gravity()
 		var multiplier = 1.15
 		if jumpCount == 2:
+			anim_state = "Jump"
 			multiplier = 0.70
+		else:
+			anim_state = "DoubleJump"
 		velocity += jumpAcceleration * multiplier
 		jumpCount -= 1
 

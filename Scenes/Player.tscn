@@ -1,49 +1,91 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Scripts/PlayerManager.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/PlayerMovement.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Sprites/Run/adventurer-run-00.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/Run/adventurer-run-01.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sprites/Run/adventurer-run-02.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Sprites/Run/adventurer-run-03.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Sprites/Run/adventurer-run-04.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Sprites/Run/adventurer-run-05.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Sprites/Idle/adventurer-idle-00.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Sprites/Idle/adventurer-idle-01.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Sprites/Idle/adventurer-idle-02.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Sprites/Idle/adventurer-idle-03.png" type="Texture" id=12]
-[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=13]
-[ext_resource path="res://Scripts/PlayerHealth.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/PlayerHealth.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Sprites/adventurer-Sheet.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Animations/DoubleJump.tres" type="Animation" id=6]
+[ext_resource path="res://Assets/Animations/Idle.tres" type="Animation" id=7]
+[ext_resource path="res://Assets/Animations/Jump.tres" type="Animation" id=8]
+[ext_resource path="res://Assets/Animations/Run.tres" type="Animation" id=9]
+[ext_resource path="res://Assets/Animations/Slide.tres" type="Animation" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 44 )
+extents = Vector2( 24, 44 )
 
-[sub_resource type="AnimatedTexture" id=2]
-flags = 4
-frames = 6
-fps = 10.0
-frame_0/texture = ExtResource( 3 )
-frame_1/texture = ExtResource( 4 )
-frame_1/delay_sec = 0.0
-frame_2/texture = ExtResource( 5 )
-frame_2/delay_sec = 0.0
-frame_3/texture = ExtResource( 6 )
-frame_3/delay_sec = 0.0
-frame_4/texture = ExtResource( 7 )
-frame_4/delay_sec = 0.0
-frame_5/texture = ExtResource( 8 )
-frame_5/delay_sec = 0.0
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "DoubleJump"
 
-[sub_resource type="AnimatedTexture" id=3]
-flags = 4
-frames = 4
-frame_0/texture = ExtResource( 9 )
-frame_1/texture = ExtResource( 10 )
-frame_1/delay_sec = 0.0
-frame_2/texture = ExtResource( 11 )
-frame_2/delay_sec = 0.0
-frame_3/texture = ExtResource( 12 )
-frame_3/delay_sec = 0.0
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "Jump"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "Run"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "Slide"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id=23]
+states/DoubleJump/node = SubResource( 4 )
+states/DoubleJump/position = Vector2( 486, 393 )
+states/Idle/node = SubResource( 5 )
+states/Idle/position = Vector2( 238, 172 )
+states/Jump/node = SubResource( 6 )
+states/Jump/position = Vector2( 486, 277 )
+states/Run/node = SubResource( 7 )
+states/Run/position = Vector2( 744, 172 )
+states/Slide/node = SubResource( 8 )
+states/Slide/position = Vector2( 486, 42 )
+transitions = [ "Idle", "Run", SubResource( 9 ), "Idle", "Jump", SubResource( 10 ), "Run", "Jump", SubResource( 11 ), "Run", "Idle", SubResource( 12 ), "Jump", "Idle", SubResource( 13 ), "Jump", "Run", SubResource( 14 ), "Jump", "DoubleJump", SubResource( 15 ), "DoubleJump", "Idle", SubResource( 16 ), "DoubleJump", "Run", SubResource( 17 ), "Idle", "Slide", SubResource( 18 ), "Slide", "Idle", SubResource( 19 ), "Slide", "Run", SubResource( 20 ), "Run", "Slide", SubResource( 21 ), "Slide", "Jump", SubResource( 22 ) ]
+graph_offset = Vector2( 0, 72.8625 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
 [node name="Player" type="Node2D"]
 script = ExtResource( 1 )
@@ -52,23 +94,37 @@ script = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-position = Vector2( -6, 0 )
+position = Vector2( 1, 0 )
 shape = SubResource( 1 )
-
-[node name="run" type="Sprite" parent="KinematicBody2D"]
-texture = SubResource( 2 )
-
-[node name="idle" type="Sprite" parent="KinematicBody2D"]
-position = Vector2( -5, 0 )
-texture = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
 current = true
 drag_margin_top = 0.0
 drag_margin_bottom = 0.0
-script = ExtResource( 13 )
+script = ExtResource( 3 )
 
 [node name="Health" type="Node" parent="KinematicBody2D"]
-script = ExtResource( 14 )
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="KinematicBody2D"]
+position = Vector2( 0, -5 )
+scale = Vector2( 2.8, 2.8 )
+texture = ExtResource( 5 )
+vframes = 11
+hframes = 7
+frame = 23
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="KinematicBody2D/Sprite"]
+anims/DoubleJump = ExtResource( 6 )
+anims/Idle = ExtResource( 7 )
+anims/Jump = ExtResource( 8 )
+anims/Run = ExtResource( 9 )
+anims/Slide = ExtResource( 10 )
+
+[node name="AnimationTree" type="AnimationTree" parent="KinematicBody2D/Sprite"]
+tree_root = SubResource( 23 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 24 )
 
 [connection signal="reenable_bleeding" from="." to="KinematicBody2D/Health" method="_on_Player_reenable_bleeding"]
