@@ -17,7 +17,6 @@ const knockBackCooldown = 0.1
 var is_slowed = false
 var is_knocked = false
 var movement_speed_bonus_timer = null
-onready var anim = get_node("break")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -97,7 +96,6 @@ func player_movement(delta):
 	if Input.is_key_pressed(KEY_RIGHT) && !Input.is_key_pressed(KEY_LEFT) && velocity.x >= 0:
 		get_node("run").visible = true
 		get_node("idle").visible = false
-		get_node("break").visible = false
 		$run.flip_h = false
 		if velocity.x + frameAcceleration.x < currMaxVelocity:
 			velocity += frameAcceleration
@@ -107,7 +105,6 @@ func player_movement(delta):
 	elif Input.is_key_pressed(KEY_LEFT) && !Input.is_key_pressed(KEY_RIGHT) && velocity.x <= 0:
 		get_node("run").visible = true
 		get_node("idle").visible = false
-		get_node("break").visible = false
 		$run.flip_h = true
 		if velocity.x - frameAcceleration.x > -currMaxVelocity:
 			velocity -= frameAcceleration
@@ -116,17 +113,11 @@ func player_movement(delta):
 	# Run deacceleration (no movement key is being pressed or both are being pressed)
 	else:
 		if velocity.x != 0:
-			get_node("run").visible = false
+			get_node("run").visible = true
 			get_node("idle").visible = false
-			get_node("break").visible = true
-			if velocity.x < 0:
-				$break.flip_h = true
-			else:
-				$break.flip_h = false
 		else:
 			get_node("run").visible = false
 			get_node("idle").visible = true
-			get_node("break").visible = false
 			##$idle.flip_h = true
 		var frameDeacceleration = apply_delta(runDeacceleration)
 		
