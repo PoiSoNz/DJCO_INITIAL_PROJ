@@ -13,7 +13,7 @@ signal reenable_bleeding()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -49,10 +49,17 @@ func _on_HUD_immunity(immunity_type):
 	if immunity_type == persistent_immunity:
 		$ProgressBar.get("custom_styles/fg/").border_color = persistent_immunity_border
 		$ProgressBar.get("custom_styles/fg/").set_border_width_all(3)
+		$ColorRect.rect_position.y = 43
+		$ColorRect.rect_size.y = 35
 	elif immunity_type == one_time_immunity: 
 		$ProgressBar.get("custom_styles/fg/").border_color = one_time_immunity_border
 		$ProgressBar.get("custom_styles/fg/").set_border_width_all(3)
+		$ColorRect.rect_position.y = 43
+		$ColorRect.rect_size.y = 35
 	else:
 		$ProgressBar.get("custom_styles/fg/").set_border_width_all(0)
+		$ColorRect.rect_position.y = 40
+		$ColorRect.rect_size.y = 41
+		
 		#$Tween.interpolate_property($ProgressBar.get("custom_styles/fg/bg_color"), "border_width_left", 0, 3, 0.3, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 		#$Tween.start()
