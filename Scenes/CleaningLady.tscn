@@ -75,10 +75,10 @@ position = Vector2( 80.1493, 8.3392 )
 shape = SubResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CleaningTrolley"]
-position = Vector2( 0.540359, -5.40359 )
-polygon = PoolVector2Array( 68.7797, -68.2203, 65.9999, -38.1064, 70.1695, -34.8633, 75.2658, -20.9646, 87.7746, -20.9646, 88.7012, -35.7899, 95.6506, -38.5697, 91.9442, -59.8811, 81.2885, -59.8811, 80.362, -69.6102 )
+position = Vector2( 0.540359, 4.76837e-006 )
+polygon = PoolVector2Array( 68.7797, -68.2203, 65.9999, -38.1064, 74.7828, -34.5058, 75.2658, -20.9646, 87.7746, -20.9646, 88.7012, -35.7899, 95.6506, -38.5697, 91.9442, -59.8811, 81.2885, -59.8811, 80.362, -69.6102 )
 
 [node name="Platform" parent="." instance=ExtResource( 14 )]
-position = Vector2( 0.14473, 72.9588 )
-scale = Vector2( 50, 1 )
+position = Vector2( 18.1162, 67.5758 )
+scale = Vector2( 15, 1 )
 
