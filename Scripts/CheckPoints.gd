@@ -2,8 +2,6 @@ extends Node2D
 
 var checkpoints = []
 
-var test = 100
-
 signal send_score(value)
 
 # Called when the node enters the scene tree for the first time.

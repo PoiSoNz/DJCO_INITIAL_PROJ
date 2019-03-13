@@ -1,8 +1,8 @@
 extends Control
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var progress_factor = 30
+#calculated by:
+	#progress_factor = MAX_current_bonus / 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,4 +13,7 @@ func _ready():
 #	pass
 
 func _on_HUD_score(value):
-	$TotalScore/Text.text = "Score: " + str(value)
+	$CurrentBonus/Value.text = str(floor(value))
+	$CurrentBonus/ProgressBar.value = value/progress_factor
+
+ 
