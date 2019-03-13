@@ -20,8 +20,9 @@ position = Vector2( 0, 900 )
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource( 4 )]
 
-[connection signal="send_score" from="CheckPoints" to="CanvasLayer/HUD" method="_on_CheckPoints_send_score"]
+[connection signal="send_bonus" from="CheckPoints" to="CanvasLayer/HUD" method="_on_CheckPoints_send_bonus"]
 [connection signal="immunity" from="Player" to="CanvasLayer/HUD" method="_on_Player_immunity"]
+[connection signal="score" from="Player" to="CanvasLayer/HUD" method="_on_Player_score"]
 [connection signal="bled" from="Player/KinematicBody2D/Health" to="CanvasLayer/HUD" method="_on_Health_bled"]
 [connection signal="health_changed" from="Player/KinematicBody2D/Health" to="CanvasLayer/HUD" method="_on_Health_health_changed"]
 [connection signal="reenable_bleeding" from="CanvasLayer/HUD/HealthBar" to="Player" method="_on_HealthBar_reenable_bleeding"]

@@ -26,6 +26,7 @@ var immunity_timer = null
 
 signal reenable_bleeding()
 signal immunity(immunity_type)
+signal score(value)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,7 +37,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass#print(score)
+	emit_signal("score", score)
+	#print(score)
 
 func buy_attempt(item):
 	match item:
