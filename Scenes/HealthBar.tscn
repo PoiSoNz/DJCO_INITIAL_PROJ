@@ -30,22 +30,50 @@ valign = 1
 autowrap = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-margin_left = 157.166
-margin_top = 40.0614
-margin_right = 454.166
-margin_bottom = 81.0614
+margin_left = 157.398
+margin_top = 39.9393
+margin_right = 454.398
+margin_bottom = 80.9393
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 custom_fonts/font = ExtResource( 3 )
 value = 30.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 margin_left = 245.0
-margin_top = 40.0
+margin_top = 43.0
 margin_right = 247.0
-margin_bottom = 81.0
-color = Color( 1, 0, 0, 1 )
+margin_bottom = 48.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = 245.0
+margin_top = 53.0
+margin_right = 247.0
+margin_bottom = 58.0
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+margin_left = 245.0
+margin_top = 63.0
+margin_right = 247.0
+margin_bottom = 68.0
+
+[node name="ColorRect6" type="ColorRect" parent="."]
+margin_left = 245.0
+margin_top = 73.0
+margin_right = 247.0
+margin_bottom = 78.0
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+margin_left = 243.459
+margin_top = 80.7712
+margin_right = 249.459
+margin_bottom = 82.7712
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+margin_left = 243.337
+margin_top = 38.3213
+margin_right = 249.337
+margin_bottom = 40.3213
 
 [node name="Tween" type="Tween" parent="."]
 
