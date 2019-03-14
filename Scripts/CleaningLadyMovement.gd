@@ -37,7 +37,10 @@ func _process(delta):
 	check_collision()
 	
 	if is_idle:
+		set_cleaning_lady_animation("Idle")
 		return
+	else:
+		set_cleaning_lady_animation("Walking")
 	
 	if repositioning:
 		check_repositioning_complete()
@@ -46,6 +49,10 @@ func _process(delta):
 
 func apply_delta(value):
 	return value * frameDelta
+
+func set_cleaning_lady_animation(newAnimation):
+	if $Sprite/AnimationPlayer.current_animation != newAnimation:
+		$Sprite/AnimationPlayer.play(newAnimation)
 
 func check_collision():
 	# Cleaning lady stops for a while after it collides with any object, being it a player or a cleaning trolley.
@@ -89,10 +96,12 @@ func check_repositioning_complete():
 	if movementDirection == 1 && self.position.x >= repositioningDestination:
 		make_trolley_hittable()
 		movementDirection = -1
+		$Sprite.flip_h = true
 		repositioning = false
 	elif movementDirection == -1 && self.position.x <= repositioningDestination:
 		make_trolley_hittable()
 		movementDirection = 1
+		$Sprite.flip_h = false
 		repositioning = false
 
 func make_trolley_hittable():
