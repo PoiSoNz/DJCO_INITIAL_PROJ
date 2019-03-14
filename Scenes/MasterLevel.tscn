@@ -22,7 +22,7 @@ position = Vector2( 0, 900 )
 position = Vector2( 2, -3 )
 
 [node name="Sprite" parent="Player/KinematicBody2D" index="3"]
-frame = 23
+frame = 14
 
 [node name="AnimationTree" parent="Player/KinematicBody2D/Sprite" index="1"]
 parameters/playback = SubResource( 1 )

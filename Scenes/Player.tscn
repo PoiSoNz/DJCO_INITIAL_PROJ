@@ -12,7 +12,7 @@
 [ext_resource path="res://Assets/Animations/Slide.tres" type="Animation" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 27, 37 )
+extents = Vector2( 24, 44 )
 
 [sub_resource type="AnimationNodeAnimation" id=4]
 animation = "DoubleJump"
@@ -75,7 +75,7 @@ switch_mode = 2
 states/DoubleJump/node = SubResource( 4 )
 states/DoubleJump/position = Vector2( 486, 393 )
 states/Idle/node = SubResource( 5 )
-states/Idle/position = Vector2( 238, 172 )
+states/Idle/position = Vector2( 244, 172 )
 states/Jump/node = SubResource( 6 )
 states/Jump/position = Vector2( 486, 273 )
 states/Run/node = SubResource( 7 )
@@ -83,7 +83,7 @@ states/Run/position = Vector2( 744, 172 )
 states/Slide/node = SubResource( 8 )
 states/Slide/position = Vector2( 486, 42 )
 transitions = [ "Idle", "Run", SubResource( 9 ), "Idle", "Jump", SubResource( 10 ), "Run", "Jump", SubResource( 11 ), "Run", "Idle", SubResource( 12 ), "Jump", "Idle", SubResource( 13 ), "Jump", "Run", SubResource( 14 ), "Jump", "DoubleJump", SubResource( 15 ), "DoubleJump", "Idle", SubResource( 16 ), "DoubleJump", "Run", SubResource( 17 ), "Idle", "Slide", SubResource( 18 ), "Slide", "Idle", SubResource( 19 ), "Slide", "Run", SubResource( 20 ), "Run", "Slide", SubResource( 21 ), "Slide", "Jump", SubResource( 22 ) ]
-graph_offset = Vector2( 0, 204.668 )
+graph_offset = Vector2( 0, -5.89231 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
@@ -94,7 +94,7 @@ script = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-position = Vector2( 8, 0 )
+position = Vector2( 1, 0 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
@@ -112,7 +112,7 @@ scale = Vector2( 2.8, 2.8 )
 texture = ExtResource( 5 )
 vframes = 11
 hframes = 7
-frame = 12
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="KinematicBody2D/Sprite"]
 anims/DoubleJump = ExtResource( 6 )

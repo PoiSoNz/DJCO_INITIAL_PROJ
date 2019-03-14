@@ -60,6 +60,7 @@ func change_hit_box(anim_state):
 	match anim_state:
 		"Idle":
 			$CollisionShape2D.position.x = 1
+			$CollisionShape2D.position.x = 0
 			$CollisionShape2D.shape.extents.x = 24
 			$CollisionShape2D.shape.extents.y = 44
 			print("idle", $CollisionShape2D.shape.extents)
@@ -71,6 +72,7 @@ func change_hit_box(anim_state):
 			print("DoubleJump", $CollisionShape2D.shape.extents)
 		_: #Run or Jump
 			$CollisionShape2D.position.x = 8
+			$CollisionShape2D.position.x = 0
 			$CollisionShape2D.shape.extents.x = 24
 			$CollisionShape2D.shape.extents.y = 44
 			print("run/jump", $CollisionShape2D.shape.extents)
