@@ -14,28 +14,30 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	check_destination_arrive()
-	
 	apply_gravity(delta)
-	
+
 	if !arrived:
-		move_and_slide(velocity * movementDirection, floorNormal)
+		print(destination)
+		check_destination_arrive()
+		move_and_slide(Vector2(velocity.x * movementDirection, velocity.y), floorNormal)
+	else:
+		# Only apply gravity force
+		move_and_slide(Vector2(0, velocity.y), floorNormal)
 
 func check_destination_arrive():
 	if !destination:
 		return
 	
-	if movementDirection == 1 && self.position.x >= destination:
+	if (movementDirection == 1 && self.position.x >= destination) || (movementDirection == -1 && self.position.x <= destination):
+		# Activate collision layer, so that it can be pushed again by the cleaning lady
 		arrived = true
-	elif movementDirection == -1 && self.position.x <= destination:
-		arrived = true
-	else:
-		arrived = false
 
 func push(dest):
 	destination = dest
 	movementDirection = 1 if (self.position.x < dest) else -1
 	arrived = false
+	# Disable collision layer, so that it can't be pushed by the cleaning lady while it is going to its destination
+	set_collision_layer_bit(1, 0)
 
 func apply_gravity(delta):
 	if is_on_floor():

@@ -41,11 +41,14 @@ frame_8/texture = ExtResource( 10 )
 frame_8/delay_sec = 0.0
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 35.886, 30.6937 )
+extents = Vector2( 35.0324, 30.8886 )
 
 [node name="CleaningLady" type="Node2D"]
 
 [node name="Lady" type="KinematicBody2D" parent="."]
+position = Vector2( -128, 0 )
+collision_layer = 0
+collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lady"]
@@ -63,22 +66,25 @@ drag_margin_bottom = 0.0
 script = ExtResource( 11 )
 
 [node name="CleaningTrolley" type="KinematicBody2D" parent="."]
+position = Vector2( -0.350189, -0.5 )
+collision_layer = 2
 script = ExtResource( 12 )
 
 [node name="Sprite" type="Sprite" parent="CleaningTrolley"]
-position = Vector2( 81.7536, -14.4249 )
+position = Vector2( 2.7536, -23.4249 )
 scale = Vector2( 0.223686, 0.223686 )
 texture = ExtResource( 13 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CleaningTrolley"]
-position = Vector2( 80.1493, 8.3392 )
+position = Vector2( 0.184776, -0.66045 )
 shape = SubResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CleaningTrolley"]
-position = Vector2( 0.540359, 4.76837e-006 )
-polygon = PoolVector2Array( 68.7797, -68.2203, 65.9999, -38.1064, 74.7828, -34.5058, 75.2658, -20.9646, 87.7746, -20.9646, 88.7012, -35.7899, 95.6506, -38.5697, 91.9442, -59.8811, 81.2885, -59.8811, 80.362, -69.6102 )
+position = Vector2( -78.6612, -10.4746 )
+scale = Vector2( 1, 1.00588 )
+polygon = PoolVector2Array( 68.8646, -66.719, 66.2287, -41.7138, 68.8043, -34.2014, 74.7828, -34.5058, 75.2658, -20.9646, 87.7746, -20.9646, 87.4779, -33.7721, 93.917, -38.2796, 91.3413, -56.3092, 81.468, -57.8117, 78.463, -66.6118 )
 
 [node name="Platform" parent="." instance=ExtResource( 14 )]
-position = Vector2( 18.1162, 67.5758 )
+position = Vector2( 0.0662727, 68.5258 )
 scale = Vector2( 15, 1 )
 

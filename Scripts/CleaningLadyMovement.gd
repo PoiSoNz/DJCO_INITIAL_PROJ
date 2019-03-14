@@ -1,21 +1,24 @@
 extends KinematicBody2D
 
 var velocity = Vector2()
+var movementDirection = 1
 var frameDelta;
 var platformMaxRangeX = null
 var platformMinRangeX = null
 
 var repositioning = false
+var repositioningDestination
 
 const floorNormal = Vector2(0, -1)
 const gravity = Vector2(0, 1550)
 const runAcceleration = Vector2(750, 0)
 const runDeacceleration = Vector2(1500, 0)
 const maxVelocity = 700
-const idle_duration = 2
+const idle_duration = 1
 const leftSideCollision = Vector2(-1, 0)
 const rightSideCollision = Vector2(1, 0)
-const platformSpareSpace = 400
+const platformSpareSpace = 100
+const repositioningDistance = 50
 
 var is_idle = false
 var idle_timer = null
@@ -36,6 +39,9 @@ func _process(delta):
 	
 	if is_idle:
 		return
+	
+	if repositioning:
+		check_repositioning_complete()
 	
 	cleaning_lady_movement(delta)
 	
@@ -65,25 +71,42 @@ func check_collision():
 		# Just stop lady movement when it collides against the player
 		elif colliderParent.name == "Player":
 			start_idle_period()
-		#Colisoes efeitos:
-		# - jogador: nada,
-		# - carrinho: flag que indica o lado do carrinho que deve ser atingido
 
 func get_trolley_destination(collisionNormal):
 	if collisionNormal == leftSideCollision:
+		movementDirection = 1
+		repositioningDestination = platformMaxRangeX + repositioningDistance
 		return platformMaxRangeX
 	elif collisionNormal == rightSideCollision:
+		movementDirection = -1
+		repositioningDestination = platformMinRangeX - repositioningDistance
 		return platformMinRangeX
 
 func get_range_info(platform):
 	var platformScaleX = platform.get_parent().scale.x
 	var platformOriginalHalfLength = platform.get_node("CollisionPolygon2D").get_shape().get_extents().x
 	var platformHalfLength = platformOriginalHalfLength * platformScaleX
-	
+	print("scale: ", platformScaleX)
+	print("og half: ", platformOriginalHalfLength)
+	print("half: ", platformHalfLength)
 	var platformPositionX = platform.get_parent().position.x
 	
 	platformMaxRangeX = platformPositionX + (platformHalfLength - platformSpareSpace)
 	platformMinRangeX = platformPositionX - (platformHalfLength - platformSpareSpace)
+	print("max: ", platformMaxRangeX, " min: ", platformMinRangeX)
+
+func check_repositioning_complete():
+	if movementDirection == 1 && self.position.x >= repositioningDestination:
+		make_trolley_hittable()
+		movementDirection = -1
+		repositioning = false
+	elif movementDirection == -1 && self.position.x <= repositioningDestination:
+		make_trolley_hittable()
+		movementDirection = 1
+		repositioning = false
+
+func make_trolley_hittable():
+	get_parent().get_node("CleaningTrolley").set_collision_layer_bit(1, 1)
 
 func check_wall():
 	if is_on_wall():
