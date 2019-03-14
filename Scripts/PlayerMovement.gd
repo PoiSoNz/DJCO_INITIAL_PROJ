@@ -23,6 +23,8 @@ var previolus_anim_state = "Idle"
 
 onready var playback = $Sprite/AnimationTree.get("parameters/playback")
 
+signal coffee_ended()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	movement_speed_bonus_timer = Timer.new()
@@ -186,3 +188,4 @@ func set_slowed(value):
 
 func on_movement_speed_bonus_end():
 	currMaxVelocity = standardMaxVelocity
+	emit_signal("coffee_ended")
