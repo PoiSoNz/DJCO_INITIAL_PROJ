@@ -18,6 +18,12 @@ script = ExtResource( 2 )
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 900 )
 
+[node name="CollisionShape2D" parent="Player/KinematicBody2D" index="0"]
+position = Vector2( 2, -3 )
+
+[node name="Sprite" parent="Player/KinematicBody2D" index="3"]
+frame = 23
+
 [node name="AnimationTree" parent="Player/KinematicBody2D/Sprite" index="1"]
 parameters/playback = SubResource( 1 )
 

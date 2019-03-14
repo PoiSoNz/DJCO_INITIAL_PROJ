@@ -48,12 +48,33 @@ func _process(delta):
 	
 	if previolus_anim_state != anim_state:
 		playback.start(anim_state)
+		change_hit_box(anim_state)
 	
 	if is_slowed && !is_knocked:
 		var slowed_velocity = Vector2(0.6*velocity.x,velocity.y)
 		move_and_slide(slowed_velocity, floorNormal)
 	else:
 		move_and_slide(velocity, floorNormal)
+		
+func change_hit_box(anim_state):
+	match anim_state:
+		"Idle":
+			$CollisionShape2D.position.x = 1
+			$CollisionShape2D.shape.extents.x = 24
+			$CollisionShape2D.shape.extents.y = 44
+			print("idle", $CollisionShape2D.shape.extents)
+		"DoubleJump":
+			$CollisionShape2D.position.x = 2
+			$CollisionShape2D.position.x = -3
+			$CollisionShape2D.shape.extents.x = 27
+			$CollisionShape2D.shape.extents.y = 37
+			print("DoubleJump", $CollisionShape2D.shape.extents)
+		_: #Run or Jump
+			$CollisionShape2D.position.x = 8
+			$CollisionShape2D.shape.extents.x = 24
+			$CollisionShape2D.shape.extents.y = 44
+			print("run/jump", $CollisionShape2D.shape.extents)
+		
 		
 func check_knock_back(delta):
 	var collision_info = move_and_collide(Vector2(0,0))
