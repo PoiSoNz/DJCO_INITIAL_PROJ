@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var velocity = Vector2()
+var velocity = Vector2(200, 0)
 var movementDirection = 1
 var frameDelta;
 var platformMaxRangeX = null
@@ -11,14 +11,11 @@ var repositioningDestination
 
 const floorNormal = Vector2(0, -1)
 const gravity = Vector2(0, 1550)
-const runAcceleration = Vector2(750, 0)
-const runDeacceleration = Vector2(1500, 0)
-const maxVelocity = 700
 const idle_duration = 1
 const leftSideCollision = Vector2(-1, 0)
 const rightSideCollision = Vector2(1, 0)
-const platformSpareSpace = 100
-const repositioningDistance = 50
+const platformSpareSpace = 300
+const repositioningDistance = 200
 
 var is_idle = false
 var idle_timer = null
@@ -37,40 +34,36 @@ func _process(delta):
 	
 	apply_gravity()
 	
+	check_collision()
+	
 	if is_idle:
 		return
 	
 	if repositioning:
 		check_repositioning_complete()
 	
-	cleaning_lady_movement(delta)
-	
-	move_and_slide(velocity, floorNormal)
-	
-	check_collision()
+	move_and_slide(Vector2(velocity.x * movementDirection, velocity.y), floorNormal)
 
 func apply_delta(value):
 	return value * frameDelta
 
 func check_collision():
 	# Cleaning lady stops for a while after it collides with any object, being it a player or a cleaning trolley.
-	# That's why it moves with "move_and_collide"
 	var collision_info = move_and_collide(Vector2(0, 0))
 	if collision_info:
 		var colliderParent = collision_info.collider.get_parent()
 		var collider = collision_info.collider
-		# Obtain trolley possible movement range
-		if !platformMaxRangeX && colliderParent.name == "Platform":
-			get_range_info(collider)
 		# Stop lady movement and push trolley when it collides against it
-		elif !repositioning && collider.name == "CleaningTrolley":
-			print("COLIDIU", collider.name)
+		if collider.name == "CleaningTrolley":
 			start_idle_period()
 			collider.push(get_trolley_destination(collision_info.normal))
 			repositioning = true
 		# Just stop lady movement when it collides against the player
 		elif colliderParent.name == "Player":
 			start_idle_period()
+		# Obtain trolley possible movement range
+		elif !platformMaxRangeX && colliderParent.name == "Platform":
+			get_range_info(collider)
 
 func get_trolley_destination(collisionNormal):
 	if collisionNormal == leftSideCollision:
@@ -86,14 +79,11 @@ func get_range_info(platform):
 	var platformScaleX = platform.get_parent().scale.x
 	var platformOriginalHalfLength = platform.get_node("CollisionPolygon2D").get_shape().get_extents().x
 	var platformHalfLength = platformOriginalHalfLength * platformScaleX
-	print("scale: ", platformScaleX)
-	print("og half: ", platformOriginalHalfLength)
-	print("half: ", platformHalfLength)
+	
 	var platformPositionX = platform.get_parent().position.x
 	
 	platformMaxRangeX = platformPositionX + (platformHalfLength - platformSpareSpace)
 	platformMinRangeX = platformPositionX - (platformHalfLength - platformSpareSpace)
-	print("max: ", platformMaxRangeX, " min: ", platformMinRangeX)
 
 func check_repositioning_complete():
 	if movementDirection == 1 && self.position.x >= repositioningDestination:
@@ -118,36 +108,8 @@ func apply_gravity():
 	else:
 		velocity += apply_delta(gravity)
 
-func cleaning_lady_movement(delta):
-	var frameAcceleration = apply_delta(runAcceleration)
-	# Run right
-	if Input.is_key_pressed(KEY_RIGHT) && !Input.is_key_pressed(KEY_LEFT) && velocity.x >= 0:
-		$run.flip_h = false
-		if velocity.x + frameAcceleration.x < maxVelocity:
-			velocity += frameAcceleration
-		else:
-			velocity.x = maxVelocity
-	# Run left
-	elif Input.is_key_pressed(KEY_LEFT) && !Input.is_key_pressed(KEY_RIGHT) && velocity.x <= 0:
-		$run.flip_h = true
-		if velocity.x - frameAcceleration.x > -maxVelocity:
-			velocity -= frameAcceleration
-		else:
-			velocity.x = -maxVelocity
-	# Run deacceleration (no movement key is being pressed or both are being pressed)
-	else:
-		var frameDeacceleration = apply_delta(runDeacceleration)
-		
-		if velocity.x - frameDeacceleration.x >= 0:
-			velocity -= frameDeacceleration
-		elif velocity.x + frameDeacceleration.x <= 0:
-			velocity += frameDeacceleration
-		else:
-			velocity.x = 0
-
 func start_idle_period():
 	is_idle = true
-	
 	idle_timer.start()
 
 func on_idle_period_end():
