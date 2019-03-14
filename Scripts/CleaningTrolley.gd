@@ -29,6 +29,7 @@ func check_destination_arrive():
 	
 	if (movementDirection == 1 && self.position.x >= destination) || (movementDirection == -1 && self.position.x <= destination):
 		arrived = true
+		$Sprite.flip_h = !$Sprite.flip_h
 
 func push(dest):
 	destination = dest
