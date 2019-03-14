@@ -3,7 +3,7 @@ extends KinematicBody2D
 var destination = null
 var movementDirection
 var arrived = true
-var velocity = Vector2(1000, 0)
+var velocity = Vector2(500, 0)
 
 const floorNormal = Vector2(0, -1)
 const gravity = Vector2(0, 1550)
@@ -17,7 +17,6 @@ func _process(delta):
 	apply_gravity(delta)
 
 	if !arrived:
-		print(destination)
 		check_destination_arrive()
 		move_and_slide(Vector2(velocity.x * movementDirection, velocity.y), floorNormal)
 	else:
@@ -29,14 +28,13 @@ func check_destination_arrive():
 		return
 	
 	if (movementDirection == 1 && self.position.x >= destination) || (movementDirection == -1 && self.position.x <= destination):
-		# Activate collision layer, so that it can be pushed again by the cleaning lady
 		arrived = true
 
 func push(dest):
 	destination = dest
 	movementDirection = 1 if (self.position.x < dest) else -1
 	arrived = false
-	# Disable collision layer, so that it can't be pushed by the cleaning lady while it is going to its destination
+	# Disable collision layer, so that it can't be pushed by the cleaning lady until cleaning lady is ready to push it again
 	set_collision_layer_bit(1, 0)
 
 func apply_gravity(delta):
