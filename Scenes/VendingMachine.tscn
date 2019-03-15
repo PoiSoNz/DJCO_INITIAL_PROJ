@@ -28,49 +28,49 @@ margin_left = 240.0
 margin_right = 280.0
 margin_bottom = 40.0
 
-[node name="Panel4" type="Panel" parent="Control"]
+[node name="Croissant" type="Panel" parent="Control"]
 margin_left = -600.0
 margin_top = -220.0
 margin_right = -400.0
 margin_bottom = -20.0
 
-[node name="Sprite" type="Sprite" parent="Control/Panel4"]
+[node name="Sprite" type="Sprite" parent="Control/Croissant"]
 position = Vector2( 25, 25 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
 centered = false
 
-[node name="Panel3" type="Panel" parent="Control"]
+[node name="Water" type="Panel" parent="Control"]
 margin_left = -250.0
 margin_top = -220.0
 margin_right = -50.0
 margin_bottom = -20.0
 
-[node name="Sprite" type="Sprite" parent="Control/Panel3"]
+[node name="Sprite" type="Sprite" parent="Control/Water"]
 position = Vector2( 25, 25 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 4 )
 centered = false
 
-[node name="Panel2" type="Panel" parent="Control"]
+[node name="Coffee" type="Panel" parent="Control"]
 margin_left = 100.0
 margin_top = -220.0
 margin_right = 300.0
 margin_bottom = -20.0
 
-[node name="Sprite" type="Sprite" parent="Control/Panel2"]
+[node name="Sprite" type="Sprite" parent="Control/Coffee"]
 position = Vector2( 25, 25 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 5 )
 centered = false
 
-[node name="Panel" type="Panel" parent="Control"]
+[node name="SpecialMerend" type="Panel" parent="Control"]
 margin_left = 450.0
 margin_top = -220.0
 margin_right = 650.0
 margin_bottom = -20.0
 
-[node name="Sprite" type="Sprite" parent="Control/Panel"]
+[node name="Sprite" type="Sprite" parent="Control/SpecialMerend"]
 position = Vector2( 25, 25 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 5 )

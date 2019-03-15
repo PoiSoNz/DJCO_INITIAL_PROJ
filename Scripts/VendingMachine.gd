@@ -1,5 +1,7 @@
 extends Node2D
 
+onready var grayscale = preload("res://Materials/SpriteGrayScale.tres")
+
 var playerInRange = false
 var playerNode
 var tier = 2
@@ -22,6 +24,12 @@ func _process(delta):
 
 func set_tier(machineFloor):
 	tier = machineFloor
+	if tier == 2:
+		$Control/Coffee/Sprite.material = grayscale
+		$Control/SpecialMerend/Sprite.material = grayscale
+	else:
+		$Control/Croissant/Sprite.material = grayscale
+		$Control/Water/Sprite.material = grayscale
 
 func _on_Area2D_body_entered(body):
 	if body.get_parent().name == "Player":
