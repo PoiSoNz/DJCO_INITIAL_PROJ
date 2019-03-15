@@ -63,6 +63,7 @@ func buy_attempt(item):
 				$KinematicBody2D/Health.health_increment(croissant_hp_bonus)
 				ECTS -= croissant_price
 				emit_signal("bought_croissant")
+				$KinematicBody2D/ParticlesCroissant.emitting = true
 				print("croissant placeholder")
 		"water":
 			if ECTS >= water_price:

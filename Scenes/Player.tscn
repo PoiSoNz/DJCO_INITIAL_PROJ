@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Scripts/PlayerManager.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/PlayerMovement.gd" type="Script" id=2]
@@ -87,6 +87,18 @@ graph_offset = Vector2( 0, -5.89231 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=22]
 
+[sub_resource type="ParticlesMaterial" id=23]
+emission_shape = 1
+emission_sphere_radius = 20.0
+flag_disable_z = true
+spread = 50.0
+gravity = Vector3( 0, -98, 0 )
+angular_velocity = 0.00016898
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 3.0
+color = Color( 0.2, 1, 0, 1 )
+
 [node name="Player" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -126,5 +138,12 @@ tree_root = SubResource( 21 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 22 )
+
+[node name="ParticlesCroissant" type="Particles2D" parent="KinematicBody2D"]
+emitting = false
+amount = 100
+lifetime = 0.5
+one_shot = true
+process_material = SubResource( 23 )
 
 [connection signal="reenable_bleeding" from="." to="KinematicBody2D/Health" method="_on_Player_reenable_bleeding"]
