@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Backgrounds/mid.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Yorn.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Bench.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Doors.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 960, 100 )
@@ -20,6 +21,7 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="Platforms" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Layer 2" type="Control" parent="Platforms"]
 margin_right = 40.0
@@ -75,4 +77,7 @@ position = Vector2( 2087.24, 395.084 )
 
 [node name="Bench" parent="Obstacles" instance=ExtResource( 7 )]
 position = Vector2( 705.238, 977.506 )
+
+[node name="Doors" parent="Obstacles" instance=ExtResource( 8 )]
+position = Vector2( 1735.86, 908.829 )
 
