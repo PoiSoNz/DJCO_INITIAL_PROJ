@@ -199,7 +199,10 @@ func player_movement(delta):
 	if Input.is_action_just_pressed("player_slide") && !sliding && anim_state != "Jump" && anim_state != "DoubleJump":
 		sliding = true
 		anim_state = "Slide"
-		velocity = Vector2(standardMaxVelocity,0)
+		if !$Sprite.flip_h:
+			velocity = Vector2(standardMaxVelocity-100,0)
+		else:
+			velocity = Vector2(-standardMaxVelocity+100,0)
 
 func set_movement_speed_bonus(duration, bonus):
 	currMaxVelocity = standardMaxVelocity + bonus
