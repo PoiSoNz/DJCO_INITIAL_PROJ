@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dark_v2.png-2bab837582501c775121792eb6a5464f.stex"
+path="res://.import/closed_door.png-9d979002b9b1076077bc2c4e5b0f916d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/dark_v2.png"
-dest_files=[ "res://.import/dark_v2.png-2bab837582501c775121792eb6a5464f.stex" ]
+source_file="res://Assets/Sprites/Doors/closed_door.png"
+dest_files=[ "res://.import/closed_door.png-9d979002b9b1076077bc2c4e5b0f916d.stex" ]
 
 [params]
 

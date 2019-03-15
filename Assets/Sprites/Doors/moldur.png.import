@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dark_v2.png-2bab837582501c775121792eb6a5464f.stex"
+path="res://.import/moldur.png-87399c485a9ec1afac784f9ad7d5db9c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/dark_v2.png"
-dest_files=[ "res://.import/dark_v2.png-2bab837582501c775121792eb6a5464f.stex" ]
+source_file="res://Assets/Sprites/Doors/moldur.png"
+dest_files=[ "res://.import/moldur.png-87399c485a9ec1afac784f9ad7d5db9c.stex" ]
 
 [params]
 
