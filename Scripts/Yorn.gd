@@ -1,6 +1,6 @@
 extends Node2D
 
-const reload = 1.5
+const reload = 2
 const lowCard = Vector2(0, 70)
 const highCard = Vector2(0, 10)
 
