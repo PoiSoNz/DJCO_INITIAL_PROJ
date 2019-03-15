@@ -17,7 +17,13 @@ const knockBackCooldown = 0.1
 var is_slowed = false
 var is_knocked = false
 var movement_speed_bonus_timer = null
-onready var anim = get_node("break")
+
+onready var anim_state = "Idle"
+var previolus_anim_state = "Idle"
+
+onready var playback = $Sprite/AnimationTree.get("parameters/playback")
+
+signal coffee_ended()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,6 +31,8 @@ func _ready():
 	movement_speed_bonus_timer.set_one_shot(true)
 	movement_speed_bonus_timer.connect("timeout", self, "on_movement_speed_bonus_end")
 	add_child(movement_speed_bonus_timer)
+	$Sprite/AnimationTree.active = true
+	playback.start("Idle")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -37,13 +45,40 @@ func _process(delta):
 	
 	check_knock_back(delta)
 	
+	previolus_anim_state = anim_state
 	player_movement(delta)
+	
+	if previolus_anim_state != anim_state:
+		playback.start(anim_state)
+		change_hit_box(anim_state)
 	
 	if is_slowed && !is_knocked:
 		var slowed_velocity = Vector2(0.6*velocity.x,velocity.y)
 		move_and_slide(slowed_velocity, floorNormal)
 	else:
 		move_and_slide(velocity, floorNormal)
+		
+func change_hit_box(anim_state):
+	match anim_state:
+		"Idle":
+			$CollisionShape2D.position.x = 1
+			$CollisionShape2D.position.x = 0
+			$CollisionShape2D.shape.extents.x = 24
+			$CollisionShape2D.shape.extents.y = 44
+			print("idle", $CollisionShape2D.shape.extents)
+		"DoubleJump":
+			$CollisionShape2D.position.x = 2
+			$CollisionShape2D.position.x = -3
+			$CollisionShape2D.shape.extents.x = 27
+			$CollisionShape2D.shape.extents.y = 37
+			print("DoubleJump", $CollisionShape2D.shape.extents)
+		_: #Run or Jump
+			$CollisionShape2D.position.x = 8
+			$CollisionShape2D.position.x = 0
+			$CollisionShape2D.shape.extents.x = 24
+			$CollisionShape2D.shape.extents.y = 44
+			print("run/jump", $CollisionShape2D.shape.extents)
+		
 		
 func check_knock_back(delta):
 	var collision_info = move_and_collide(Vector2(0,0))
@@ -95,39 +130,34 @@ func player_movement(delta):
 	var frameAcceleration = apply_delta(runAcceleration)
 	# Run right
 	if Input.is_key_pressed(KEY_RIGHT) && !Input.is_key_pressed(KEY_LEFT) && velocity.x >= 0:
-		get_node("run").visible = true
-		get_node("idle").visible = false
-		get_node("break").visible = false
-		$run.flip_h = false
+		if velocity.y == 0:
+			anim_state = "Run"
+		$Sprite.flip_h = false
 		if velocity.x + frameAcceleration.x < currMaxVelocity:
 			velocity += frameAcceleration
 		else:
 			velocity.x = currMaxVelocity
 	# Run left
 	elif Input.is_key_pressed(KEY_LEFT) && !Input.is_key_pressed(KEY_RIGHT) && velocity.x <= 0:
-		get_node("run").visible = true
-		get_node("idle").visible = false
-		get_node("break").visible = false
-		$run.flip_h = true
+		if velocity.y == 0:
+			anim_state = "Run"
+		$Sprite.flip_h = true
 		if velocity.x - frameAcceleration.x > -currMaxVelocity:
 			velocity -= frameAcceleration
 		else:
 			velocity.x = -currMaxVelocity
 	# Run deacceleration (no movement key is being pressed or both are being pressed)
 	else:
-		if velocity.x != 0:
-			get_node("run").visible = false
-			get_node("idle").visible = false
-			get_node("break").visible = true
-			if velocity.x < 0:
-				$break.flip_h = true
+		if velocity.y == 0:
+			if velocity.x > 0:
+				anim_state = "Run"
+				$Sprite.flip_h = false
+			elif velocity.x < 0:
+				anim_state = "Run"
+				$Sprite.flip_h = true
 			else:
-				$break.flip_h = false
-		else:
-			get_node("run").visible = false
-			get_node("idle").visible = true
-			get_node("break").visible = false
-			##$idle.flip_h = true
+				anim_state = "Idle"
+			
 		var frameDeacceleration = apply_delta(runDeacceleration)
 		
 		if velocity.x - frameDeacceleration.x >= 0:
@@ -141,7 +171,10 @@ func player_movement(delta):
 		reset_gravity()
 		var multiplier = 1.15
 		if jumpCount == 2:
+			anim_state = "Jump"
 			multiplier = 0.70
+		else:
+			anim_state = "DoubleJump"
 		velocity += jumpAcceleration * multiplier
 		jumpCount -= 1
 
@@ -155,3 +188,4 @@ func set_slowed(value):
 
 func on_movement_speed_bonus_end():
 	currMaxVelocity = standardMaxVelocity
+	emit_signal("coffee_ended")
