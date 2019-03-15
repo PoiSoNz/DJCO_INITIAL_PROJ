@@ -13,10 +13,13 @@ const runDeacceleration = Vector2(1500, 0)
 const jumpAcceleration = Vector2(0, -700)
 const standardMaxVelocity = 500
 const knockBackCooldown = 0.1
+const slideCooldown = 0.3
 
 var is_slowed = false
 var is_knocked = false
 var movement_speed_bonus_timer = null
+var sliding = false
+var slide_timer = slideCooldown
 
 onready var anim_state = "Idle"
 var previolus_anim_state = "Idle"
@@ -45,6 +48,8 @@ func _process(delta):
 	
 	check_knock_back(delta)
 	
+	check_sliding(delta)
+	
 	previolus_anim_state = anim_state
 	player_movement(delta)
 	
@@ -62,30 +67,42 @@ func change_hit_box(anim_state):
 	match anim_state:
 		"Idle":
 			$CollisionShape2D.position.x = 1
-			$CollisionShape2D.position.x = 0
+			$CollisionShape2D.position.y = 2
 			$CollisionShape2D.shape.extents.x = 24
-			$CollisionShape2D.shape.extents.y = 44
+			$CollisionShape2D.shape.extents.y = 42
 			print("idle", $CollisionShape2D.shape.extents)
 		"DoubleJump":
 			$CollisionShape2D.position.x = 2
-			$CollisionShape2D.position.x = -3
+			$CollisionShape2D.position.y = -3
 			$CollisionShape2D.shape.extents.x = 27
 			$CollisionShape2D.shape.extents.y = 37
-			print("DoubleJump", $CollisionShape2D.shape.extents)
+			print("doublejump", $CollisionShape2D.shape.extents)
+		"Slide":
+			$CollisionShape2D.position.x = 4
+			$CollisionShape2D.position.y = 22
+			$CollisionShape2D.shape.extents.x = 34
+			$CollisionShape2D.shape.extents.y = 22
+			print("slide", $CollisionShape2D.shape.extents)
 		_: #Run or Jump
 			$CollisionShape2D.position.x = 8
-			$CollisionShape2D.position.x = 0
+			$CollisionShape2D.position.y = 0
 			$CollisionShape2D.shape.extents.x = 24
 			$CollisionShape2D.shape.extents.y = 44
 			print("run/jump", $CollisionShape2D.shape.extents)
 		
+func check_sliding(delta):
+	if sliding:
+		slide_timer -= delta
+		if slide_timer <= 0:
+			slide_timer = slideCooldown
+			sliding = false
 		
 func check_knock_back(delta):
 	var collision_info = move_and_collide(Vector2(0,0))
 	if collision_info:
 		if collision_info.collider.get_parent().name == "Bench" && !is_knocked:
 			benched(collision_info)
-	if(is_knocked):
+	if is_knocked:
 		knock_back_timer -= delta
 		if knock_back_timer <= 0:
 			knock_back_timer = knockBackCooldown
@@ -129,7 +146,7 @@ func reset_gravity():
 func player_movement(delta):
 	var frameAcceleration = apply_delta(runAcceleration)
 	# Run right
-	if Input.is_key_pressed(KEY_RIGHT) && !Input.is_key_pressed(KEY_LEFT) && velocity.x >= 0:
+	if Input.is_key_pressed(KEY_RIGHT) && !Input.is_key_pressed(KEY_LEFT) && velocity.x >= 0 && !sliding:
 		if velocity.y == 0:
 			anim_state = "Run"
 		$Sprite.flip_h = false
@@ -138,7 +155,7 @@ func player_movement(delta):
 		else:
 			velocity.x = currMaxVelocity
 	# Run left
-	elif Input.is_key_pressed(KEY_LEFT) && !Input.is_key_pressed(KEY_RIGHT) && velocity.x <= 0:
+	elif Input.is_key_pressed(KEY_LEFT) && !Input.is_key_pressed(KEY_RIGHT) && velocity.x <= 0 && !sliding:
 		if velocity.y == 0:
 			anim_state = "Run"
 		$Sprite.flip_h = true
@@ -150,22 +167,23 @@ func player_movement(delta):
 	else:
 		if velocity.y == 0:
 			if velocity.x > 0:
-				anim_state = "Run"
+				#anim_state = "Run"
 				$Sprite.flip_h = false
 			elif velocity.x < 0:
-				anim_state = "Run"
+				#anim_state = "Run"
 				$Sprite.flip_h = true
 			else:
 				anim_state = "Idle"
-			
-		var frameDeacceleration = apply_delta(runDeacceleration)
 		
-		if velocity.x - frameDeacceleration.x >= 0:
-			velocity -= frameDeacceleration
-		elif velocity.x + frameDeacceleration.x <= 0:
-			velocity += frameDeacceleration
-		else:
-			velocity.x = 0
+		if !sliding:
+			var frameDeacceleration = apply_delta(runDeacceleration)
+			
+			if velocity.x - frameDeacceleration.x >= 0:
+				velocity -= frameDeacceleration
+			elif velocity.x + frameDeacceleration.x <= 0:
+				velocity += frameDeacceleration
+			else:
+				velocity.x = 0
 			
 	if Input.is_action_just_pressed("player_jump") && jumpCount > 0:
 		reset_gravity()
@@ -177,6 +195,11 @@ func player_movement(delta):
 			anim_state = "DoubleJump"
 		velocity += jumpAcceleration * multiplier
 		jumpCount -= 1
+		
+	if Input.is_action_just_pressed("player_slide") && !sliding && anim_state != "Jump" && anim_state != "DoubleJump":
+		sliding = true
+		anim_state = "Slide"
+		velocity = Vector2(standardMaxVelocity,0)
 
 func set_movement_speed_bonus(duration, bonus):
 	currMaxVelocity = standardMaxVelocity + bonus
