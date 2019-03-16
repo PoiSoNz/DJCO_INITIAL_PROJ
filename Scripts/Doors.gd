@@ -18,12 +18,12 @@ func _process(delta):
 func toggle_open():
 	open = !open
 	if open:
-		$RigidBody2D/CollisionShape2D.disabled = true
-		$RigidBody2D/closed_doors.visible = false
-		$RigidBody2D/open_door_far.visible = true
-		$RigidBody2D/open_door_near.visible = true
+		$StaticBody2D/CollisionShape2D.disabled = true
+		$StaticBody2D/closed_doors.visible = false
+		$StaticBody2D/open_door_far.visible = true
+		$StaticBody2D/open_door_near.visible = true
 	else:
-		$RigidBody2D/CollisionShape2D.disabled = false
-		$RigidBody2D/closed_doors.visible = true
-		$RigidBody2D/open_door_far.visible = false
-		$RigidBody2D/open_door_near.visible = false
+		$StaticBody2D/CollisionShape2D.disabled = false
+		$StaticBody2D/closed_doors.visible = true
+		$StaticBody2D/open_door_far.visible = false
+		$StaticBody2D/open_door_near.visible = false
