@@ -73,6 +73,7 @@ anims/Walking = SubResource( 3 )
 [node name="CleaningTrolley" type="KinematicBody2D" parent="."]
 position = Vector2( -0.350189, -0.5 )
 collision_layer = 2
+collision/safe_margin = 2.0
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="CleaningTrolley"]

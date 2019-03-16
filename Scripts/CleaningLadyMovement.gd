@@ -4,7 +4,7 @@ var velocity = Vector2(200, 0)
 var movementDirection = 1
 var frameDelta;
 var platformMaxRangeX = 0
-var platformMinRangeX = null
+var platformMinRangeX = 0
 
 var repositioning = false
 var repositioningDestination
@@ -20,6 +20,7 @@ const damage = 40
 
 var is_idle = false
 var idle_timer = null
+var check_boundaries = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -68,12 +69,13 @@ func check_collision():
 			repositioning = true
 		# Just stop lady movement when it collides against the player
 		elif colliderParent.name == "Player":
-			colliderParent.inflict_damage(colliderParent, collision_info.normal)
+			colliderParent.inflict_damage(damage, collision_info.normal)
 			start_idle_period()
 		# Obtain trolley possible movement range
-		elif !platformMaxRangeX && colliderParent.name.begins_with("Platform"):
+		elif check_boundaries && colliderParent.name.begins_with("Platform"):
 			print("ENTROU")
 			get_range_info(collider)
+			check_boundaries = false
 
 func get_trolley_destination(collisionNormal):
 	if collisionNormal == leftSideCollision:

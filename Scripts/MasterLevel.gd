@@ -1,6 +1,6 @@
 extends Node2D
 
-const levelSize = 2500
+const levelSize = 3500
 
 onready var level = preload("res://Scenes/Test2.tscn")
 onready var checkpoint = preload("res://Scenes/Checkpoint.tscn")
@@ -11,8 +11,6 @@ var currentLevel = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	instanceLevel()
-	instanceLevel()
 	instanceLevel()
 	
 func _process(delta):

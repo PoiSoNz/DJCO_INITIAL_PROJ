@@ -85,5 +85,5 @@ position = Vector2( 698.419, 959.088 )
 position = Vector2( 1735.86, 908.829 )
 
 [node name="CleaningLady" parent="Obstacles" instance=ExtResource( 9 )]
-position = Vector2( 842.276, 696.333 )
+position = Vector2( 789.275, 688.383 )
 
