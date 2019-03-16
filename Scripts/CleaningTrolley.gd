@@ -27,13 +27,13 @@ func check_destination_arrive():
 	if !destination:
 		return
 	
-	if (movementDirection == 1 && self.position.x >= destination) || (movementDirection == -1 && self.position.x <= destination):
+	if (movementDirection == 1 && self.global_position.x >= destination) || (movementDirection == -1 && self.global_position.x <= destination):
 		arrived = true
 		$Sprite.flip_h = !$Sprite.flip_h
 
 func push(dest):
 	destination = dest
-	movementDirection = 1 if (self.position.x < dest) else -1
+	movementDirection = 1 if (self.global_position.x < dest) else -1
 	arrived = false
 	# Disable collision layer, so that it can't be pushed by the cleaning lady until cleaning lady is ready to push it again
 	set_collision_layer_bit(1, 0)

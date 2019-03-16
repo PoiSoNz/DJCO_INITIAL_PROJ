@@ -69,7 +69,7 @@ func check_collision():
 		elif colliderParent.name == "Player":
 			start_idle_period()
 		# Obtain trolley possible movement range
-		elif !platformMaxRangeX && colliderParent.name == "Platform":
+		elif !platformMaxRangeX && colliderParent.name.begins_with("Platform"):
 			get_range_info(collider)
 
 func get_trolley_destination(collisionNormal):
@@ -84,21 +84,21 @@ func get_trolley_destination(collisionNormal):
 
 func get_range_info(platform):
 	var platformScaleX = platform.get_parent().scale.x
-	var platformOriginalHalfLength = platform.get_node("CollisionPolygon2D").get_shape().get_extents().x
+	var platformOriginalHalfLength = platform.get_node("CollisionShape2D").get_shape().get_extents().x
 	var platformHalfLength = platformOriginalHalfLength * platformScaleX
 	
-	var platformPositionX = platform.get_parent().position.x
+	var platformPositionX = platform.get_parent().global_position.x
 	
 	platformMaxRangeX = platformPositionX + (platformHalfLength - platformSpareSpace)
 	platformMinRangeX = platformPositionX - (platformHalfLength - platformSpareSpace)
 
 func check_repositioning_complete():
-	if movementDirection == 1 && self.position.x >= repositioningDestination:
+	if movementDirection == 1 && self.global_position.x >= repositioningDestination:
 		make_trolley_hittable()
 		movementDirection = -1
 		$Sprite.flip_h = true
 		repositioning = false
-	elif movementDirection == -1 && self.position.x <= repositioningDestination:
+	elif movementDirection == -1 && self.global_position.x <= repositioningDestination:
 		make_trolley_hittable()
 		movementDirection = 1
 		$Sprite.flip_h = false
