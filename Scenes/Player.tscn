@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Scripts/PlayerManager.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/PlayerMovement.gd" type="Script" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://Assets/Particles/hp.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Particles/Smoke_particle_material.tres" type="Material" id=13]
 [ext_resource path="res://Assets/Particles/smoke.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Particles/star_particles_material.tres" type="Material" id=15]
+[ext_resource path="res://Assets/Particles/special_merend_stars.png" type="Texture" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 44 )
@@ -140,10 +142,16 @@ one_shot = true
 process_material = ExtResource( 11 )
 texture = ExtResource( 12 )
 
-[node name="ParticlesCroissant2" type="Particles2D" parent="KinematicBody2D"]
+[node name="ParticlesCoffee" type="Particles2D" parent="KinematicBody2D"]
 position = Vector2( -18.4903, 42.2636 )
 amount = 7
 process_material = ExtResource( 13 )
 texture = ExtResource( 14 )
+
+[node name="ParticlesSpecialMerend" type="Particles2D" parent="KinematicBody2D"]
+amount = 10
+lifetime = 0.75
+process_material = ExtResource( 15 )
+texture = ExtResource( 16 )
 
 [connection signal="reenable_bleeding" from="." to="KinematicBody2D/Health" method="_on_Player_reenable_bleeding"]
