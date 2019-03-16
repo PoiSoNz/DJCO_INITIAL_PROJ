@@ -16,6 +16,7 @@ const leftSideCollision = Vector2(-1, 0)
 const rightSideCollision = Vector2(1, 0)
 const platformSpareSpace = 300
 const repositioningDistance = 200
+const damage = 40
 
 var is_idle = false
 var idle_timer = null
@@ -67,6 +68,7 @@ func check_collision():
 			repositioning = true
 		# Just stop lady movement when it collides against the player
 		elif colliderParent.name == "Player":
+			colliderParent.inflict_damage(colliderParent, collision_info.normal)
 			start_idle_period()
 		# Obtain trolley possible movement range
 		elif !platformMaxRangeX && colliderParent.name.begins_with("Platform"):

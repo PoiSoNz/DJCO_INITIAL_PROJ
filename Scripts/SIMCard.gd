@@ -19,5 +19,5 @@ func _process(delta):
 
 func _on_Area2D_body_entered(body):
 	if body.get_parent().name == "Player":
-		body.get_parent().inflict_damage(damage)
+		body.get_parent().inflict_damage(damage, Vector2(-1, 0))
 		queue_free()

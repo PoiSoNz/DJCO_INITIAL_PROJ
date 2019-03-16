@@ -95,7 +95,10 @@ func add_currency(value):
 func add_score(value):
 	score += value
 
-func inflict_damage(damage):
+func inflict_damage(damage, knockback_normal = null):
+	if knockback_normal:
+		$KinematicBody2D.apply_knock_back(knockback_normal)
+		
 	if immunity_type == one_time_immunity:
 		immunity_type = no_immunity
 		immunity_timer.stop()
@@ -113,7 +116,7 @@ func set_immunity(duration, immunity):
 func on_immunity_end():
 	var immunity_just_ended = immunity_type
 	immunity_type = no_immunity
-	emit_signal("immunity", immunity_type)
+
 	if immunity_just_ended == one_time_immunity:
 		emit_signal("water_ended")
 	elif immunity_just_ended == persistent_immunity:

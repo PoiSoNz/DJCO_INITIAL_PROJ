@@ -7,6 +7,7 @@ var velocity = Vector2(500, 0)
 
 const floorNormal = Vector2(0, -1)
 const gravity = Vector2(0, 1550)
+const damage = 25
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,7 +16,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	apply_gravity(delta)
-
+	
+	check_player_hit()
+	
 	if !arrived:
 		check_destination_arrive()
 		move_and_slide(Vector2(velocity.x * movementDirection, velocity.y), floorNormal)
@@ -37,6 +40,13 @@ func push(dest):
 	arrived = false
 	# Disable collision layer, so that it can't be pushed by the cleaning lady until cleaning lady is ready to push it again
 	set_collision_layer_bit(1, 0)
+
+func check_player_hit():
+	var collision_info = move_and_collide(Vector2(0, 0))
+	if collision_info:
+		var collider = collision_info.collider.get_parent()
+		if collider.name == "Player":
+			collider.inflict_damage(damage, collision_info.normal)
 
 func apply_gravity(delta):
 	if is_on_floor():
