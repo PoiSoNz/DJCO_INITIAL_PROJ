@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/Sprites/Platforms/edge_dark.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+extents = Vector2( 720, 60 )
 
 [node name="Platform" type="Node2D"]
 position = Vector2( -50, -40 )
@@ -71,7 +71,7 @@ build_mode = 1
 polygon = PoolVector2Array( -730, -50, -630, 50, 770, 50, 770, 15, 705, -50 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 50, 80 )
+position = Vector2( 60, 80 )
 scale = Vector2( 1, 0.5 )
 shape = SubResource( 1 )
 disabled = true
