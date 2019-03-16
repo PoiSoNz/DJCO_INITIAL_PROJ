@@ -3,7 +3,7 @@ extends KinematicBody2D
 var velocity = Vector2(200, 0)
 var movementDirection = 1
 var frameDelta;
-var platformMaxRangeX = null
+var platformMaxRangeX = 0
 var platformMinRangeX = null
 
 var repositioning = false
@@ -72,12 +72,14 @@ func check_collision():
 			start_idle_period()
 		# Obtain trolley possible movement range
 		elif !platformMaxRangeX && colliderParent.name.begins_with("Platform"):
+			print("ENTROU")
 			get_range_info(collider)
 
 func get_trolley_destination(collisionNormal):
 	if collisionNormal == leftSideCollision:
 		movementDirection = 1
 		repositioningDestination = platformMaxRangeX + repositioningDistance
+		print("trolley dest ", platformMaxRangeX)
 		return platformMaxRangeX
 	elif collisionNormal == rightSideCollision:
 		movementDirection = -1
@@ -85,6 +87,7 @@ func get_trolley_destination(collisionNormal):
 		return platformMinRangeX
 
 func get_range_info(platform):
+	#print("BOAS")
 	var platformScaleX = platform.get_parent().scale.x
 	var platformOriginalHalfLength = platform.get_node("CollisionShape2D").get_shape().get_extents().x
 	var platformHalfLength = platformOriginalHalfLength * platformScaleX
@@ -93,6 +96,7 @@ func get_range_info(platform):
 	
 	platformMaxRangeX = platformPositionX + (platformHalfLength - platformSpareSpace)
 	platformMinRangeX = platformPositionX - (platformHalfLength - platformSpareSpace)
+	#print("BOAS ", platformMaxRangeX, "BOAS ",  platformMinRangeX)
 
 func check_repositioning_complete():
 	if movementDirection == 1 && self.global_position.x >= repositioningDestination:

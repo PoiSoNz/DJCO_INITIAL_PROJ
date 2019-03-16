@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Backgrounds/mid.png" type="Texture" id=2]
@@ -12,6 +12,8 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 960, 100 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
 [node name="Test" type="Node2D"]
 script = ExtResource( 1 )
@@ -80,6 +82,9 @@ position = Vector2( 705.238, 977.506 )
 
 [node name="Player" parent="." instance=ExtResource( 8 )]
 position = Vector2( 0, 900 )
+
+[node name="AnimationTree" parent="Player/KinematicBody2D/Sprite" index="1"]
+parameters/playback = SubResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
