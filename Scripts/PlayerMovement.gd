@@ -119,6 +119,7 @@ func check_sliding(delta):
 			sliding = false
 
 func apply_knock_back():
+	self.set_collision_layer_bit(1, 0)
 	if velocity.x >= 0:
 		velocity = Vector2(-knockbackXForce, -knockbackYForce)
 	else:
@@ -222,10 +223,6 @@ func on_movement_speed_bonus_end():
 
 func on_knockback_end():
 	is_knocked = false
-	recovery_start()
-
-func recovery_start():
-	self.set_collision_layer_bit(1, 0)
 	recover_timer.start()
 
 func on_recovery_end():

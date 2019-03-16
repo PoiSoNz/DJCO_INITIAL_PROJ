@@ -31,7 +31,7 @@ func _ready():
 	add_child(idle_timer)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	frameDelta = delta;
 	
 	apply_gravity()

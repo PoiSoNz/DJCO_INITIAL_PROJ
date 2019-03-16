@@ -51,7 +51,7 @@ func _ready():
 	add_child(immunity_timer)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	emit_signal("score", score)
 	#emit_signal("shield", immunity_type, immunity_timer)
 	#emit_signal("coffee", $KinematicBody2D.movement_speed_bonus_timer)
