@@ -113,7 +113,7 @@ func check_repositioning_complete():
 		repositioning = false
 
 func make_trolley_hittable():
-	get_parent().get_node("CleaningTrolley").set_collision_layer_bit(1, 1)
+	get_parent().get_node("CleaningTrolley").set_collision_layer_bit(2, 1)
 
 func check_wall():
 	if is_on_wall():

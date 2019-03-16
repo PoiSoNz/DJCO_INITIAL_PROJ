@@ -50,7 +50,7 @@ extents = Vector2( 36.1947, 29.7477 )
 position = Vector2( -193, -14 )
 scale = Vector2( 1.25, 1.25 )
 collision_layer = 0
-collision_mask = 3
+collision_mask = 7
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lady"]
@@ -72,7 +72,8 @@ anims/Walking = SubResource( 3 )
 
 [node name="CleaningTrolley" type="KinematicBody2D" parent="."]
 position = Vector2( -0.350189, -0.5 )
-collision_layer = 2
+collision_layer = 4
+collision_mask = 3
 collision/safe_margin = 2.0
 script = ExtResource( 3 )
 

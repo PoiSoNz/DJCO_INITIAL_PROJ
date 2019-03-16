@@ -39,7 +39,7 @@ func push(dest):
 	movementDirection = 1 if (self.global_position.x < dest) else -1
 	arrived = false
 	# Disable collision layer, so that it can't be pushed by the cleaning lady until cleaning lady is ready to push it again
-	set_collision_layer_bit(1, 0)
+	set_collision_layer_bit(2, 0)
 
 func check_player_hit():
 	var collision_info = move_and_collide(Vector2(0, 0))
