@@ -16,7 +16,7 @@ script = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, 900 )
+position = Vector2( 0, 600 )
 
 [node name="CollisionShape2D" parent="Player/KinematicBody2D" index="0"]
 position = Vector2( 1, 2 )
