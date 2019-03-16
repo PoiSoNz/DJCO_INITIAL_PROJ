@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Scripts/PlayerManager.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/PlayerMovement.gd" type="Script" id=2]
@@ -10,6 +10,10 @@
 [ext_resource path="res://Assets/Animations/Jump.tres" type="Animation" id=8]
 [ext_resource path="res://Assets/Animations/Run.tres" type="Animation" id=9]
 [ext_resource path="res://Assets/Animations/Slide.tres" type="Animation" id=10]
+[ext_resource path="res://Assets/Particles/hp_particle_material.tres" type="Material" id=11]
+[ext_resource path="res://Assets/Particles/hp.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Particles/Smoke_particle_material.tres" type="Material" id=13]
+[ext_resource path="res://Assets/Particles/smoke.png" type="Texture" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 44 )
@@ -87,18 +91,6 @@ graph_offset = Vector2( 0, -5.89231 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=22]
 
-[sub_resource type="ParticlesMaterial" id=23]
-emission_shape = 1
-emission_sphere_radius = 20.0
-flag_disable_z = true
-spread = 50.0
-gravity = Vector3( 0, -98, 0 )
-angular_velocity = 0.00016898
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 3.0
-color = Color( 0.2, 1, 0, 1 )
-
 [node name="Player" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -141,9 +133,16 @@ parameters/playback = SubResource( 22 )
 
 [node name="ParticlesCroissant" type="Particles2D" parent="KinematicBody2D"]
 emitting = false
-amount = 100
-lifetime = 0.5
+amount = 15
+lifetime = 0.7
 one_shot = true
-process_material = SubResource( 23 )
+process_material = ExtResource( 11 )
+texture = ExtResource( 12 )
+
+[node name="ParticlesCroissant2" type="Particles2D" parent="KinematicBody2D"]
+position = Vector2( -18.4903, 42.2636 )
+amount = 7
+process_material = ExtResource( 13 )
+texture = ExtResource( 14 )
 
 [connection signal="reenable_bleeding" from="." to="KinematicBody2D/Health" method="_on_Player_reenable_bleeding"]

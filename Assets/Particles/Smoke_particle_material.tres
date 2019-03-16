@@ -1,0 +1,19 @@
+[gd_resource type="ParticlesMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Particles/Smoke_curve.tres" type="Curve" id=1]
+
+[sub_resource type="CurveTexture" id=24]
+width = 100
+curve = ExtResource( 1 )
+
+[resource]
+flag_align_y = true
+flag_disable_z = true
+spread = 50.0
+gravity = Vector3( -200, -35, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.2
+scale_curve = SubResource( 24 )
+color = Color( 0.458824, 0.458824, 0.458824, 1 )
+

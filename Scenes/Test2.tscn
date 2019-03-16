@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Backgrounds/mid.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/Yorn.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Bench.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Doors.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/CleaningLady.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 960, 100 )
@@ -21,31 +22,22 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="Platforms" type="Node2D" parent="."]
-editor/display_folded = true
 
-[node name="Layer 2" type="Control" parent="Platforms"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="Layer 2" type="Node2D" parent="Platforms"]
 
-[node name="Platform5" parent="Platforms/Layer 2" instance=ExtResource( 3 )]
+[node name="Platform2" parent="Platforms/Layer 2" instance=ExtResource( 3 )]
 position = Vector2( 1800, 493.5 )
-scale = Vector2( 20, 0.5 )
 
-[node name="Layer 1" type="Control" parent="Platforms"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="Layer 1" type="Node2D" parent="Platforms"]
 
 [node name="Platform5" parent="Platforms/Layer 1" instance=ExtResource( 3 )]
-position = Vector2( 600, 763.5 )
-scale = Vector2( 9, 0.5 )
+position = Vector2( 600, 800 )
 
 [node name="Platform6" parent="Platforms/Layer 1" instance=ExtResource( 3 )]
-position = Vector2( 1500, 763.5 )
-scale = Vector2( 9, 0.5 )
+position = Vector2( 2500, 763.5 )
 
 [node name="Floor" parent="Platforms" instance=ExtResource( 3 )]
-position = Vector2( 954.089, 1033.5 )
-scale = Vector2( 50, 0.5 )
+position = Vector2( 200, 1075 )
 
 [node name="Ceiling" type="StaticBody2D" parent="Platforms"]
 position = Vector2( 960, 139.5 )
@@ -80,4 +72,10 @@ position = Vector2( 705.238, 977.506 )
 
 [node name="Doors" parent="Obstacles" instance=ExtResource( 8 )]
 position = Vector2( 1735.86, 908.829 )
+
+[node name="CleaningLady" parent="Obstacles" instance=ExtResource( 9 )]
+position = Vector2( 439.358, 763.021 )
+
+[node name="CleaningLady2" parent="Obstacles" instance=ExtResource( 9 )]
+position = Vector2( 1753.77, 458.267 )
 
