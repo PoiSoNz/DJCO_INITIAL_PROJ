@@ -95,9 +95,8 @@ func add_currency(value):
 func add_score(value):
 	score += value
 
-func inflict_damage(damage, knockback_normal = null):
-	if knockback_normal:
-		$KinematicBody2D.apply_knock_back(knockback_normal)
+func inflict_damage(damage):
+	$KinematicBody2D.apply_knock_back()
 		
 	if immunity_type == one_time_immunity:
 		immunity_type = no_immunity

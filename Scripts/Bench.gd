@@ -12,4 +12,4 @@ func _process(delta):
 	if collision_info:
 		var collider = collision_info.collider.get_parent()
 		if collider.name == "Player":
-			collider.inflict_damage(damage, collision_info.normal)
+			collider.inflict_damage(damage)

@@ -69,7 +69,7 @@ func check_collision():
 			repositioning = true
 		# Just stop lady movement when it collides against the player
 		elif colliderParent.name == "Player":
-			colliderParent.inflict_damage(damage, collision_info.normal)
+			colliderParent.inflict_damage(damage)
 			start_idle_period()
 		# Obtain trolley possible movement range
 		elif check_boundaries && colliderParent.name.begins_with("Platform"):

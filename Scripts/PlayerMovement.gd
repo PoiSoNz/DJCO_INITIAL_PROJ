@@ -15,7 +15,7 @@ const slideCooldown = 0.3
 
 const knockbackXForce = 500
 const knockbackYForce = 500
-const knockbackCooldown = 1
+const knockbackCooldown = 0.1
 var knockback_timer = null
 
 var is_slowed = false
@@ -41,7 +41,7 @@ func _ready():
 	# Prepare knockback timer
 	knockback_timer = Timer.new()
 	knockback_timer.set_one_shot(true)
-	movement_speed_bonus_timer.set_wait_time(knockbackCooldown)
+	knockback_timer.set_wait_time(knockbackCooldown)
 	knockback_timer.connect("timeout", self, "on_knockback_end")
 	add_child(knockback_timer)
 	
@@ -108,8 +108,11 @@ func check_sliding(delta):
 			slide_timer = slideCooldown
 			sliding = false
 
-func apply_knock_back(knockback_normal):
-	velocity = Vector2(knockbackXForce * knockback_normal.x, -knockbackYForce)
+func apply_knock_back():
+	if velocity.x >= 0:
+		velocity = Vector2(-knockbackXForce, -knockbackYForce)
+	else:
+		velocity = Vector2(knockbackXForce, -knockbackYForce)
 	is_knocked = true
 	knockback_timer.start()
 
