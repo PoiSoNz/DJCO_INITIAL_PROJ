@@ -15,7 +15,7 @@ const slideCooldown = 0.3
 
 const knockbackXForce = 500
 const knockbackYForce = 500
-const knockbackCooldown = 0.1
+const knockbackCooldown = 1
 var knockback_timer = null
 
 var is_slowed = false
@@ -125,7 +125,7 @@ func check_wall():
 		velocity.x = 0
 
 func apply_gravity():
-	if is_on_floor():
+	if is_on_floor() && !is_knocked:
 		reset_gravity()
 		jumpCount = 2
 	else:
