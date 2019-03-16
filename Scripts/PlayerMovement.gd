@@ -18,6 +18,9 @@ const knockbackYForce = 500
 const knockbackCooldown = 0.1
 var knockback_timer = null
 
+const recover_duration = 1.5
+var recover_timer = null
+
 var is_slowed = false
 var is_knocked = false
 var movement_speed_bonus_timer = null
@@ -44,6 +47,13 @@ func _ready():
 	knockback_timer.set_wait_time(knockbackCooldown)
 	knockback_timer.connect("timeout", self, "on_knockback_end")
 	add_child(knockback_timer)
+	
+	# Prepare recover timer
+	recover_timer = Timer.new()
+	recover_timer.set_one_shot(true)
+	recover_timer.set_wait_time(recover_duration)
+	recover_timer.connect("timeout", self, "on_recovery_end")
+	add_child(recover_timer)
 	
 	$Sprite/AnimationTree.active = true
 	playback.start("Idle")
@@ -212,3 +222,11 @@ func on_movement_speed_bonus_end():
 
 func on_knockback_end():
 	is_knocked = false
+	recovery_start()
+
+func recovery_start():
+	self.set_collision_layer_bit(1, 0)
+	recover_timer.start()
+
+func on_recovery_end():
+	self.set_collision_layer_bit(1, 1)
