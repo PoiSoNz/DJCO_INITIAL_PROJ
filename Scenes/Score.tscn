@@ -30,9 +30,9 @@ align = 1
 valign = 1
 
 [node name="Value" type="Label" parent="TotalScore"]
-margin_left = -53.1733
+margin_left = -51.2701
 margin_top = -90.0
-margin_right = 1866.83
+margin_right = 1868.73
 margin_bottom = 160.0
 custom_fonts/font = ExtResource( 3 )
 text = "19000"
@@ -56,8 +56,8 @@ texture_progress = ExtResource( 5 )
 fill_mode = 5
 
 [node name="Value" type="Label" parent="CurrentBonus"]
-margin_left = 2.0
-margin_right = 152.0
+margin_left = 2.89117
+margin_right = 152.891
 margin_bottom = 150.0
 custom_fonts/font = ExtResource( 2 )
 text = "3000"
@@ -71,12 +71,14 @@ margin_right = -845.0
 margin_bottom = -10.0
 
 [node name="ProgressBar" type="TextureProgress" parent="CurrentBonus/BonusInfo"]
-margin_left = 872.042
-margin_top = 218.112
-margin_right = 1772.04
-margin_bottom = 318.112
-rect_scale = Vector2( 0.2, 0.15 )
+margin_left = 852.474
+margin_top = 192.459
+margin_right = 1752.47
+margin_bottom = 292.459
+rect_rotation = -90.0
+rect_scale = Vector2( 0.15, 0.2 )
 max_value = 300.0
+value = 199.0
 texture_under = ExtResource( 6 )
 texture_progress = ExtResource( 7 )
 

@@ -1,6 +1,6 @@
 extends Control
 
-var progress_factor = 30
+const progress_factor = 30
 var previous_score = -1
 
 # Called when the node enters the scene tree for the first time.
@@ -11,9 +11,9 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func _on_HUD_bonus(value):
-	$CurrentBonus/Value.text = str(floor(value))
-	$CurrentBonus/ProgressBar.value = value/progress_factor
+func _on_HUD_bonus(bonus):
+	$CurrentBonus/Value.text = str(floor(bonus))
+	$CurrentBonus/ProgressBar.value = bonus/progress_factor
 
 func _on_HUD_score(value):
 	if value != previous_score:

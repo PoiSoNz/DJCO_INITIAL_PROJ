@@ -10,12 +10,12 @@ const layer3min = 460
 const bar_refresh_rate = 1 #in seconds
 
 onready var currentLayer = 1
-onready var multiplier = 1
-onready var bar = 0
+onready var multiplier = 2
+onready var bar = 150
 
 onready var bar_cooldown = bar_refresh_rate
 
-signal send_bonus(value)
+signal send_bonus(bonus)
 signal send_bonus_info(bar_value, multiplier_value)
 
 # Called when the node enters the scene tree for the first time.
@@ -28,8 +28,7 @@ func _process(delta):
 	var current_check_point = checkpoints.front()
 	
 	change_multiplier()
-	
-	print("multiplier: ", multiplier, "bar: ", bar)
+	current_check_point.change_bonus_drop(multiplier)
 	
 	emit_signal("send_bonus", current_check_point.current_bonus)
 	emit_signal("send_bonus_info", bar, multiplier)

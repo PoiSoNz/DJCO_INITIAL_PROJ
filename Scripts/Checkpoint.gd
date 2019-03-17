@@ -1,6 +1,6 @@
 extends Node2D
 
-const bonus_drop_per_sec = 300
+onready var bonus_drop_per_sec = 200
 var current_bonus = 3000
 var bonus_drop_enabled = true
 var is_active = false
@@ -18,7 +18,18 @@ func bleed_bonus(delta):
 	if current_bonus <= 0:
 		current_bonus = 0
 		toggle_enable()
-
+		
+func change_bonus_drop(multiplier):
+	match multiplier:
+		1:
+			bonus_drop_per_sec = 300
+		2: 
+			bonus_drop_per_sec = 200
+		3: 
+			bonus_drop_per_sec = 100
+		_:
+			print("invalid multiplier in change_bonus_drop")
+			
 func _on_Area2D_body_entered(body):
 	if body.get_parent().name == "Player":
 		body.get_parent().add_score(current_bonus)

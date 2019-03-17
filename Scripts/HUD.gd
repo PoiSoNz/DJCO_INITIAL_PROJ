@@ -3,7 +3,7 @@ extends Node
 signal health_changed(oldHealth, newHealth)
 signal bled(oldHealth, newHealth)
 signal immunity(immunity_type)
-signal bonus(value)
+signal bonus(bonus)
 signal score(value)
 
 signal croissant()
@@ -27,8 +27,8 @@ func _on_Health_bled(oldHealth, newHealth):
 func _on_Player_immunity(immunity_type):
 	emit_signal("immunity", immunity_type)
 
-func _on_CheckPoints_send_bonus(value):
-	emit_signal("bonus", value)
+func _on_CheckPoints_send_bonus(bonus):
+	emit_signal("bonus", bonus)
 
 func _on_Player_score(value):
 	emit_signal("score", value)
