@@ -15,10 +15,10 @@ const slideCooldown = 0.3
 
 const knockbackXForce = 500
 const knockbackYForce = 500
-const knockbackCooldown = 0.1
+const knockbackCooldown = 0.2
 var knockback_timer = null
 
-const recover_duration = 1.5
+const recover_duration = 0.4
 var recover_timer = null
 
 var is_slowed = false
@@ -59,7 +59,7 @@ func _ready():
 	playback.start("Idle")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	frameDelta = delta;
 	
 	check_ceiling()
@@ -82,6 +82,7 @@ func _process(delta):
 		var slowed_velocity = Vector2(0.6*velocity.x,velocity.y)
 		move_and_slide(slowed_velocity, floorNormal)
 	else:
+		print(is_knocked)
 		move_and_slide(velocity, floorNormal)
 
 func change_hit_box(anim_state):
@@ -120,10 +121,10 @@ func check_sliding(delta):
 
 func apply_knock_back():
 	self.set_collision_layer_bit(1, 0)
-	if velocity.x >= 0:
-		velocity = Vector2(-knockbackXForce, -knockbackYForce)
-	else:
+	if $Sprite.flip_h:
 		velocity = Vector2(knockbackXForce, -knockbackYForce)
+	else:
+		velocity = Vector2(-knockbackXForce, -knockbackYForce)	
 	is_knocked = true
 	knockback_timer.start()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/CleaningLadyMovement.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/CleaningLady/empregada_animacao.png" type="Texture" id=2]
@@ -41,9 +41,6 @@ tracks/0/keys = {
 "values": [ 0, 3, 3 ]
 }
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 36.1947, 29.7477 )
-
 [node name="CleaningLady" type="Node2D"]
 
 [node name="Lady" type="KinematicBody2D" parent="."]
@@ -82,11 +79,8 @@ position = Vector2( 0.0986929, -23.1188 )
 scale = Vector2( 0.223686, 0.223686 )
 texture = ExtResource( 4 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CleaningTrolley"]
-shape = SubResource( 4 )
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CleaningTrolley"]
-position = Vector2( -82.7393, -8.97213 )
+position = Vector2( -81.4876, -8.97213 )
 scale = Vector2( 1, 1.00588 )
-polygon = PoolVector2Array( 67.3258, -66.4931, 66.2287, -41.7138, 69.2535, -34.2973, 76.3216, -34.1696, 78.2493, -20.7547, 87.7746, -20.9646, 87.4779, -33.7721, 94.4418, -37.2358, 90.5865, -57.9331, 81.468, -57.8117, 77.2212, -66.4931 )
+polygon = PoolVector2Array( 65.9583, -66.3694, 65.2658, -42.662, 67.7362, -34.7216, 76.3216, -34.1696, 77.0227, -20.0092, 45.1362, -20.0939, 44.9311, 38.5923, 118.07, 38.7581, 118.165, 19.2906, 108.108, -19.5028, 108.108, -22.3579, 105.775, -22.0902, 105.775, -19.3244, 87.1683, -19.0768, 87.4779, -33.7721, 94.4418, -37.2358, 90.5865, -57.9331, 79.6706, -57.0037, 76.8444, -66.4734 )
 

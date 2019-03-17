@@ -1,12 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Sprites/Platforms/solid_light.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Sprites/Platforms/solid_dark.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sprites/Platforms/edge_light.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Sprites/Platforms/edge_dark.png" type="Texture" id=4]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 720, 60 )
 
 [node name="Platform" type="Node2D"]
 position = Vector2( -50, -40 )
@@ -70,9 +67,10 @@ position = Vector2( 70, 90 )
 build_mode = 1
 polygon = PoolVector2Array( -730, -50, -630, 50, 770, 50, 770, 15, 705, -50 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 60, 80 )
-scale = Vector2( 1, 0.5 )
-shape = SubResource( 1 )
-disabled = true
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+visible = false
+margin_left = -660.0
+margin_top = 41.0
+margin_right = 775.0
+margin_bottom = 81.0
 

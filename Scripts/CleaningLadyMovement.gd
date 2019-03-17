@@ -91,7 +91,7 @@ func get_trolley_destination(collisionNormal):
 func get_range_info(platform):
 	#print("BOAS")
 	var platformScaleX = platform.get_parent().scale.x
-	var platformOriginalHalfLength = platform.get_node("CollisionShape2D").get_shape().get_extents().x
+	var platformOriginalHalfLength = platform.get_node("ColorRect").rect_size.x/2
 	var platformHalfLength = platformOriginalHalfLength * platformScaleX
 	
 	var platformPositionX = platform.get_parent().global_position.x
