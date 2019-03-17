@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Node2D
 
 var velocity = Vector2(200, 0)
 var movementDirection = 1
@@ -34,9 +34,7 @@ func _ready():
 func _physics_process(delta):
 	frameDelta = delta;
 	
-	apply_gravity()
-	
-	check_collision()
+	#check_collision()
 	
 	if is_idle:
 		set_cleaning_lady_animation("Idle")
@@ -47,7 +45,7 @@ func _physics_process(delta):
 	if repositioning:
 		check_repositioning_complete()
 	
-	move_and_slide(Vector2(velocity.x * movementDirection, velocity.y), floorNormal)
+	position.x += apply_delta(velocity.x * movementDirection)
 
 func apply_delta(value):
 	return value * frameDelta
@@ -56,36 +54,17 @@ func set_cleaning_lady_animation(newAnimation):
 	if $Sprite/AnimationPlayer.current_animation != newAnimation:
 		$Sprite/AnimationPlayer.play(newAnimation)
 
-func check_collision():
-	# Cleaning lady stops for a while after it collides with any object, being it a player or a cleaning trolley.
-	var collision_info = move_and_collide(Vector2(0, 0))
-	if collision_info:
-		var colliderParent = collision_info.collider.get_parent()
-		var collider = collision_info.collider
-		# Stop lady movement and push trolley when it collides against it
-		if collider.name == "CleaningTrolley":
-			start_idle_period()
-			collider.push(get_trolley_destination(collision_info.normal))
-			repositioning = true
-		# Just stop lady movement when it collides against the player
-		elif colliderParent.name == "Player":
-			colliderParent.inflict_damage(damage)
-			start_idle_period()
-		# Obtain trolley possible movement range
-		elif check_boundaries && colliderParent.name.begins_with("Platform"):
-			print("ENTROU")
-			get_range_info(collider)
-			check_boundaries = false
+#func check_collision():
+
 
 func get_trolley_destination(collisionNormal):
 	if collisionNormal == leftSideCollision:
-		movementDirection = 1
 		repositioningDestination = platformMaxRangeX + repositioningDistance
-		print("trolley dest ", platformMaxRangeX)
+		print("max ", platformMaxRangeX)
 		return platformMaxRangeX
 	elif collisionNormal == rightSideCollision:
-		movementDirection = -1
 		repositioningDestination = platformMinRangeX - repositioningDistance
+		print("min ", platformMinRangeX)
 		return platformMinRangeX
 
 func get_range_info(platform):
@@ -115,19 +94,35 @@ func check_repositioning_complete():
 func make_trolley_hittable():
 	get_parent().get_node("CleaningTrolley").set_collision_layer_bit(2, 1)
 
-func check_wall():
-	if is_on_wall():
-		velocity.x = 0
-
-func apply_gravity():
-	if is_on_floor():
-		velocity.y = 0
-	else:
-		velocity += apply_delta(gravity)
-
 func start_idle_period():
-	is_idle = true
-	idle_timer.start()
+	if !is_idle:
+		is_idle = true
+		idle_timer.start()
 
 func on_idle_period_end():
 	is_idle = false
+
+func _on_Area2D_body_entered(body):
+	# Cleaning lady stops for a while after it collides with any object, being it a player or a cleaning trolley.
+		var colliderParent = body.get_parent()
+		var collider = body
+		# Stop lady movement and push trolley when it collides against it
+		if collider.name == "CleaningTrolley" && !repositioning && !is_idle:
+			start_idle_period()
+			collider.push(get_trolley_destination(Vector2(-movementDirection, 0)))
+			repositioning = true
+		# Just stop lady movement when it collides against the player
+		elif colliderParent.name == "Player" && !body.is_knocked && !body.recovering:
+			colliderParent.inflict_damage(damage)
+			start_idle_period()
+		# Obtain trolley possible movement range
+		elif check_boundaries && colliderParent.name.begins_with("Platform"):
+			print("ENTROU")
+			get_range_info(collider)
+			check_boundaries = false
+	
+	
+	
+#	var collider = body.get_parent()
+
+			

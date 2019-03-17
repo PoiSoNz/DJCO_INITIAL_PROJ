@@ -46,7 +46,7 @@ shape = SubResource( 1 )
 position = Vector2( 960, 141 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Floor"]
-position = Vector2( -39.2961, 958.486 )
+position = Vector2( -9.82228, 958.486 )
 shape = SubResource( 1 )
 
 [node name="Distance Between Layers" type="ColorRect" parent="Platforms"]
@@ -85,5 +85,5 @@ position = Vector2( 698.419, 959.088 )
 position = Vector2( 1735.86, 908.829 )
 
 [node name="CleaningLady" parent="Obstacles" instance=ExtResource( 9 )]
-position = Vector2( 789.275, 688.383 )
+position = Vector2( 788.023, 699.666 )
 

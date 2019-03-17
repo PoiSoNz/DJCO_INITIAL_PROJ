@@ -5,9 +5,6 @@
 [ext_resource path="res://Scripts/CleaningTrolley.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Sprites/CleaningLady/cleaning_trolley.png" type="Texture" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 124.986, 219.76 )
-
 [sub_resource type="Animation" id=2]
 resource_name = "Idle"
 loop = true
@@ -41,21 +38,18 @@ tracks/0/keys = {
 "values": [ 0, 3, 3 ]
 }
 
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 125, 268.916 )
+
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 29.9291, 27.4097 )
+extents = Vector2( 28.7746, 26.6326 )
 
 [node name="CleaningLady" type="Node2D"]
 
-[node name="Lady" type="KinematicBody2D" parent="."]
+[node name="Lady" type="Node2D" parent="."]
 position = Vector2( -193, -14 )
 scale = Vector2( 1.25, 1.25 )
-collision_layer = 0
-collision_mask = 7
 script = ExtResource( 1 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lady"]
-scale = Vector2( 0.15, 0.15 )
-shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Lady"]
 scale = Vector2( 1.4, 1.4 )
@@ -69,6 +63,14 @@ autoplay = "Walking"
 playback_speed = 1.5
 anims/Idle = SubResource( 2 )
 anims/Walking = SubResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="Lady"]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lady/Area2D"]
+position = Vector2( 6.10352e-005, 7.10119 )
+scale = Vector2( 0.15, 0.15 )
+shape = SubResource( 5 )
 
 [node name="CleaningTrolley" type="KinematicBody2D" parent="."]
 position = Vector2( -0.350189, -0.5 )
@@ -91,7 +93,8 @@ scale = Vector2( 0.223686, 0.223686 )
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CleaningTrolley"]
-position = Vector2( -6.46894, 2.36668 )
+position = Vector2( -6.7188, 2.93238 )
 shape = SubResource( 4 )
 
+[connection signal="body_entered" from="Lady/Area2D" to="Lady" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="CleaningTrolley/Area2D" to="CleaningTrolley" method="_on_Area2D_body_entered"]
