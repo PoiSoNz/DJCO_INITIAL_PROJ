@@ -5,10 +5,10 @@ var ECTS = 10000
 var score = 0
 
 # Vending machine item prices
-const croissant_price = 40
-const water_price = 50
-const coffee_price = 70
-const special_merend_price = 150
+const croissant_price = 20
+const water_price = 35
+const coffee_price = 85
+const special_merend_price = 120
 
 # Vending machine item stats
 const croissant_hp_bonus = 40
@@ -24,7 +24,7 @@ const persistent_immunity = 2
 var immunity_type = no_immunity
 var immunity_timer = null
 
-#HealthbBar
+#HealthBar
 signal reenable_bleeding()
 signal immunity(immunity_type)
 
