@@ -4,7 +4,7 @@ const types_num = 3
 const texture_width = 1000;
 const texture_height = 296;
 
-const coin_values = [40, 15, 4] # [Gold, Silver, Bronze]
+const coin_values = [50, 35, 20] # [Gold, Silver, Bronze]
 
 var type = 0 # Gold = 0, Silve = 1, Bronze = 2
 var value = coin_values[type]
