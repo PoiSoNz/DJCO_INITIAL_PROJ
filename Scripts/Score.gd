@@ -22,3 +22,6 @@ func _on_HUD_score(value):
 		$Tween.interpolate_property($TotalScore/Value, "rect_scale:y", 1.5, 1, 0.5, Tween.TRANS_CUBIC,Tween.EASE_OUT)
 		$Tween.start()
 		$TotalScore/Value.text = str(floor(value))
+
+func _on_HUD_bonus_info(bar_value, multiplier_value):
+	$CurrentBonus/BonusInfo/ProgressBar.value = bar_value

@@ -16,6 +16,7 @@ func _ready():
 func _process(delta):
 	check_cps()
 	check_fail()
+	$CheckPoints.receive_player_pos($Player/KinematicBody2D.global_position.y, delta)
 
 func instanceLevel():
 	var l = level.instance()

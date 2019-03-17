@@ -16,6 +16,8 @@ signal water_ended()
 signal coffee_ended()
 signal special_ended()
 
+signal bonus_info(bar_value, multiplier_value)
+
 func _on_Health_health_changed(oldHealth, newHealth):
 	emit_signal("health_changed", oldHealth, newHealth)
 
@@ -58,5 +60,5 @@ func _on_KinematicBody2D_coffee_ended():
 func _on_Player_special_ended():
 	emit_signal("special_ended")
 
-
-
+func _on_CheckPoints_send_bonus_info(bar_value, multiplier_value):
+	emit_signal("bonus_info", bar_value, multiplier_value)

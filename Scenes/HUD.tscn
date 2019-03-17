@@ -23,6 +23,7 @@ rect_scale = Vector2( 0.6, 0.6 )
 
 [connection signal="bled" from="." to="HealthBar" method="_on_HUD_bled"]
 [connection signal="bonus" from="." to="Scores" method="_on_HUD_bonus"]
+[connection signal="bonus_info" from="." to="Scores" method="_on_HUD_bonus_info"]
 [connection signal="coffee" from="." to="PowerUps" method="_on_HUD_coffee"]
 [connection signal="coffee_ended" from="." to="PowerUps" method="_on_HUD_coffee_ended"]
 [connection signal="croissant" from="." to="PowerUps" method="_on_HUD_croissant"]

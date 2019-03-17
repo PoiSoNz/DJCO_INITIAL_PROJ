@@ -32,6 +32,7 @@ parameters/playback = SubResource( 1 )
 [node name="HUD" parent="CanvasLayer" instance=ExtResource( 4 )]
 
 [connection signal="send_bonus" from="CheckPoints" to="CanvasLayer/HUD" method="_on_CheckPoints_send_bonus"]
+[connection signal="send_bonus_info" from="CheckPoints" to="CanvasLayer/HUD" method="_on_CheckPoints_send_bonus_info"]
 [connection signal="bought_coffee" from="Player" to="CanvasLayer/HUD" method="_on_Player_bought_coffee"]
 [connection signal="bought_croissant" from="Player" to="CanvasLayer/HUD" method="_on_Player_bought_croissant"]
 [connection signal="bought_special" from="Player" to="CanvasLayer/HUD" method="_on_Player_bought_special"]
