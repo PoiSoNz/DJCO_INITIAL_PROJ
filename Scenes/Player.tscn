@@ -144,6 +144,7 @@ texture = ExtResource( 12 )
 
 [node name="ParticlesCoffee" type="Particles2D" parent="KinematicBody2D"]
 position = Vector2( -18.4903, 42.2636 )
+emitting = false
 amount = 7
 process_material = ExtResource( 13 )
 texture = ExtResource( 14 )

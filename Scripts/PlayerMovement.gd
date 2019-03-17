@@ -84,6 +84,12 @@ func _physics_process(delta):
 	else:
 		print(is_knocked)
 		move_and_slide(velocity, floorNormal)
+	
+	check_out_of_bonds()
+
+func check_out_of_bonds():
+	if position.x < $Camera2D.backingLimitX:
+		position.x = $Camera2D.backingLimitX
 
 func change_hit_box(anim_state):
 	match anim_state:
