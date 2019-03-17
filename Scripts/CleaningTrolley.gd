@@ -56,6 +56,5 @@ func apply_gravity(delta):
 
 func _on_Area2D_body_entered(body):
 	var collider = body.get_parent()
-	if collider.name == "Player":
-		print("Entrou")
+	if collider.name == "Player" && !body.is_knocked && !body.recovering:
 		collider.inflict_damage(damage)

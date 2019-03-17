@@ -20,6 +20,7 @@ var knockback_timer = null
 
 const recover_duration = 0.4
 var recover_timer = null
+var recovering = false
 
 var is_slowed = false
 var is_knocked = false
@@ -228,8 +229,12 @@ func on_movement_speed_bonus_end():
 	emit_signal("coffee_ended")
 
 func on_knockback_end():
+	print("acabou knockback")
 	is_knocked = false
 	recover_timer.start()
+	recovering = true
 
 func on_recovery_end():
+	print("recover acabou")
+	recovering = false
 	self.set_collision_layer_bit(1, 1)

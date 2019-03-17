@@ -11,7 +11,6 @@ flag_align_y = true
 flag_disable_z = true
 spread = 50.0
 gravity = Vector3( -200, -35, 0 )
-angular_velocity = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.2
