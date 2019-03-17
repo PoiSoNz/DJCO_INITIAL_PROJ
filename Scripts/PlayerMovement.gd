@@ -47,7 +47,6 @@ func _ready():
 	knockback_timer.set_wait_time(knockbackCooldown)
 	knockback_timer.connect("timeout", self, "on_knockback_end")
 	add_child(knockback_timer)
-	
 	# Prepare recover timer
 	recover_timer = Timer.new()
 	recover_timer.set_one_shot(true)
@@ -82,7 +81,7 @@ func _physics_process(delta):
 		var slowed_velocity = Vector2(0.6*velocity.x,velocity.y)
 		move_and_slide(slowed_velocity, floorNormal)
 	else:
-		print(is_knocked)
+		#print(is_knocked)
 		move_and_slide(velocity, floorNormal)
 	
 	check_out_of_bonds()
@@ -98,25 +97,25 @@ func change_hit_box(anim_state):
 			$CollisionShape2D.position.y = 2
 			$CollisionShape2D.shape.extents.x = 24
 			$CollisionShape2D.shape.extents.y = 42
-			print("idle", $CollisionShape2D.shape.extents)
+			#print("idle", $CollisionShape2D.shape.extents)
 		"DoubleJump":
 			$CollisionShape2D.position.x = 2
 			$CollisionShape2D.position.y = -3
 			$CollisionShape2D.shape.extents.x = 27
 			$CollisionShape2D.shape.extents.y = 37
-			print("doublejump", $CollisionShape2D.shape.extents)
+			#print("doublejump", $CollisionShape2D.shape.extents)
 		"Slide":
 			$CollisionShape2D.position.x = 4
 			$CollisionShape2D.position.y = 22
 			$CollisionShape2D.shape.extents.x = 34
 			$CollisionShape2D.shape.extents.y = 22
-			print("slide", $CollisionShape2D.shape.extents)
+			#print("slide", $CollisionShape2D.shape.extents)
 		_: #Run or Jump
 			$CollisionShape2D.position.x = 8
 			$CollisionShape2D.position.y = 0
 			$CollisionShape2D.shape.extents.x = 24
 			$CollisionShape2D.shape.extents.y = 44
-			print("run/jump", $CollisionShape2D.shape.extents)
+			#print("run/jump", $CollisionShape2D.shape.extents)
 
 func check_sliding(delta):
 	if sliding:

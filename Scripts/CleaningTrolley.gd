@@ -17,7 +17,7 @@ func _ready():
 func _physics_process(delta):
 	apply_gravity(delta)
 	
-	check_player_hit()
+	#check_player_hit()
 	
 	if !arrived:
 		check_destination_arrive()
@@ -53,3 +53,9 @@ func apply_gravity(delta):
 		velocity.y = 0
 	else:
 		velocity += gravity * delta
+
+func _on_Area2D_body_entered(body):
+	var collider = body.get_parent()
+	if collider.name == "Player":
+		print("Entrou")
+		collider.inflict_damage(damage)
