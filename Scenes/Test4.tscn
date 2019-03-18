@@ -1,13 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Scripts/Test3Manager.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Test4Manager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Backgrounds/mid.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/VendingMachine.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Yorn.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Bench.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/CleaningLady.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1500, 100 )
@@ -25,16 +24,18 @@ centered = false
 [node name="Layer 2" type="Node2D" parent="Platforms"]
 
 [node name="Platform2" parent="Platforms/Layer 2" instance=ExtResource( 3 )]
-position = Vector2( 1687.17, 440 )
-scale = Vector2( 1.5, 0.5 )
+position = Vector2( 1000, 440 )
+scale = Vector2( 0.2, 0.5 )
+
+[node name="Platform3" parent="Platforms/Layer 2" instance=ExtResource( 3 )]
+position = Vector2( 2200, 440 )
+scale = Vector2( 0.2, 0.5 )
 
 [node name="Layer 1" type="Node2D" parent="Platforms"]
 
-[node name="Platform5" parent="Platforms/Layer 1" instance=ExtResource( 3 )]
+[node name="Platform1" parent="Platforms/Layer 1" instance=ExtResource( 3 )]
 position = Vector2( 704, 710 )
-
-[node name="Platform6" parent="Platforms/Layer 1" instance=ExtResource( 3 )]
-position = Vector2( 2500, 710 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="Ceiling" type="StaticBody2D" parent="Platforms"]
 position = Vector2( 960, 139.5 )
@@ -54,33 +55,32 @@ position = Vector2( 2113.45, 282.501 )
 scale = Vector2( 0.2, 0.2 )
 
 [node name="VendingMachine2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 3005.46, 561.225 )
-scale = Vector2( 0.2, 0.2 )
-
-[node name="VendingMachine3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 220.274, 561.225 )
+position = Vector2( 427.033, 554.409 )
 scale = Vector2( 0.2, 0.2 )
 
 [node name="GoldCoin" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1997.48, 375.43 )
+position = Vector2( 2256.5, 316.356 )
 
 [node name="GoldCoin2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1878.65, 299.457 )
+position = Vector2( 2103.58, 381.252 )
 
 [node name="GoldCoin3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1364.38, 387.118 )
+position = Vector2( 2382.27, 350.765 )
 
 [node name="GoldCoin4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1057.09, 838.293 )
-
-[node name="SilverCoin" parent="." instance=ExtResource( 5 )]
-position = Vector2( 619.251, 628.83 )
+position = Vector2( 612.435, 642.462 )
 
 [node name="BronzeCoin" parent="." instance=ExtResource( 5 )]
-position = Vector2( 932.599, 868.248 )
+position = Vector2( 1316.78, 906.023 )
 
 [node name="BronzeCoin2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1174.78, 882.434 )
+position = Vector2( 2323.3, 937.831 )
+
+[node name="BronzeCoin3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1825.72, 944.648 )
+
+[node name="BronzeCoin4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 2443.72, 942.376 )
 
 [node name="Obstacles" type="Node2D" parent="."]
 
@@ -88,15 +88,14 @@ position = Vector2( 1174.78, 882.434 )
 position = Vector2( 706.011, 629.177 )
 
 [node name="Bench" parent="Obstacles" instance=ExtResource( 7 )]
-position = Vector2( 550.419, 959.088 )
+position = Vector2( 1134.34, 959.088 )
 
 [node name="Bench2" parent="Obstacles" instance=ExtResource( 7 )]
-position = Vector2( 936.807, 928.129 )
-scale = Vector2( 1.6, 1.8 )
+position = Vector2( 1650.81, 959.64 )
 
-[node name="CleaningLady" parent="Obstacles" instance=ExtResource( 8 )]
-position = Vector2( 1570.15, 425.19 )
+[node name="Bench3" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 1902.81, 959.64 )
 
-[node name="CleaningLady2" parent="Obstacles" instance=ExtResource( 8 )]
-position = Vector2( 2121.44, 421.294 )
+[node name="Bench4" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 2044.21, 959.573 )
 
