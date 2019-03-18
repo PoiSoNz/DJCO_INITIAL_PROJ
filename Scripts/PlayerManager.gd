@@ -36,9 +36,11 @@ signal bought_croissant()
 signal bought_water()
 signal bought_coffee()
 signal bought_special()
-
 signal water_ended()
 signal special_ended()
+
+#Money
+signal money(ects)
 
 #signal shield(immunity_type, immunity_timer)
 #signal coffee(movement_speed_bonus_timer)
@@ -49,6 +51,7 @@ func _ready():
 	immunity_timer.set_one_shot(true)
 	immunity_timer.connect("timeout", self, "on_immunity_end")
 	add_child(immunity_timer)
+	emit_signal("money", ECTS)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -63,6 +66,7 @@ func buy_attempt(item):
 				$KinematicBody2D/Health.health_increment(croissant_hp_bonus)
 				ECTS -= croissant_price
 				emit_signal("bought_croissant")
+				emit_signal("money", ECTS)
 				$KinematicBody2D/ParticlesCroissant.emitting = true
 				print("croissant placeholder")
 		"water":
@@ -70,12 +74,14 @@ func buy_attempt(item):
 				ECTS -= water_price
 				set_immunity(water_bonus_duration, one_time_immunity)
 				emit_signal("bought_water")
+				emit_signal("money", ECTS)
 				print("water placeholder")
 		"coffee":
 			if ECTS >= coffee_price:
 				$KinematicBody2D.set_movement_speed_bonus(coffee_bonus_duration, coffee_speed_bonus)
 				ECTS -= coffee_price
 				emit_signal("bought_coffee")
+				emit_signal("money", ECTS)
 				print("coffee placeholder")
 		"special_merend":
 			if ECTS >= special_merend_price:
@@ -87,10 +93,12 @@ func buy_attempt(item):
 				# Movement speed bonus
 				$KinematicBody2D.set_movement_speed_bonus(special_merend_duration, coffee_speed_bonus * 0.7)
 				emit_signal("bought_special")
+				emit_signal("money", ECTS)
 				print("special merend placeholder")
 
 func add_currency(value):
 	ECTS += value
+	emit_signal("money", ECTS)
 
 func add_score(value):
 	score += value

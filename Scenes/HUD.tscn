@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/HealthBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Score.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/PowerUps.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Money.tscn" type="PackedScene" id=5]
 
 [node name="HUD" type="Control"]
 margin_right = 40.0
@@ -11,15 +12,23 @@ margin_bottom = 40.0
 script = ExtResource( 1 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 2 )]
+margin_top = 10.0
+margin_bottom = 50.0
 
 [node name="Scores" parent="." instance=ExtResource( 3 )]
 
 [node name="PowerUps" parent="." instance=ExtResource( 4 )]
 margin_left = 190.796
-margin_top = 124.65
+margin_top = 135.0
 margin_right = 190.796
-margin_bottom = 124.65
+margin_bottom = 135.0
 rect_scale = Vector2( 0.6, 0.6 )
+
+[node name="Money" parent="." instance=ExtResource( 5 )]
+margin_left = 51.2265
+margin_top = 162.577
+margin_right = 51.2265
+margin_bottom = 162.577
 
 [connection signal="bled" from="." to="HealthBar" method="_on_HUD_bled"]
 [connection signal="bonus" from="." to="Scores" method="_on_HUD_bonus"]
@@ -29,6 +38,7 @@ rect_scale = Vector2( 0.6, 0.6 )
 [connection signal="croissant" from="." to="PowerUps" method="_on_HUD_croissant"]
 [connection signal="health_changed" from="." to="HealthBar" method="_on_HUD_health_changed"]
 [connection signal="immunity" from="." to="HealthBar" method="_on_HUD_immunity"]
+[connection signal="money" from="." to="Money" method="_on_HUD_money"]
 [connection signal="score" from="." to="Scores" method="_on_HUD_score"]
 [connection signal="special" from="." to="PowerUps" method="_on_HUD_special"]
 [connection signal="special_ended" from="." to="PowerUps" method="_on_HUD_special_ended"]

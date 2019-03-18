@@ -38,6 +38,7 @@ parameters/playback = SubResource( 1 )
 [connection signal="bought_special" from="Player" to="CanvasLayer/HUD" method="_on_Player_bought_special"]
 [connection signal="bought_water" from="Player" to="CanvasLayer/HUD" method="_on_Player_bought_water"]
 [connection signal="immunity" from="Player" to="CanvasLayer/HUD" method="_on_Player_immunity"]
+[connection signal="money" from="Player" to="CanvasLayer/HUD" method="_on_Player_money"]
 [connection signal="score" from="Player" to="CanvasLayer/HUD" method="_on_Player_score"]
 [connection signal="special_ended" from="Player" to="CanvasLayer/HUD" method="_on_Player_special_ended"]
 [connection signal="water_ended" from="Player" to="CanvasLayer/HUD" method="_on_Player_water_ended"]

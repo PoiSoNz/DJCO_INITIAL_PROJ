@@ -18,6 +18,8 @@ signal special_ended()
 
 signal bonus_info(bar_value, multiplier_value)
 
+signal money(ects)
+
 func _on_Health_health_changed(oldHealth, newHealth):
 	emit_signal("health_changed", oldHealth, newHealth)
 
@@ -62,3 +64,6 @@ func _on_Player_special_ended():
 
 func _on_CheckPoints_send_bonus_info(bar_value, multiplier_value):
 	emit_signal("bonus_info", bar_value, multiplier_value)
+	
+func _on_Player_money(ects):
+	emit_signal("money", ects)

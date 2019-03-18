@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Score.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/code_bold_small.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Fonts/code_bold_even_smaller.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Fonts/code_bold.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/Sprites/dark_v2.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Sprites/light_v2.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Sprites/Hud/bonus_bar_bg.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Sprites/Hud/bonus_bar_fill.png" type="Texture" id=7]
+[ext_resource path="res://Fonts/code_bold_small.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Assets/Sprites/Hud/bonus_bar_bg.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/Hud/bonus_bar_fill.png" type="Texture" id=8]
 
 [node name="Scores" type="Control"]
 anchor_right = 1.0
@@ -40,9 +41,9 @@ align = 1
 valign = 1
 
 [node name="CurrentBonus" type="Control" parent="."]
-margin_left = 885.0
+margin_left = 855.0
 margin_top = 50.0
-margin_right = 925.0
+margin_right = 895.0
 margin_bottom = 90.0
 
 [node name="ProgressBar" type="TextureProgress" parent="CurrentBonus"]
@@ -56,10 +57,10 @@ texture_progress = ExtResource( 5 )
 fill_mode = 5
 
 [node name="Value" type="Label" parent="CurrentBonus"]
-margin_left = 2.89117
-margin_right = 152.891
+margin_left = 0.89117
+margin_right = 150.891
 margin_bottom = 150.0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 6 )
 text = "3000"
 align = 1
 valign = 1
@@ -79,8 +80,8 @@ rect_rotation = -90.0
 rect_scale = Vector2( 0.15, 0.2 )
 max_value = 300.0
 value = 199.0
-texture_under = ExtResource( 6 )
-texture_progress = ExtResource( 7 )
+texture_under = ExtResource( 7 )
+texture_progress = ExtResource( 8 )
 
 [node name="Tween" type="Tween" parent="."]
 
