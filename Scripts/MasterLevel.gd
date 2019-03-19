@@ -1,6 +1,6 @@
 extends Node2D
 
-const levelSize = 3500
+const levelSize = 3840
 
 onready var level = preload("res://Scenes/Test5.tscn")
 onready var checkpoint = preload("res://Scenes/Checkpoint.tscn")
