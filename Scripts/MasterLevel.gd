@@ -7,7 +7,7 @@ onready var level2 = preload("res://Scenes/Test2.tscn")
 onready var level3 = preload("res://Scenes/Test3.tscn")
 onready var level4 = preload("res://Scenes/Test4.tscn")
 onready var level5 = preload("res://Scenes/Test5.tscn")
-onready var level = preload("res://Scenes/Test5.tscn")
+onready var first_level = preload("res://Scenes/FirstLevel.tscn")
 
 onready var existingLevels = [level1, level2, level3, level4, level5]
 onready var levelsToInstance = []
@@ -31,8 +31,8 @@ func _ready():
 	
 func chooseLevels():
 		randomize()
-		var previousLevel = randi() % existingLevels.size()
-		levelsToInstance.append(existingLevels[previousLevel])
+		var previousLevel = -1
+		levelsToInstance.append(first_level)
 	
 		var index = previousLevel
 	
@@ -54,6 +54,7 @@ func _process(delta):
 func instanceLevel():
 	var l = levelsToInstance[currentIndex].instance()
 	currentIndex += 1
+	print(currentLevel)
 	l.position.x = levelSize * currentLevel
 	$Levels.add_child(l)
 	levelArray.append(l)
