@@ -2,7 +2,18 @@ extends Node2D
 
 const levelSize = 3840
 
+onready var level1 = preload("res://Scenes/Test1.tscn")
+onready var level2 = preload("res://Scenes/Test2.tscn")
+onready var level3 = preload("res://Scenes/Test3.tscn")
+onready var level4 = preload("res://Scenes/Test4.tscn")
+onready var level5 = preload("res://Scenes/Test5.tscn")
 onready var level = preload("res://Scenes/Test5.tscn")
+
+onready var existingLevels = [level1, level2, level3, level4, level5]
+onready var levelsToInstance = []
+onready var currentIndex = 0
+const numLevels = 10
+
 onready var checkpoint = preload("res://Scenes/Checkpoint.tscn")
 var levelArray = []
 var checkPointArray = []
@@ -11,7 +22,28 @@ var currentLevel = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	instanceLevel()
+	chooseLevels()
+	if currentIndex != numLevels-1:
+		instanceLevel()
+#	else:
+#		instanceLastLevel()
+	
+func chooseLevels():
+		randomize()
+		var previousLevel = randi() % existingLevels.size()
+		levelsToInstance.append(existingLevels[previousLevel])
+	
+		var index = previousLevel
+	
+		for i in range(numLevels-1):
+			
+			while(index == previousLevel):
+				index = randi() % existingLevels.size()
+				
+			levelsToInstance.append(existingLevels[index])
+			previousLevel = index
+			
+			print(index)
 	
 func _process(delta):
 	check_cps()
@@ -19,7 +51,8 @@ func _process(delta):
 	$CheckPoints.receive_player_pos($Player/KinematicBody2D.global_position.y, delta)
 
 func instanceLevel():
-	var l = level.instance()
+	var l = levelsToInstance[currentIndex].instance()
+	currentIndex += 1
 	l.position.x = levelSize * currentLevel
 	$Levels.add_child(l)
 	levelArray.append(l)
