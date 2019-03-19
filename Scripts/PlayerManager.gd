@@ -75,6 +75,8 @@ func buy_attempt(item):
 				set_immunity(water_bonus_duration, one_time_immunity)
 				emit_signal("bought_water")
 				emit_signal("money", ECTS)
+				$KinematicBody2D/ParticlesWater.emitting = true
+				$KinematicBody2D/ParticlesSpecialMerend.emitting = false
 				print("water placeholder")
 		"coffee":
 			if ECTS >= coffee_price:
@@ -94,6 +96,8 @@ func buy_attempt(item):
 				$KinematicBody2D.set_movement_speed_bonus(special_merend_duration, coffee_speed_bonus * 0.7)
 				emit_signal("bought_special")
 				emit_signal("money", ECTS)
+				$KinematicBody2D/ParticlesWater.emitting = false
+				$KinematicBody2D/ParticlesSpecialMerend.emitting = true
 				print("special merend placeholder")
 
 func add_currency(value):
@@ -111,6 +115,7 @@ func inflict_damage(damage):
 		immunity_timer.stop()
 		emit_signal("immunity", immunity_type)
 		emit_signal("water_ended")
+		$KinematicBody2D/ParticlesWater.emitting = false
 	elif immunity_type == no_immunity:
 		$KinematicBody2D/Health.reduce_health(damage)
 
@@ -126,8 +131,10 @@ func on_immunity_end():
 
 	if immunity_just_ended == one_time_immunity:
 		emit_signal("water_ended")
+		$KinematicBody2D/ParticlesWater.emitting = false
 	elif immunity_just_ended == persistent_immunity:
 		emit_signal("special_ended")
+		$KinematicBody2D/ParticlesSpecialMerend.emitting = false
 	emit_signal("immunity", immunity_type)
 
 func _on_HealthBar_reenable_bleeding():

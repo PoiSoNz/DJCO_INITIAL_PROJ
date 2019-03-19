@@ -12,12 +12,12 @@
 [ext_resource path="res://Assets/Animations/Slide.tres" type="Animation" id=10]
 [ext_resource path="res://Assets/Particles/hp_particle_material.tres" type="Material" id=11]
 [ext_resource path="res://Assets/Particles/hp.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Particles/Smoke_particle_material.tres" type="Material" id=13]
-[ext_resource path="res://Assets/Particles/smoke.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Particles/star_particles_material.tres" type="Material" id=15]
-[ext_resource path="res://Assets/Particles/special_merend_stars.png" type="Texture" id=16]
-[ext_resource path="res://Assets/Particles/water_particles_material.tres" type="Material" id=17]
-[ext_resource path="res://Assets/Particles/water_bubbles.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Particles/water_particles_material.tres" type="Material" id=13]
+[ext_resource path="res://Assets/Particles/water_bubbles.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Particles/Smoke_particle_material.tres" type="Material" id=15]
+[ext_resource path="res://Assets/Particles/smoke.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Particles/star_particles_material.tres" type="Material" id=17]
+[ext_resource path="res://Assets/Particles/special_merend_stars.png" type="Texture" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 44 )
@@ -91,7 +91,7 @@ states/Run/position = Vector2( 744, 172 )
 states/Slide/node = SubResource( 6 )
 states/Slide/position = Vector2( 486, 42 )
 transitions = [ "Idle", "Run", SubResource( 7 ), "Idle", "Jump", SubResource( 8 ), "Run", "Jump", SubResource( 9 ), "Run", "Idle", SubResource( 10 ), "Jump", "Idle", SubResource( 11 ), "Jump", "Run", SubResource( 12 ), "Jump", "DoubleJump", SubResource( 13 ), "DoubleJump", "Idle", SubResource( 14 ), "DoubleJump", "Run", SubResource( 15 ), "Idle", "Slide", SubResource( 16 ), "Slide", "Idle", SubResource( 17 ), "Slide", "Run", SubResource( 18 ), "Run", "Slide", SubResource( 19 ), "Slide", "Jump", SubResource( 20 ) ]
-graph_offset = Vector2( 0, -5.89231 )
+graph_offset = Vector2( -7, 2.1077 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=22]
 
@@ -137,7 +137,6 @@ active = true
 parameters/playback = SubResource( 22 )
 
 [node name="ParticlesCroissant" type="Particles2D" parent="KinematicBody2D"]
-visible = false
 emitting = false
 amount = 15
 lifetime = 0.7
@@ -145,23 +144,23 @@ one_shot = true
 process_material = ExtResource( 11 )
 texture = ExtResource( 12 )
 
-[node name="ParticlesCoffee" type="Particles2D" parent="KinematicBody2D"]
-visible = false
-position = Vector2( -18.4903, 42.2636 )
+[node name="ParticlesWater" type="Particles2D" parent="KinematicBody2D"]
 emitting = false
-amount = 7
+amount = 30
+lifetime = 0.5
 process_material = ExtResource( 13 )
 texture = ExtResource( 14 )
 
-[node name="ParticlesSpecialMerend" type="Particles2D" parent="KinematicBody2D"]
-visible = false
-amount = 10
-lifetime = 0.75
+[node name="ParticlesCoffee" type="Particles2D" parent="KinematicBody2D"]
+position = Vector2( -15, 42.264 )
+amount = 7
 process_material = ExtResource( 15 )
 texture = ExtResource( 16 )
 
-[node name="Particles2D" type="Particles2D" parent="KinematicBody2D"]
-amount = 30
+[node name="ParticlesSpecialMerend" type="Particles2D" parent="KinematicBody2D"]
+emitting = false
+amount = 10
+lifetime = 0.75
 process_material = ExtResource( 17 )
 texture = ExtResource( 18 )
 

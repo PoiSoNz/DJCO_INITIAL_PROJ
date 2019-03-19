@@ -84,6 +84,16 @@ func _physics_process(delta):
 	else:
 		#print(is_knocked)
 		move_and_slide(velocity, floorNormal)
+	if velocity.x > standardMaxVelocity && anim_state == "Run":
+		$ParticlesCoffee.emitting = true
+		$ParticlesCoffee.scale.x = 1
+		$ParticlesCoffee.position.x = -15
+	else: if velocity.x < -standardMaxVelocity && anim_state == "Run":
+		$ParticlesCoffee.emitting = true
+		$ParticlesCoffee.scale.x = -1
+		$ParticlesCoffee.position.x = 15
+	else:
+		$ParticlesCoffee.emitting = false
 	
 	check_out_of_bonds()
 
