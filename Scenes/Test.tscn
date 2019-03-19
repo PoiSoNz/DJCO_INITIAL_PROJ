@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Scripts/GameManager.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Test2Manager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Backgrounds/mid.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/VendingMachine.tscn" type="PackedScene" id=4]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scenes/Bench.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=9]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 960, 100 )
