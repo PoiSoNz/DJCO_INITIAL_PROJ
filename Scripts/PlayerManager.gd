@@ -76,6 +76,7 @@ func buy_attempt(item):
 				emit_signal("bought_water")
 				emit_signal("money", ECTS)
 				$KinematicBody2D/ParticlesWater.emitting = true
+				$KinematicBody2D/ParticlesSpecialMerend.emitting = false
 				print("water placeholder")
 		"coffee":
 			if ECTS >= coffee_price:
