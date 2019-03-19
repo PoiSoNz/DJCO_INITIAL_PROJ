@@ -19,6 +19,7 @@ var levelArray = []
 var checkPointArray = []
 var checkPointRefArray = []
 var currentLevel = 0
+var deleteFlag = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -64,12 +65,14 @@ func instanceLevel():
 	checkPointRefArray.append(weakref(cp))
 	
 func check_cps():
-	if checkPointRefArray.size() != 0:
+	if checkPointRefArray.size() > 0:
 		if !checkPointRefArray[0].get_ref():
 			checkPointArray.pop_front()
 			checkPointRefArray.pop_front()
-			levelArray[0].queue_free()
-			levelArray.pop_front()
+			if deleteFlag:
+				levelArray[0].queue_free()
+				levelArray.pop_front()
+			deleteFlag = true
 		
 		if !checkPointArray[0].is_active:
 			checkPointArray[0].is_active = true
