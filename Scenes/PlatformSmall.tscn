@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Sprites/Platforms/solid_light.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/Platforms/solid_dark.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Platforms/edge_light.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Platforms/edge_dark.png" type="Texture" id=4]
+
+[node name="Platform" type="Node2D"]
+position = Vector2( -50, -40 )
+scale = Vector2( 1, 0.5 )
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="MainSprite5" type="Sprite" parent="Sprites"]
+position = Vector2( 108, 91 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 120, 560, 35 )
+
+[node name="MainSprite4" type="Sprite" parent="Sprites"]
+position = Vector2( 102, 83 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 105, 560, 35 )
+
+[node name="MainSprite3" type="Sprite" parent="Sprites"]
+position = Vector2( 68, 50 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 70, 560, 35 )
+
+[node name="MainSprite2" type="Sprite" parent="Sprites"]
+position = Vector2( 34, 17 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 35, 560, 35 )
+
+[node name="MainSprite" type="Sprite" parent="Sprites"]
+position = Vector2( 0, -18 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 560, 35 )
+
+[node name="Solid" type="Sprite" parent="Sprites"]
+position = Vector2( 140, 122 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 562, 34 )
+
+[node name="edge_light" type="Sprite" parent="Sprites"]
+position = Vector2( 319, 36 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 110, 0, 280, 187 )
+
+[node name="edge" type="Sprite" parent="Sprites"]
+position = Vector2( -281, -35 )
+scale = Vector2( 0.35, 0.35 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( 70, 90 )
+build_mode = 1
+polygon = PoolVector2Array( -310, -50, -210, 50, 350, 50, 350, 15, 285, -50 )
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+visible = false
+margin_left = -660.0
+margin_top = 41.0
+margin_right = 775.0
+margin_bottom = 81.0
+
