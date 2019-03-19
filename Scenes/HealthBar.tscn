@@ -18,10 +18,10 @@ margin_bottom = 40.0
 script = ExtResource( 1 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 50.0
-margin_top = 25.0
-margin_right = 130.0
-margin_bottom = 105.0
+margin_left = -0.977673
+margin_top = -7.651
+margin_right = 79.0223
+margin_bottom = 72.349
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "HP"
@@ -30,50 +30,50 @@ valign = 1
 autowrap = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-margin_left = 157.398
-margin_top = 39.9393
-margin_right = 454.398
-margin_bottom = 80.9393
+margin_left = 106.42
+margin_top = 7.2883
+margin_right = 403.42
+margin_bottom = 48.2883
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 custom_fonts/font = ExtResource( 3 )
 value = 30.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 245.0
-margin_top = 43.0
-margin_right = 247.0
-margin_bottom = 48.0
+margin_left = 194.022
+margin_top = 10.349
+margin_right = 196.022
+margin_bottom = 15.349
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-margin_left = 245.0
-margin_top = 53.0
-margin_right = 247.0
-margin_bottom = 58.0
+margin_left = 194.022
+margin_top = 20.349
+margin_right = 196.022
+margin_bottom = 25.349
 
 [node name="ColorRect5" type="ColorRect" parent="."]
-margin_left = 245.0
-margin_top = 63.0
-margin_right = 247.0
-margin_bottom = 68.0
+margin_left = 194.022
+margin_top = 30.349
+margin_right = 196.022
+margin_bottom = 35.349
 
 [node name="ColorRect6" type="ColorRect" parent="."]
-margin_left = 245.0
-margin_top = 73.0
-margin_right = 247.0
-margin_bottom = 78.0
+margin_left = 194.022
+margin_top = 40.349
+margin_right = 196.022
+margin_bottom = 45.349
 
 [node name="ColorRect3" type="ColorRect" parent="."]
-margin_left = 243.459
-margin_top = 80.7712
-margin_right = 249.459
-margin_bottom = 82.7712
+margin_left = 192.481
+margin_top = 48.1202
+margin_right = 198.481
+margin_bottom = 50.1202
 
 [node name="ColorRect4" type="ColorRect" parent="."]
-margin_left = 243.337
-margin_top = 38.3213
-margin_right = 249.337
-margin_bottom = 40.3213
+margin_left = 192.359
+margin_top = 5.6703
+margin_right = 198.359
+margin_bottom = 7.6703
 
 [node name="Tween" type="Tween" parent="."]
 

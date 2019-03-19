@@ -79,7 +79,7 @@ func _physics_process(delta):
 		change_hit_box(anim_state)
 	
 	if is_slowed && !is_knocked:
-		var slowed_velocity = Vector2(0.6*velocity.x,velocity.y)
+		var slowed_velocity = Vector2(0.85*velocity.x,velocity.y)
 		move_and_slide(slowed_velocity, floorNormal)
 	else:
 		#print(is_knocked)

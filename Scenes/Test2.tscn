@@ -51,10 +51,8 @@ shape = SubResource( 1 )
 
 [node name="Distance Between Layers" type="ColorRect" parent="Platforms"]
 visible = false
-margin_left = 1525.11
-margin_top = 240.226
-margin_right = 1609.11
-margin_bottom = 290.226
+margin_right = 1920.0
+margin_bottom = 240.0
 
 [node name="VendingMachine" parent="." instance=ExtResource( 4 )]
 position = Vector2( 547.243, 557.171 )

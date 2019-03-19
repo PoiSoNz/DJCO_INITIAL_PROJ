@@ -11,24 +11,34 @@ margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 1 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+margin_right = 1920.0
+margin_bottom = 240.0
+color = Color( 0, 0, 0, 1 )
+
 [node name="HealthBar" parent="." instance=ExtResource( 2 )]
-margin_top = 10.0
-margin_bottom = 50.0
+margin_left = 50.0
+margin_top = 30.0
+margin_right = 90.0
+margin_bottom = 70.0
 
 [node name="Scores" parent="." instance=ExtResource( 3 )]
+margin_top = -5.0
+margin_bottom = -5.0
 
 [node name="PowerUps" parent="." instance=ExtResource( 4 )]
 margin_left = 190.796
-margin_top = 135.0
+margin_top = 120.0
 margin_right = 190.796
-margin_bottom = 135.0
+margin_bottom = 120.0
 rect_scale = Vector2( 0.6, 0.6 )
 
 [node name="Money" parent="." instance=ExtResource( 5 )]
-margin_left = 51.2265
-margin_top = 162.577
-margin_right = 51.2265
-margin_bottom = 162.577
+margin_left = 50.0
+margin_top = 153.0
+margin_right = 50.0
+margin_bottom = 170.0
 
 [connection signal="bled" from="." to="HealthBar" method="_on_HUD_bled"]
 [connection signal="bonus" from="." to="Scores" method="_on_HUD_bonus"]

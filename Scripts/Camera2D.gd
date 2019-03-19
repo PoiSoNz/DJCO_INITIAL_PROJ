@@ -6,7 +6,7 @@ var furthestPlayerX
 var backingLimitX
 var maxBackingDistance
 
-const halfBackgroundHeight = 620
+const halfBackgroundHeight = 600
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
