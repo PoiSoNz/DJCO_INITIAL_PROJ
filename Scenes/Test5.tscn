@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Scripts/Test4Manager.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Test5Manager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Backgrounds/mid.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/VendingMachine.tscn" type="PackedScene" id=4]
@@ -24,18 +24,21 @@ centered = false
 [node name="Layer 2" type="Node2D" parent="Platforms"]
 
 [node name="Platform2" parent="Platforms/Layer 2" instance=ExtResource( 3 )]
-position = Vector2( 1000, 440 )
-scale = Vector2( 0.2, 0.5 )
+position = Vector2( 1250, 440 )
+scale = Vector2( 0.4, 0.5 )
 
 [node name="Platform3" parent="Platforms/Layer 2" instance=ExtResource( 3 )]
-position = Vector2( 2200, 440 )
-scale = Vector2( 0.2, 0.5 )
+position = Vector2( 2550, 440 )
 
 [node name="Layer 1" type="Node2D" parent="Platforms"]
 
 [node name="Platform1" parent="Platforms/Layer 1" instance=ExtResource( 3 )]
-position = Vector2( 704, 710 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 600, 710 )
+scale = Vector2( 0.7, 0.5 )
+
+[node name="Platform2" parent="Platforms/Layer 1" instance=ExtResource( 3 )]
+position = Vector2( 1700, 710 )
+scale = Vector2( 0.3, 0.5 )
 
 [node name="Ceiling" type="StaticBody2D" parent="Platforms"]
 position = Vector2( 960, 139.5 )
@@ -51,54 +54,57 @@ position = Vector2( -9.82228, 958.486 )
 shape = SubResource( 1 )
 
 [node name="VendingMachine" parent="." instance=ExtResource( 4 )]
-position = Vector2( 2250.45, 282.501 )
+position = Vector2( 2000.45, 282.501 )
 scale = Vector2( 0.2, 0.2 )
 
 [node name="VendingMachine2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 427.033, 554.409 )
+position = Vector2( 288.357, 561.946 )
 scale = Vector2( 0.2, 0.2 )
 
 [node name="GoldCoin" parent="." instance=ExtResource( 5 )]
-position = Vector2( 2093.25, 300.604 )
+position = Vector2( 1715.8, 310.715 )
 
 [node name="GoldCoin2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 2096.42, 409.892 )
+position = Vector2( 1880.85, 317.311 )
 
 [node name="GoldCoin3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 2198.98, 410.908 )
+position = Vector2( 1967.97, 361.863 )
 
-[node name="GoldCoin4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 612.435, 642.462 )
-
-[node name="GoldCoin5" parent="." instance=ExtResource( 5 )]
-position = Vector2( 2270.58, 342.173 )
+[node name="SilverCoin" parent="." instance=ExtResource( 5 )]
+position = Vector2( 670.341, 671.585 )
 
 [node name="BronzeCoin" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1316.78, 906.023 )
-
-[node name="BronzeCoin2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 2323.3, 937.831 )
-
-[node name="BronzeCoin3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1825.72, 944.648 )
-
-[node name="BronzeCoin4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 2443.72, 942.376 )
+position = Vector2( 554.581, 675.479 )
 
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="Yorn" parent="Obstacles" instance=ExtResource( 6 )]
-position = Vector2( 706.011, 629.177 )
+position = Vector2( 1046.06, 633.878 )
 
 [node name="Bench" parent="Obstacles" instance=ExtResource( 7 )]
-position = Vector2( 1134.34, 959.088 )
+position = Vector2( 1638.83, 669.835 )
+scale = Vector2( 1.5, 1.5 )
 
 [node name="Bench2" parent="Obstacles" instance=ExtResource( 7 )]
-position = Vector2( 1650.81, 959.64 )
+position = Vector2( 1638.18, 613.079 )
+scale = Vector2( 1.5, 1.5 )
 
 [node name="Bench3" parent="Obstacles" instance=ExtResource( 7 )]
-position = Vector2( 1902.81, 959.64 )
+position = Vector2( 1634.77, 556.221 )
+scale = Vector2( 1.5, 1.5 )
 
 [node name="Bench4" parent="Obstacles" instance=ExtResource( 7 )]
-position = Vector2( 2044.21, 959.573 )
+position = Vector2( 1633.57, 498.394 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="Bench5" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 1635.9, 438.91 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="Bench6" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 1637.07, 378.26 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="Bench7" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 2094.87, 788.37 )
 
