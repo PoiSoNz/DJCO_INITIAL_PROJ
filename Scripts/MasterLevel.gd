@@ -24,10 +24,7 @@ var deleteFlag = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	chooseLevels()
-	if currentIndex != numLevels-1:
-		instanceLevel()
-#	else:
-#		instanceLastLevel()
+	instanceLevel()
 	
 func chooseLevels():
 		randomize()
