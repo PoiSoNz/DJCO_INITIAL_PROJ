@@ -27,7 +27,6 @@ position = Vector2( 42240, 0 )
 script = ExtResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-editor/display_folded = true
 position = Vector2( 2880, 600 )
 
 [node name="CollisionShape2D" parent="Player/KinematicBody2D" index="0"]
@@ -40,7 +39,6 @@ frame = 1
 parameters/playback = SubResource( 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource( 6 )]
 
@@ -59,6 +57,13 @@ motion_mirroring = Vector2( 1920, 0 )
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 960, 540 )
 texture = ExtResource( 8 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -5.0
+margin_top = -23.0
+margin_right = 49992.0
+margin_bottom = 241.0
+color = Color( 0, 0, 0, 0.588235 )
 
 [connection signal="end_game" from="LastLevel" to="Player" method="_on_LastLevel_end_game"]
 [connection signal="send_bonus" from="CheckPoints" to="CanvasLayer/HUD" method="_on_CheckPoints_send_bonus"]
