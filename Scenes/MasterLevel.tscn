@@ -46,7 +46,7 @@ editor/display_folded = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -15.0
+volume_db = -30.0
 autoplay = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
