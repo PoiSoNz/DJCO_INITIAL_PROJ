@@ -6,4 +6,4 @@ func _ready():
 	$SilverCoin.set_type(1)
 	$BronzeCoin.set_type(2)
 	$VendingMachine.set_tier(3)
-	$VendingMachine2.set_tier(3)
+	$VendingMachine2.set_tier(2)

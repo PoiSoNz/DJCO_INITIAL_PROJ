@@ -12,7 +12,7 @@ func _ready():
 	$SilverCoin2.set_type(1)
 	$BronzeCoin.set_type(2)
 	$BronzeCoin2.set_type(2)
-	$VendingMachine.set_tier(2)
+	$VendingMachine.set_tier(3)
 	$VendingMachine2.set_tier(3)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
