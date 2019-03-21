@@ -1,6 +1,6 @@
 extends Node2D
 
-var velocity = Vector2(200, 0)
+var velocity = Vector2(125, 0)
 var movementDirection = 1
 var frameDelta;
 var platformMaxRangeX = 0
