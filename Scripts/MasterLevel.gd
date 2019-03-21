@@ -12,7 +12,7 @@ onready var first_level = preload("res://Scenes/FirstLevel.tscn")
 onready var existingLevels = [level1, level2, level3, level4, level5]
 onready var levelsToInstance = []
 onready var currentIndex = 0
-const numLevels = 10
+const numLevels = 20
 
 onready var checkpoint = preload("res://Scenes/Checkpoint.tscn")
 var levelArray = []
@@ -29,7 +29,7 @@ func _ready():
 func chooseLevels():
 		randomize()
 		var previousLevel = -1
-		levelsToInstance.append(first_level)
+		
 	
 		var index = previousLevel
 	
@@ -52,12 +52,12 @@ func instanceLevel():
 	var l = levelsToInstance[currentIndex].instance()
 	currentIndex += 1
 	print(currentLevel)
-	l.position.x = levelSize * currentLevel
+	l.position.x = levelSize * currentLevel + levelSize
 	$Levels.add_child(l)
 	levelArray.append(l)
 	currentLevel += 1
 	var cp = checkpoint.instance()
-	cp.position.x = levelSize * currentLevel
+	cp.position.x = levelSize * currentLevel + levelSize
 	$CheckPoints.add_child(cp)
 	checkPointArray.append(cp)
 	checkPointRefArray.append(weakref(cp))

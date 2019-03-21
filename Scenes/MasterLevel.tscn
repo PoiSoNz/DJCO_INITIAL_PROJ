@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/MasterLevel.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/CheckPoints.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Bgm/Soulless 5.ogg" type="AudioStream" id=5]
-[ext_resource path="res://Assets/Backgrounds/parallax.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/FirstLevel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/CheckPoints.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Bgm/Soulless 5.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Backgrounds/parallax.png" type="Texture" id=7]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -14,11 +15,15 @@ script = ExtResource( 1 )
 
 [node name="Levels" type="Node2D" parent="."]
 
-[node name="CheckPoints" type="Node2D" parent="."]
-script = ExtResource( 2 )
+[node name="FirstLevel" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1920, 0 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 960, 600 )
+[node name="CheckPoints" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
+position = Vector2( 2880, 600 )
 
 [node name="CollisionShape2D" parent="Player/KinematicBody2D" index="0"]
 position = Vector2( 1, 2 )
@@ -30,14 +35,16 @@ frame = 1
 parameters/playback = SubResource( 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
-[node name="HUD" parent="CanvasLayer" instance=ExtResource( 4 )]
+[node name="HUD" parent="CanvasLayer" instance=ExtResource( 5 )]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
+stream = ExtResource( 6 )
 autoplay = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+editor/display_folded = true
 scroll_base_scale = Vector2( 0.25, 0.25 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -45,7 +52,7 @@ motion_mirroring = Vector2( 1920, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 960, 540 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [connection signal="send_bonus" from="CheckPoints" to="CanvasLayer/HUD" method="_on_CheckPoints_send_bonus"]
 [connection signal="send_bonus_info" from="CheckPoints" to="CanvasLayer/HUD" method="_on_CheckPoints_send_bonus_info"]

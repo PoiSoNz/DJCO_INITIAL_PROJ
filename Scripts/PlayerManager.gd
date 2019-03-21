@@ -1,6 +1,6 @@
 extends Node
 
-var ECTS = 10000
+var ECTS = 0
 
 var score = 0
 
