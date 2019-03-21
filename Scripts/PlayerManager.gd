@@ -139,3 +139,8 @@ func on_immunity_end():
 
 func _on_HealthBar_reenable_bleeding():
 	emit_signal("reenable_bleeding")
+
+
+func _on_LastLevel_end_game():
+	globals.playerScore = floor(score)
+	get_tree().change_scene("res://Scenes/PostGameHighscore.tscn")

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/LastLevel.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Backgrounds/mid.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Backgrounds/cheese.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4098.44, 100 )
+
+[node name="LastLevel" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="middle" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 0, 141 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 960, 958.486 )
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 5.84412, -21.4283 )
+
+[node name="cheese" type="Sprite" parent="Area2D"]
+position = Vector2( 960, 750 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( 629.623, 743.832, 922.721, 496.175, 1068.13, 502.992, 1197.64, 562.066, 1290.8, 646.133, 1304.43, 866.525, 1256.72, 927.871, 934.082, 984.673, 656.888, 1007.39, 620.535, 986.945, 623.209, 745.343 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

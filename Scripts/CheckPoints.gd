@@ -25,6 +25,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	checkpoints = get_children()
+	
+	if checkpoints.size() == 0:
+		return
+	
 	var current_check_point = checkpoints.front()
 	
 	change_multiplier()

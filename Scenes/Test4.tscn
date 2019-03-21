@@ -9,7 +9,7 @@
 [ext_resource path="res://Scenes/Bench.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1500, 100 )
+extents = Vector2( 3457.04, 100 )
 
 [node name="Test" type="Node2D"]
 script = ExtResource( 1 )

@@ -30,10 +30,9 @@ func chooseLevels():
 		randomize()
 		var previousLevel = -1
 		
-	
 		var index = previousLevel
 	
-		for i in range(numLevels-1):
+		for i in range(numLevels):
 			
 			while(index == previousLevel):
 				index = randi() % existingLevels.size()
@@ -42,6 +41,7 @@ func chooseLevels():
 			previousLevel = index
 			
 			print(index)
+		print("levels to inst: ", levelsToInstance.size())
 	
 func _process(delta):
 	check_cps()
@@ -49,6 +49,8 @@ func _process(delta):
 	$CheckPoints.receive_player_pos($Player/KinematicBody2D.global_position.y, delta)
 
 func instanceLevel():
+	if currentIndex == 10:
+		return
 	var l = levelsToInstance[currentIndex].instance()
 	currentIndex += 1
 	print(currentLevel)
@@ -63,6 +65,10 @@ func instanceLevel():
 	checkPointRefArray.append(weakref(cp))
 	
 func check_cps():
+
+	if currentIndex == 10:
+		return
+	
 	if checkPointRefArray.size() > 0:
 		if !checkPointRefArray[0].get_ref():
 			checkPointArray.pop_front()
