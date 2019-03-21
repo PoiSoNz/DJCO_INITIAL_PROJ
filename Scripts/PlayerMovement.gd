@@ -121,6 +121,11 @@ func change_hit_box(anim_state):
 			$CollisionShape2D.shape.extents.x = 34
 			$CollisionShape2D.shape.extents.y = 22
 			#print("slide", $CollisionShape2D.shape.extents)
+		"Jump":
+			$CollisionShape2D.position.x = 4
+			$CollisionShape2D.position.y = 22
+			$CollisionShape2D.shape.extents.x = 20
+			$CollisionShape2D.shape.extents.y = 38
 		_: #Run or Jump
 			$CollisionShape2D.position.x = 8
 			$CollisionShape2D.position.y = 0
