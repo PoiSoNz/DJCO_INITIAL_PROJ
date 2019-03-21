@@ -1,6 +1,6 @@
 extends Node
 
-var currentHighscore = -1
+var playerScore = -1
 
-func cleanCurrentHighscore():
-	currentHighscore = -1
+func cleanPlayerScore():
+	playerScore = -1
