@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/PlayAgain.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/code_bold_big.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Fonts/code_bold.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Fonts/code_bold_small.tres" type="DynamicFont" id=4]
 
 [node name="PlayAgain" type="Control"]
 anchor_right = 1.0
@@ -22,7 +23,7 @@ text = "Failed"
 align = 1
 valign = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="PlayButton" type="Button" parent="."]
 margin_left = 740.0
 margin_top = 540.0
 margin_right = 1180.0
@@ -30,4 +31,13 @@ margin_bottom = 660.0
 custom_fonts/font = ExtResource( 3 )
 text = "Play Again"
 
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[node name="MainMenu" type="Button" parent="."]
+margin_left = 782.0
+margin_top = 800.0
+margin_right = 1138.0
+margin_bottom = 886.0
+custom_fonts/font = ExtResource( 4 )
+text = "Main Menu"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_MainMenu_pressed"]

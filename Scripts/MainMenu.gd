@@ -12,13 +12,14 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func _on_PlayButton_pressed():
+
+func _on_Play_pressed():
 	get_tree().change_scene("res://Scenes/MasterLevel.tscn")
 
 
-func _on_MainMenu_pressed():
-	get_tree().change_scene("res://Scenes/MainMenu.tscn")
+func _on_HighScores_pressed():
+	get_tree().change_scene("res://Scenes/ShowHighscores.tscn")
 
 
-func _on_Play_pressed():
-	pass # Replace with function body.
+func _on_Exit_pressed():
+	get_tree().quit()

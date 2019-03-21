@@ -18,7 +18,7 @@ func _on_NewGameButton_pressed():
 
 
 func _on_MainMenuButton_pressed():
-	#get_tree().change_scene("res://Scenes/MainMenu.tscn")
+	get_tree().change_scene("res://Scenes/MainMenu.tscn")
 	pass
 
 

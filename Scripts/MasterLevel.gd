@@ -12,7 +12,7 @@ onready var first_level = preload("res://Scenes/FirstLevel.tscn")
 onready var existingLevels = [level1, level2, level3, level4, level5]
 onready var levelsToInstance = []
 onready var currentIndex = 0
-const numLevels = 20
+const numLevels = 10
 
 onready var checkpoint = preload("res://Scenes/Checkpoint.tscn")
 var levelArray = []
