@@ -17,7 +17,6 @@ func add_new_score(score, place):
 	
 	self.score = score
 	
-	$NewScoreInfo.text = "Score: " + String(score) 
 	$PlaceInfo.text = String(place)
 	
 	match place:

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Highscore/ShowHighscores.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/code_bold_big.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Fonts/code_bold.tres" type="DynamicFont" id=3]
-[ext_resource path="res://addons/gamejolt_api_v2/main.gd" type="Script" id=4]
-[ext_resource path="res://addons/gamejolt_api_v2/gj_icon.png" type="Texture" id=5]
+[ext_resource path="res://Fonts/code_bold_even_smaller.tres" type="DynamicFont" id=4]
+[ext_resource path="res://addons/gamejolt_api_v2/main.gd" type="Script" id=5]
+[ext_resource path="res://addons/gamejolt_api_v2/gj_icon.png" type="Texture" id=6]
 
 [node name="ShowHighscores" type="Control"]
 anchor_right = 1.0
@@ -21,6 +22,27 @@ margin_right = 1920.0
 margin_bottom = 226.0
 custom_fonts/font = ExtResource( 2 )
 text = "HIGHSCORES"
+align = 1
+valign = 1
+
+[node name="Fetching" type="Label" parent="."]
+margin_top = 422.605
+margin_right = 1920.0
+margin_bottom = 648.605
+custom_fonts/font = ExtResource( 3 )
+text = "fetching highscores..."
+align = 1
+valign = 1
+
+[node name="NotFound" type="Label" parent="."]
+visible = false
+margin_left = 460.0
+margin_top = 800.0
+margin_right = 1460.0
+margin_bottom = 912.0
+custom_fonts/font = ExtResource( 4 )
+text = "No highscores have been found
+be the first one to enter your score in the holy grail"
 align = 1
 valign = 1
 
@@ -47,42 +69,43 @@ toggle_mode = true
 text = "Main Menu"
 
 [node name="GameJoltAPI" type="HTTPRequest" parent="."]
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 __meta__ = {
-"_editor_icon": ExtResource( 5 )
+"_editor_icon": ExtResource( 6 )
 }
 private_key = "867141e4f6d7c303193c9be0d19e5523"
 game_id = "403339"
 
 [node name="HighscoreList" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="1to5List" type="Label" parent="HighscoreList"]
+[node name="List1to5" type="Label" parent="HighscoreList"]
 margin_left = 300.0
 margin_top = 200.0
 margin_right = 1000.0
 margin_bottom = 950.0
 custom_fonts/font = ExtResource( 3 )
-text = "1. Campeao
-2. Benfica
-3. PoiSoNz
-4. Tonecas
-5. VATATA"
+text = "1. 
+2. 
+3. 
+4. 
+5. "
 valign = 1
 max_lines_visible = 5
 
-[node name="6to10List" type="Label" parent="HighscoreList"]
+[node name="List6to10" type="Label" parent="HighscoreList"]
 margin_left = 1200.0
 margin_top = 200.0
 margin_right = 1900.0
 margin_bottom = 950.0
 custom_fonts/font = ExtResource( 3 )
-text = "6. Bobby
-7. Charlie_brownss
-8. Ximpamze
-9. ChampagnePAPI
-10. Tuvarao"
+text = "6. 
+7. 
+8. 
+9. 
+10. "
 valign = 1
 max_lines_visible = 5
 
