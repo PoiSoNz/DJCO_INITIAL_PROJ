@@ -1,6 +1,6 @@
 extends Node
 
-var playerScore = -1
+var playerScore = 60
 
 func cleanPlayerScore():
 	playerScore = -1
