@@ -5,7 +5,7 @@ var tweenGrew = true
 var tweenColored = true
 
 const tweenZoom = Vector2(1.2, 1.2)
-const tweenColor = Color(0, 0.7, 0)
+const tweenColor = Color(0, 0.6, 0)
 const tweenDuration = 0.65
 
 # Called when the node enters the scene tree for the first time.
@@ -14,8 +14,19 @@ func _ready():
 
 func add_new_score(score, place):
 	start_new_highscore_anim()
+	
 	self.score = score
-	$NewScoreInfo.text = "Score: " + String(score) + "\nPlace: " + place
+	
+	$NewScoreInfo.text = "Score: " + String(score) 
+	$PlaceInfo.text = String(place)
+	
+	match place:
+		"1st":
+			$PlaceInfo.add_color_override("font_color", Color(1, 0.8431, 0))
+		"2nd":
+			$PlaceInfo.add_color_override("font_color", Color(0.5804, 0.5961, 0.6314))
+		"3rd":
+			$PlaceInfo.add_color_override("font_color", Color(0.8039, 0.498, 0.1961))
 
 func start_new_highscore_anim():
 	$Label/SizeTween.interpolate_property($Label, "rect_scale", Vector2(1, 1), tweenZoom, tweenDuration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
@@ -46,8 +57,10 @@ func _on_AddHighscoreButton_pressed():
 	get_parent().get_node("GameJoltAPI").add_score(String(score) + " Points", score, '', '', nickname)
 
 func _on_GameJoltAPI_api_scores_added(success):
+	globals.cleanPlayerScore()
+	
 	var addedScore = JSON.parse(success).result.response.success
-
+	
 	if addedScore:
 		get_tree().change_scene("res://Scenes/ShowHighscores.tscn")
 	else:
