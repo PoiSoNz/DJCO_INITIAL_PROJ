@@ -61,5 +61,4 @@ func _on_NewGameButton_pressed():
 	get_tree().change_scene("res://Scenes/MasterLevel.tscn")
 
 func _on_MainMenuButton_pressed():
-	#get_tree().change_scene("res://Scenes/MainMenu.tscn")
-	print("vai para o main menu")
+	get_tree().change_scene("res://Scenes/MainMenu.tscn")

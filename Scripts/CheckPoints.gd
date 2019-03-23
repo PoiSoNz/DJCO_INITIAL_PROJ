@@ -15,6 +15,8 @@ onready var bar = 150
 
 onready var bar_cooldown = bar_refresh_rate
 
+var current_check_point 
+
 signal send_bonus(bonus)
 signal send_bonus_info(bar_value, multiplier_value)
 
@@ -29,7 +31,10 @@ func _process(delta):
 	if checkpoints.size() == 0:
 		return
 	
-	var current_check_point = checkpoints.front()
+	current_check_point = checkpoints.front()
+	
+	if checkpoints.size() == 1:
+		current_check_point.is_active = true
 	
 	change_multiplier()
 	current_check_point.change_bonus_drop(multiplier)
