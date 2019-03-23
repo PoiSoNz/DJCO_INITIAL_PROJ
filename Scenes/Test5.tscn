@@ -109,6 +109,3 @@ scale = Vector2( 1.5, 1.5 )
 position = Vector2( 1637.07, 378.26 )
 scale = Vector2( 1.5, 1.5 )
 
-[node name="Bench7" parent="Obstacles" instance=ExtResource( 7 )]
-position = Vector2( 2094.87, 788.37 )
-
