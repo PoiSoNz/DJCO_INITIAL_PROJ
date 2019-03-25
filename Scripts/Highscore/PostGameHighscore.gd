@@ -2,7 +2,7 @@ extends Control
 
 var currentHighscores = []
 
-const motivationalQuotes = ["Better luck next time", "\"The important is too be healthy\"", "We can't all be winners", "\"You already went\"", "Maybe you should play with the screen turned on", "Even my grandma would do better"]
+const motivationalQuotes = ["Better luck next time", "\"The important is too be healthy\"", "We can't all be winners", "\"You already went\"", "Even my grandma would do better"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

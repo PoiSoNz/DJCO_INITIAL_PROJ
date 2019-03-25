@@ -154,12 +154,12 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="MotivationalQuote" type="Label" parent="RegularScoreUI"]
-margin_left = 666.39
-margin_top = 556.39
-margin_right = 1246.39
-margin_bottom = 620.39
+margin_left = 494.269
+margin_top = 558.548
+margin_right = 1397.27
+margin_bottom = 622.548
 custom_fonts/font = ExtResource( 4 )
-text = "Better luck next time"
+text = "We can't all be winners"
 align = 1
 
 [node name="HighscoresButton" type="Button" parent="RegularScoreUI"]
