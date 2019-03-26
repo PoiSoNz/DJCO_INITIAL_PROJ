@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/VendingMachine.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/VendingMachines/vendingMachine0.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sprites/Hud/croissant.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/Hud/water.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sprites/Hud/coffee.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Sprites/Hud/special.png" type="Texture" id=6]
+[ext_resource path="res://Fonts/title.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Assets/Sprites/Coins/money_icon.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Hud/water.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/Hud/coffee.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/Hud/special.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 800, 401.921 )
@@ -31,52 +33,132 @@ margin_right = 280.0
 margin_bottom = 40.0
 
 [node name="Croissant" type="Panel" parent="Control"]
-margin_left = -600.0
+margin_left = -700.0
 margin_top = -220.0
-margin_right = -400.0
-margin_bottom = -20.0
+margin_right = -450.0
+margin_bottom = 30.0
 
 [node name="Sprite" type="Sprite" parent="Control/Croissant"]
-position = Vector2( 25, 25 )
+position = Vector2( 125, 150 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
-centered = false
+
+[node name="LabelQ" type="Label" parent="Control/Croissant"]
+margin_top = 150.0
+margin_right = 116.0
+margin_bottom = 274.0
+custom_fonts/font = ExtResource( 4 )
+text = "Q"
+
+[node name="LabelPrice" type="Label" parent="Control/Croissant"]
+margin_left = 50.0
+margin_top = -5.0
+margin_right = 180.0
+margin_bottom = 119.0
+rect_scale = Vector2( 0.9, 0.9 )
+custom_fonts/font = ExtResource( 4 )
+text = "20"
+
+[node name="SpriteCoinIcon" type="Sprite" parent="Control/Croissant"]
+position = Vector2( 210, 40 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 5 )
 
 [node name="Water" type="Panel" parent="Control"]
-margin_left = -250.0
+margin_left = -275.0
 margin_top = -220.0
-margin_right = -50.0
-margin_bottom = -20.0
+margin_right = -25.0
+margin_bottom = 30.0
 
 [node name="Sprite" type="Sprite" parent="Control/Water"]
-position = Vector2( 25, 25 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 4 )
-centered = false
-
-[node name="Coffee" type="Panel" parent="Control"]
-margin_left = 100.0
-margin_top = -220.0
-margin_right = 300.0
-margin_bottom = -20.0
-
-[node name="Sprite" type="Sprite" parent="Control/Coffee"]
-position = Vector2( 25, 25 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 5 )
-centered = false
-
-[node name="SpecialMerend" type="Panel" parent="Control"]
-margin_left = 450.0
-margin_top = -220.0
-margin_right = 650.0
-margin_bottom = -20.0
-
-[node name="Sprite" type="Sprite" parent="Control/SpecialMerend"]
-position = Vector2( 25, 25 )
+position = Vector2( 125, 150 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 6 )
-centered = false
+
+[node name="LabelW" type="Label" parent="Control/Water"]
+margin_top = 150.0
+margin_right = 116.0
+margin_bottom = 274.0
+custom_fonts/font = ExtResource( 4 )
+text = "W"
+
+[node name="LabelPrice" type="Label" parent="Control/Water"]
+margin_left = 50.0
+margin_top = -5.0
+margin_right = 180.0
+margin_bottom = 119.0
+rect_scale = Vector2( 0.9, 0.9 )
+custom_fonts/font = ExtResource( 4 )
+text = "35"
+
+[node name="SpriteCoinIcon" type="Sprite" parent="Control/Water"]
+position = Vector2( 210, 40 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 5 )
+
+[node name="Coffee" type="Panel" parent="Control"]
+margin_left = 150.0
+margin_top = -220.0
+margin_right = 400.0
+margin_bottom = 30.0
+
+[node name="Sprite" type="Sprite" parent="Control/Coffee"]
+position = Vector2( 125, 150 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 7 )
+
+[node name="LabelE" type="Label" parent="Control/Coffee"]
+margin_top = 150.0
+margin_right = 116.0
+margin_bottom = 274.0
+custom_fonts/font = ExtResource( 4 )
+text = "E"
+
+[node name="LabelPrice" type="Label" parent="Control/Coffee"]
+margin_left = 50.0
+margin_top = -5.0
+margin_right = 180.0
+margin_bottom = 119.0
+rect_scale = Vector2( 0.9, 0.9 )
+custom_fonts/font = ExtResource( 4 )
+text = "85"
+
+[node name="SpriteCoinIcon" type="Sprite" parent="Control/Coffee"]
+position = Vector2( 210, 40 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 5 )
+
+[node name="SpecialMerend" type="Panel" parent="Control"]
+margin_left = 550.0
+margin_top = -220.0
+margin_right = 800.0
+margin_bottom = 30.0
+
+[node name="Sprite" type="Sprite" parent="Control/SpecialMerend"]
+position = Vector2( 125, 150 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 8 )
+
+[node name="LabelR" type="Label" parent="Control/SpecialMerend"]
+margin_top = 150.0
+margin_right = 116.0
+margin_bottom = 274.0
+custom_fonts/font = ExtResource( 4 )
+text = "R"
+
+[node name="LabelPrice" type="Label" parent="Control/SpecialMerend"]
+margin_left = 20.0
+margin_top = -5.0
+margin_right = 182.0
+margin_bottom = 119.0
+rect_scale = Vector2( 0.9, 0.9 )
+custom_fonts/font = ExtResource( 4 )
+text = "120"
+
+[node name="SpriteCoinIcon" type="Sprite" parent="Control/SpecialMerend"]
+position = Vector2( 210, 40 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 5 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
